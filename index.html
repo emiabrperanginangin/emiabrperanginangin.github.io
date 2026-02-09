@@ -2,18 +2,26 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Beranda Perpustakaan</title>
+    <title>Beranda Perpustakaan Emia</title>
     <style>
         body {
-            font-family: Open Sans, sans-serif;
             margin: 0;
-            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #e6eef5, #cfdde8);
         }
 
         header {
-            background-color: #34495e;
-            color: green;
-            padding: 15px;
+            background: linear-gradient(to right, #2c5364, #203a43);
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
         }
 
         nav a {
@@ -23,29 +31,69 @@
             font-size: 14px;
         }
 
-        .container {
-            padding: 30px;
-            background-color: white;
-            margin: 20px;
-            border-radius: 5px;
+        nav a:hover {
+            text-decoration: underline;
         }
 
-        h2 {
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
             color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: auto;
+            color: #444;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #f4f8fb;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #2c5364;
         }
 
         footer {
+            background-color: #203a43;
+            color: white;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             font-size: 13px;
-            color: #555;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <strong>Perpustakaan</strong><br>
+    <h1>Perpustakaan Emia</h1>
     <nav>
         <a href="index.html">Beranda</a>
         <a href="#">Profil</a>
@@ -55,21 +103,38 @@
     </nav>
 </header>
 
-<div class="container">
-    <h2>Welcome my Library</h2>
+<section class="hero">
+    <h2>Selamat Datang di Perpustakaan Emia</h2>
     <p>
-        Website Perpustakaan ini menyediakan informasi mengenai layanan,
-        koleksi, dan kegiatan perpustakaan sebagai pendukung
-        pendidikan dan literasi.
+        Perpustakaan Emia menyediakan berbagai sumber informasi
+        untuk mendukung kegiatan belajar, penelitian, dan
+        pengembangan literasi.
     </p>
+</section>
 
-    <h3>Layanan</h3>
-    <ul>
-        <li>Peminjaman dan pengembalian buku</li>
-        <li>Akses koleksi perpustakaan</li>
-        <li>Layanan referensi</li>
-    </ul>
-</div>
+<section class="content">
+    <div class="cards">
+        <div class="card">
+            <h3>Peminjaman Buku</h3>
+            <p>Layanan peminjaman dan pengembalian koleksi perpustakaan.</p>
+        </div>
+
+        <div class="card">
+            <h3>Akses Koleksi</h3>
+            <p>Informasi koleksi buku cetak dan digital.</p>
+        </div>
+
+        <div class="card">
+            <h3>Layanan Referensi</h3>
+            <p>Bantuan penelusuran informasi bagi pemustaka.</p>
+        </div>
+
+        <div class="card">
+            <h3>Ruang Baca</h3>
+            <p>Fasilitas membaca yang nyaman dan kondusif.</p>
+        </div>
+    </div>
+</section>
 
 <footer>
     © 2026 Perpustakaan Emia
