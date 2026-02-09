@@ -9,83 +9,43 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #e6eef5, #cfdde8);
         }
-
         header {
             background: linear-gradient(to right, #2c5364, #203a43);
             color: white;
             padding: 20px;
         }
-
-        header h1 {
-            margin: 0;
-        }
-
-        nav {
-            margin-top: 10px;
-        }
-
         nav a {
             color: white;
             text-decoration: none;
             margin-right: 15px;
             font-size: 14px;
         }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
+        nav a:hover { text-decoration: underline; }
         .hero {
             padding: 40px 20px;
             text-align: center;
         }
-
-        .hero h2 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            max-width: 600px;
-            margin: auto;
-            color: #444;
-        }
-
         .content {
-            padding: 20px;
             max-width: 1000px;
             margin: auto;
+            padding: 20px;
         }
-
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
             gap: 20px;
         }
-
         .card {
-            background-color: #f4f8fb;
+            background: #f4f8fb;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,.1);
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: #2c5364;
-        }
-
         footer {
-            background-color: #203a43;
+            background: #203a43;
             color: white;
             text-align: center;
             padding: 12px;
-            font-size: 13px;
             margin-top: 40px;
         }
     </style>
@@ -96,44 +56,27 @@
     <h1>Emia Library</h1>
     <nav>
         <a href="index.html">Beranda</a>
-        <a href="#">Profil</a>
-        <a href="#">Layanan</a>
-        <a href="#">Koleksi</a>
-        <a href="#">Kontak</a>
+        <a href="pages/profil/">Profil</a>
+        <a href="pages/layanan/">Layanan</a>
+        <a href="pages/koleksi/">Koleksi</a>
+        <a href="pages/kontak/">Kontak</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h2>Welcome to Emia Library</h2>
-    <p>
-        Emia Library menyediakan berbagai sumber informasi
-        untuk mendukung kegiatan belajar, penelitian,
-        dan pengembangan literasi.
-    </p>
+    <h2>Selamat Datang di Emia Library</h2>
+    <p>Perpustakaan sebagai pusat informasi dan literasi.</p>
 </section>
 
 <section class="content">
     <div class="cards">
-        <div class="card">
-            <h3>Peminjaman Buku</h3>
-            <p>Layanan peminjaman dan pengembalian koleksi perpustakaan.</p>
-        </div>
-
-        <div class="card">
-            <h3>Akses Koleksi</h3>
-            <p>Informasi koleksi buku cetak dan digital.</p>
-        </div>
-
-        <div class="card">
-            <h3>Ruang Baca</h3>
-            <p>Fasilitas membaca yang nyaman dan kondusif.</p>
-        </div>
+        <div class="card">Peminjaman Buku</div>
+        <div class="card">Akses Koleksi</div>
+        <div class="card">Ruang Baca</div>
     </div>
 </section>
 
-<footer>
-    © 2026 Emia Library
-</footer>
+<footer>© 2026 Emia Library</footer>
 
 </body>
 </html>
