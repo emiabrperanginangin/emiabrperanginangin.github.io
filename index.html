@@ -1,63 +1,131 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Profil - Emia Library</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #e6eef5, #cfdde8);
-        }
-        header {
-            background: linear-gradient(to right, #2c5364, #203a43);
-            color: white;
-            padding: 20px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 15px;
-            font-size: 14px;
-        }
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        footer {
-            background: #203a43;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Emia Library</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #e6eef5, #cfdde8);
+}
+
+header {
+    background: linear-gradient(to right, #2c5364, #203a43);
+    color: white;
+    padding: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.page {
+    display: none;
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.active {
+    display: block;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #f4f8fb;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+footer {
+    background-color: #203a43;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 40px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
     <h1>Emia Library</h1>
     <nav>
-        <a href="index.html">Beranda</a>
-        <a href="profil.html">Profil</a>
-        <a href="layanan.html">Layanan</a>
-        <a href="koleksi.html">Koleksi</a>
-        <a href="kontak.html">Kontak</a>
+        <a onclick="showPage('beranda')">Beranda</a>
+        <a onclick="showPage('profil')">Profil</a>
+        <a onclick="showPage('layanan')">Layanan</a>
     </nav>
 </header>
 
-<section>
+<!-- BERANDA -->
+<div id="beranda" class="page active">
+    <h2>Selamat Datang di Emia Library</h2>
+    <p>
+        Emia Library menyediakan berbagai sumber informasi
+        untuk mendukung kegiatan belajar, penelitian,
+        dan pengembangan literasi.
+    </p>
+</div>
+
+<!-- PROFIL -->
+<div id="profil" class="page">
     <h2>Profil Emia Library</h2>
     <p>
         Emia Library adalah perpustakaan yang menyediakan
-        berbagai koleksi cetak dan digital untuk memenuhi
-        kebutuhan informasi pemustaka.
+        koleksi buku cetak, e-book, jurnal, dan karya ilmiah
+        untuk memenuhi kebutuhan informasi pemustaka.
     </p>
-</section>
+</div>
+
+<!-- LAYANAN -->
+<div id="layanan" class="page">
+    <h2>Layanan Kami</h2>
+    <div class="cards">
+        <div class="card">
+            <h3>Peminjaman Buku</h3>
+            <p>Layanan peminjaman dan pengembalian koleksi.</p>
+        </div>
+        <div class="card">
+            <h3>Akses Koleksi</h3>
+            <p>Pencarian dan akses koleksi digital.</p>
+        </div>
+        <div class="card">
+            <h3>Ruang Baca</h3>
+            <p>Fasilitas membaca yang nyaman dan kondusif.</p>
+        </div>
+    </div>
+</div>
 
 <footer>
     © 2026 Emia Library
 </footer>
+
+<script>
+function showPage(pageId) {
+    let pages = document.querySelectorAll('.page');
+    pages.forEach(function(page) {
+        page.classList.remove('active');
+    });
+    document.getElementById(pageId).classList.add('active');
+}
+</script>
 
 </body>
 </html>
