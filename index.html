@@ -1,37 +1,159 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Perpustakaan Desri</title>
+    <title>Perpustakaan Desri</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #34495e;
+        }
+    </style>
+
+    <script>
+        function showPage(pageId) {
+            var pages = document.getElementsByClassName("page");
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].style.display = "none";
+            }
+            document.getElementById(pageId).style.display = "block";
+        }
+
+        function loginUser() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (email === "admin@gmail.com" && password === "12345") {
+                alert("Login berhasil!");
+                showPage("home");
+            } else {
+                alert("Email atau Password salah!");
+            }
+
+            return false;
+        }
+    </script>
 </head>
-<body>
 
-<h2>Login Perpustakaan Desri</h2>
+<body onload="showPage('home')">
 
-<form onsubmit="return loginUser()">
-    Email:<br>
-    <input type="email" id="email" required><br><br>
+<!-- ================= NAVIGASI ================= -->
+<nav>
+    <a href="#" onclick="showPage('home')">Beranda</a>
+    <a href="#" onclick="showPage('collection')">Koleksi</a>
+    <a href="#" onclick="showPage('service')">Layanan</a>
+    <a href="#" onclick="showPage('login')">Login</a>
+</nav>
 
-    Password:<br>
-    <input type="password" id="password" required><br><br>
+<!-- ================= HOME ================= -->
+<div id="home" class="page">
+    <h1>Selamat Datang di Perpustakaan Desri</h1>
+    <p>Website ini menyediakan layanan informasi dan peminjaman buku.</p>
+</div>
 
-    <input type="submit" value="Login">
-</form>
+<!-- ================= KOLEKSI ================= -->
+<div id="collection" class="page">
+    <h2>Koleksi Buku</h2>
+    <ul>
+        <li>Buku Teknologi Informasi</li>
+        <li>Buku Manajemen</li>
+        <li>Jurnal Internasional</li>
+        <li>E-Book Digital</li>
+    </ul>
+</div>
 
-<script>
-function loginUser() {
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+<!-- ================= LAYANAN ================= -->
+<div id="service" class="page">
+    <h2>Jam Layanan</h2>
+    <p>Senin - Jumat : 08.00 - 16.00</p>
+    <p>Sabtu : 09.00 - 14.00</p>
+</div>
 
-    if (email === "admin@gmail.com" && password === "12345") {
-        window.location.href = "beranda.html";
-    } else {
-        alert("Email atau Password salah!");
-    }
+<!-- ================= LOGIN ================= -->
+<div id="login" class="page">
+    <div class="container">
+        <h2>Login Perpustakaan</h2>
 
-    return false;
-}
-</script>
+        <form onsubmit="return loginUser()">
+            Email:<br>
+            <input type="email" id="email" required><br><br>
+
+            Password:<br>
+            <input type="password" id="password" required><br><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Belum punya akun?
+            <a href="#" onclick="showPage('register')">Daftar di sini</a>
+        </p>
+    </div>
+</div>
+
+<!-- ================= REGISTER ================= -->
+<div id="register" class="page">
+    <div class="container">
+        <h2>Daftar Akun</h2>
+
+        <form onsubmit="alert('Pendaftaran berhasil! Silakan login.'); showPage('login'); return false;">
+            Nama Lengkap:<br>
+            <input type="text" required><br><br>
+
+            Email:<br>
+            <input type="email" required><br><br>
+
+            Password:<br>
+            <input type="password" required><br><br>
+
+            <button type="submit">Daftar</button>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
