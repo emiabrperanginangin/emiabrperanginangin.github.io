@@ -90,50 +90,44 @@
     </script>
 </head>
 
-<body onload="showPage('login')">
+<script>
+function showPage(pageId) {
+    var pages = document.querySelectorAll(".page");
+    pages.forEach(function(page) {
+        page.style.display = "none";
+    });
+    document.getElementById(pageId).style.display = "block";
+}
 
-<!-- ================= LOGIN PAGE ================= -->
-<div id="login" class="page">
-    <div class="container">
-        <h2>Login Perpustakaan</h2>
+// REGISTER
+function registerUser() {
+    var email = document.getElementById("regEmail").value;
+    var password = document.getElementById("regPassword").value;
 
-        <form onsubmit="return loginUser()">
-            Email:<br>
-            <input type="email" id="email" required><br><br>
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
 
-            Password:<br>
-            <input type="password" id="password" required><br><br>
+    alert("Pendaftaran berhasil! Silakan login.");
+    showPage("login");
+    return false;
+}
 
-            <button type="submit">Login</button>
-        </form>
+// LOGIN
+function loginUser() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
 
-        <p>Belum punya akun?</p>
-        <button onclick="showPage('register')">Daftar di sini</button>
-    </div>
-</div>
+    var savedEmail = localStorage.getItem("email");
+    var savedPassword = localStorage.getItem("password");
 
-<!-- ================= REGISTER PAGE ================= -->
-<div id="register" class="page">
-    <div class="container">
-        <h2>Daftar Akun</h2>
-
-        <form onsubmit="return registerUser()">
-            Nama:<br>
-            <input type="text" required><br><br>
-
-            Email:<br>
-            <input type="email" required><br><br>
-
-            Password:<br>
-            <input type="password" required><br><br>
-
-            <button type="submit">Daftar</button>
-        </form>
-
-        <br>
-        <button onclick="showPage('login')">Kembali ke Login</button>
-    </div>
-</div>
+    if (email === savedEmail && password === savedPassword) {
+        showPage("main");
+    } else {
+        alert("Email atau Password salah!");
+    }
+    return false;
+}
+</script>
 
 <!-- ================= HALAMAN UTAMA SETELAH LOGIN ================= -->
 <div id="main" class="page">
