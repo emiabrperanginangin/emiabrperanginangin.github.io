@@ -32,9 +32,11 @@
 
         .container {
             max-width: 400px;
+            margin: 100px auto;
             background: #f4f4f4;
             padding: 20px;
             border-radius: 8px;
+            text-align: center;
         }
 
         input {
@@ -49,6 +51,10 @@
             border: none;
             cursor: pointer;
         }
+
+        button:hover {
+            background: #34495e;
+        }
     </style>
 
     <script>
@@ -59,62 +65,34 @@
             }
             document.getElementById(pageId).style.display = "block";
         }
+
+        function loginUser() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (email === "admin@gmail.com" && password === "12345") {
+                showPage("main");
+            } else {
+                alert("Email atau Password salah!");
+            }
+            return false;
+        }
+
+        function registerUser() {
+            alert("Pendaftaran berhasil! Silakan login.");
+            showPage("login");
+            return false;
+        }
+
+        function logout() {
+            showPage("login");
+        }
     </script>
 </head>
 
-<body onload="showPage('home')">
+<body onload="showPage('login')">
 
-<!-- ================= NAVIGASI ================= -->
-<nav>
-    <a href="#" onclick="showPage('home')">Beranda</a>
-    <a href="#" onclick="showPage('collection')">Koleksi</a>
-    <a href="#" onclick="showPage('service')">Layanan</a>
-    <a href="#" onclick="showPage('login')">Login</a>
-</nav>
-
-<!-- ================= BERANDA ================= -->
-<div id="home" class="page">
-
-<h1>Selamat Datang di Perpustakaan Saya</h1>
-
-<h2>About Me</h2>
-<p>Nama: Emia Br Perangin-Angin</p>
-<p>NIM: 230709035</p>
-<p>Mahasiswi Perpustakaan dan Sains Informasi</p>
-
-<h2>Jika Ingin Mengenal Saya Lebih Jauh, Silakan Klik Tautan Di bawah Ini</h2>
-
-<p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">Instagram</a></p>
-<p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp" target="_blank">Curriculum Vitae</a></p>
-
-<h3>Jika ingin mengenal saya lebih jauh lagi, dengarkan lagu favorit saya berikut ini:</h3>
-
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/osdoLjUNFnA"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<!-- ================= KOLEKSI ================= -->
-<div id="collection" class="page">
-    <h2>Koleksi Buku</h2>
-    <ul>
-        <li>Buku Teknologi Informasi</li>
-        <li>Buku Manajemen</li>
-        <li>Jurnal Internasional</li>
-        <li>E-Book Digital</li>
-    </ul>
-</div>
-
-<!-- ================= LAYANAN ================= -->
-<div id="service" class="page">
-    <h2>Jam Layanan</h2>
-    <p>Senin - Jumat : 08.00 - 16.00</p>
-    <p>Sabtu : 09.00 - 14.00</p>
-</div>
-
-<!-- ================= LOGIN ================= -->
+<!-- ================= LOGIN PAGE ================= -->
 <div id="login" class="page">
     <div class="container">
         <h2>Login Perpustakaan</h2>
@@ -129,31 +107,84 @@ allowfullscreen>
             <button type="submit">Login</button>
         </form>
 
-        <p>Belum punya akun?
-            <a href="#" onclick="showPage('register')">Daftar di sini</a>
-        </p>
+        <p>Belum punya akun?</p>
+        <button onclick="showPage('register')">Daftar di sini</button>
     </div>
 </div>
+
+<!-- ================= REGISTER PAGE ================= -->
 <div id="register" class="page">
     <div class="container">
         <h2>Daftar Akun</h2>
 
-        <form onsubmit="alert('Pendaftaran berhasil! Silakan login.'); showPage('login'); return false;">
-            Last Name:<br>
+        <form onsubmit="return registerUser()">
+            Nama:<br>
             <input type="text" required><br><br>
-            First Name:<br>
-            <input type="text" required><br><br>
+
             Email:<br>
             <input type="email" required><br><br>
-            No HP:<br>
-            <input type="ho hp" required><br><br>
+
             Password:<br>
             <input type="password" required><br><br>
 
             <button type="submit">Daftar</button>
         </form>
+
+        <br>
+        <button onclick="showPage('login')">Kembali ke Login</button>
     </div>
 </div>
-    
+
+<!-- ================= HALAMAN UTAMA SETELAH LOGIN ================= -->
+<div id="main" class="page">
+
+    <nav>
+        <a href="#" onclick="showPage('home')">Beranda</a>
+        <a href="#" onclick="showPage('collection')">Koleksi</a>
+        <a href="#" onclick="showPage('service')">Layanan</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+
+    <!-- Default setelah login -->
+    <div id="home" class="page">
+        <h1>Selamat Datang di Perpustakaan Emia</h1>
+        <p>Anda berhasil login 🎉</p>
+    </div>
+
+    <div id="collection" class="page">
+        <h2>Koleksi Buku</h2>
+        <ul>
+            <li>Buku Teknologi Informasi</li>
+            <li>Buku Manajemen</li>
+            <li>Jurnal Internasional</li>
+            <li>E-book Digital</li>
+        </ul>
+    </div>
+
+    <div id="service" class="page">
+        <h2>Jam Layanan</h2>
+        <p>Senin - Jumat : 08.00 - 16.00</p>
+        <p>Sabtu : 09.00 - 14.00</p>
+    </div>
+
+</div>
+
+<script>
+    // Setelah login masuk ke halaman utama dan tampilkan beranda
+    function showPage(pageId) {
+        var pages = document.querySelectorAll(".page");
+        pages.forEach(function(page) {
+            page.style.display = "none";
+        });
+
+        document.getElementById(pageId).style.display = "block";
+
+        // kalau masuk main, otomatis tampilkan beranda
+        if (pageId === "main") {
+            document.getElementById("home").style.display = "block";
+        }
+    }
+</script>
+
 </body>
 </html>
