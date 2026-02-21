@@ -1,66 +1,37 @@
-<body onload="showPage('home')">
 
-<!-- ================= HOME ================= -->
-<div id="home" class="page">
-    <nav>
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('collection')">Collection</a>
-        <a href="#" onclick="showPage('service')">Service</a>
-        <a href="#" onclick="showPage('about')">About Us</a>
-        <a href="#" onclick="showPage('contact')">Contact Us</a>
-        <a href="#" onclick="showPage('login')">Login</a>
-        <a href="#" onclick="showPage('register')">Daftar</a>
-    </nav>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Perpustakaan Desri</title>
+</head>
+<body>
 
-    <hr>
+<h2>Login Perpustakaan Desri</h2>
 
-    <h1>Selamat Datang Di Perpustakaan Emia</h1>
-    <p>Silakan login atau daftar untuk mengakses layanan perpustakaan.</p>
+<form onsubmit="return loginUser()">
+    Email:<br>
+    <input type="email" id="email" required><br><br>
 
-    <button onclick="showPage('login')">Login</button>
-    <button onclick="showPage('register')">Daftar</button>
-</div>
+    Password:<br>
+    <input type="password" id="password" required><br><br>
 
-<!-- ================= LOGIN ================= -->
-<div id="login" class="page">
-    <h2>Login Perpustakaan</h2>
+    <input type="submit" value="Login">
+</form>
 
-    <form onsubmit="showPage('home'); return false;">
-        Email:<br>
-        <input type="email" required><br><br>
+<script>
+function loginUser() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
 
-        Password:<br>
-        <input type="password" required><br><br>
+    if (email === "admin@gmail.com" && password === "12345") {
+        window.location.href = "beranda.html";
+    } else {
+        alert("Email atau Password salah!");
+    }
 
-        <input type="submit" value="Login">
-    </form>
+    return false;
+}
+</script>
 
-    <p>Belum punya akun? 
-        <a href="#" onclick="showPage('register')">Daftar di sini</a>
-    </p>
-
-    <button onclick="showPage('home')">Kembali ke Beranda</button>
-</div>
-
-<!-- ================= REGISTER ================= -->
-<div id="register" class="page">
-    <h2>Daftar Akun Baru</h2>
-
-    <form onsubmit="showPage('login'); return false;">
-        Nama Lengkap:<br>
-        <input type="text" required><br><br>
-
-        Email:<br>
-        <input type="email" required><br><br>
-
-        No Handphone:<br>
-        <input type="text" required><br><br>
-
-        Password:<br>
-        <input type="password" required><br><br>
-
-        <input type="submit" value="Daftar">
-    </form>
-
-    <button onclick="showPage('home')">Kembali ke Beranda</button>
-</div>
+</body>
+</html>
