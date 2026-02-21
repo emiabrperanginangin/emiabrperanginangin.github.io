@@ -49,10 +49,6 @@
             border: none;
             cursor: pointer;
         }
-
-        button:hover {
-            background: #34495e;
-        }
     </style>
 
     <script>
@@ -62,20 +58,6 @@
                 pages[i].style.display = "none";
             }
             document.getElementById(pageId).style.display = "block";
-        }
-
-        function loginUser() {
-            var email = document.getElementById("email").value;
-            var password = document.getElementById("password").value;
-
-            if (email === "admin@gmail.com" && password === "12345") {
-                alert("Login berhasil!");
-                showPage("home");
-            } else {
-                alert("Email atau Password salah!");
-            }
-
-            return false;
         }
     </script>
 </head>
@@ -90,10 +72,28 @@
     <a href="#" onclick="showPage('login')">Login</a>
 </nav>
 
-<!-- ================= HOME ================= -->
+<!-- ================= BERANDA ================= -->
 <div id="home" class="page">
-    <h1>Selamat Datang di Perpustakaan Desri</h1>
-    <p>Website ini menyediakan layanan informasi dan peminjaman buku.</p>
+
+<h1>Selamat Datang di Perpustakaan Saya</h1>
+
+<h2>About Me</h2>
+<p>Nama: Emia Br Perangin-Angin</p>
+<p>NIM: 230709035</p>
+<p>Mahasiswi Perpustakaan dan Sains Informasi</p>
+
+<h2>Jika Ingin Mengenal Saya Lebih Jauh, Silakan Klik Tautan Di bawah Ini</h2>
+
+<p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">Instagram</a></p>
+<p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp" target="_blank">Curriculum Vitae</a></p>
+
+<h3>Jika ingin mengenal saya lebih jauh lagi, dengarkan lagu favorit saya berikut ini:</h3>
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/osdoLjUNFnA"
+allowfullscreen>
+</iframe>
+
 </div>
 
 <!-- ================= KOLEKSI ================= -->
@@ -117,40 +117,15 @@
 <!-- ================= LOGIN ================= -->
 <div id="login" class="page">
     <div class="container">
-        <h2>Login Perpustakaan</h2>
-
-        <form onsubmit="return loginUser()">
-            Email:<br>
-            <input type="email" id="email" required><br><br>
-
-            Password:<br>
-            <input type="password" id="password" required><br><br>
-
-            <button type="submit">Login</button>
-        </form>
-
-        <p>Belum punya akun?
-            <a href="#" onclick="showPage('register')">Daftar di sini</a>
-        </p>
-    </div>
-</div>
-
-<!-- ================= REGISTER ================= -->
-<div id="register" class="page">
-    <div class="container">
-        <h2>Daftar Akun</h2>
-
-        <form onsubmit="alert('Pendaftaran berhasil! Silakan login.'); showPage('login'); return false;">
-            Nama Lengkap:<br>
-            <input type="text" required><br><br>
-
+        <h2>Login</h2>
+        <form>
             Email:<br>
             <input type="email" required><br><br>
 
             Password:<br>
             <input type="password" required><br><br>
 
-            <button type="submit">Daftar</button>
+            <button type="submit">Login</button>
         </form>
     </div>
 </div>
