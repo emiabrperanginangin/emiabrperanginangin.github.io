@@ -117,18 +117,41 @@ allowfullscreen>
 <!-- ================= LOGIN ================= -->
 <div id="login" class="page">
     <div class="container">
-        <h2>Login</h2>
-        <form>
+        <h2>Login Perpustakaan</h2>
+
+        <form onsubmit="return loginUser()">
+            Email:<br>
+            <input type="email" id="email" required><br><br>
+
+            Password:<br>
+            <input type="password" id="password" required><br><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p>Belum punya akun?
+            <a href="#" onclick="showPage('register')">Daftar di sini</a>
+        </p>
+    </div>
+</div>
+<div id="register" class="page">
+    <div class="container">
+        <h2>Daftar Akun</h2>
+
+        <form onsubmit="alert('Pendaftaran berhasil! Silakan login.'); showPage('login'); return false;">
+            Nama Lengkap:<br>
+            <input type="text" required><br><br>
+
             Email:<br>
             <input type="email" required><br><br>
 
             Password:<br>
             <input type="password" required><br><br>
 
-            <button type="submit">Login</button>
+            <button type="submit">Daftar</button>
         </form>
     </div>
 </div>
-
+    
 </body>
 </html>
