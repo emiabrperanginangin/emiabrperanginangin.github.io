@@ -202,46 +202,24 @@ Password:<br>
 
 </div>
 
-<!-- CHAT BOT WIDGET -->
-<div id="chatBot" style="
+<!-- CHAT BOT MINI -->
+<div id="chatBotMini" style="
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 250px;
-    background: #f4f4f4;
-    border: 2px solid #2c3e50;
-    border-radius: 10px;
+    width: 180px;
+    background: #25D366;
+    border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
     z-index: 1000;
 ">
-    <!-- HEADER -->
-    <div style="background:#2c3e50; color:white; padding:10px; cursor:pointer;" onclick="toggleChat()">
-        💬 Chat Admin
-    </div>
-    <!-- BODY -->
-    <div id="chatBody" style="padding:10px; display:none; text-align:center;">
-        <p>Butuh bantuan? Klik tombol di bawah untuk chat via WhatsApp</p>
-        <a href="https://wa.me/6282274070591" target="_blank">
-            <button style="background:#25D366; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;">
-                Chat via WhatsApp
-            </button>
-        </a>
-    </div>
-</div>
-<script>
-function toggleChat(){
-    let body = document.getElementById("chatBody");
-    if(body.style.display === "none"){
-        body.style.display = "block";
-    } else {
-        body.style.display = "none";
-    }
-}
-</script>
 
+    <a href="https://wa.me/6282274070591" target="_blank" style="display:block; color:white; text-decoration:none; padding:12px 0; font-weight:bold;">
+        💬 Chat via WhatsApp
+    </a>
+</div>
     
 </body>
 </html>
