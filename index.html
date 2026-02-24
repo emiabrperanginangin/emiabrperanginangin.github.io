@@ -93,6 +93,11 @@ function registerUser() {
     return false;
 }
 
+function showContact() {
+    hideInnerPages();
+    document.getElementById("contact").style.display="block";
+}
+    
 function loginUser() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
@@ -162,6 +167,7 @@ window.onload = showLogin;
 <a href="#" onclick="showHome()">Beranda</a>
 <a href="#" onclick="showCollection()">Koleksi</a>
 <a href="#" onclick="showService()">Layanan</a>
+<a href="#" onclick="showContact()">Contact Us</a>
 <a href="#" onclick="showLogin()">Logout</a>
 </nav>
 
@@ -196,6 +202,23 @@ window.onload = showLogin;
 </ul>
 </div>
 
+<div id="contact" class="inner" style="display:none;">
+<h2>Contact Us</h2>
+<p>Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan hubungi kami melalui WhatsApp:</p>
+
+<br>
+
+<a href="https://wa.me/6282274070591" target="_blank">
+<button style="background:#25D366;">
+    💬 Hubungi via WhatsApp
+</button>
+</a>
+
+<br><br>
+
+<p>Nomor WhatsApp: 0822-7407-0591</p>
+</div>
+    
 <div id="service" class="inner" style="display:none;">
 <h2>Jam Layanan</h2>
 <p>Senin - Jumat : 08.00 - 16.00</p>
