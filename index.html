@@ -128,8 +128,8 @@ Password:<br>
 <button onclick="showRegister()">Daftar di sini</button>
 </div>
 </div>
-
 <hr style="margin:20px 0;">
+
 <h4>Contact Us</h4>
 <p style="font-size:14px;">
 Jika ada pertanyaan, hubungi kami melalui WhatsApp:
@@ -212,14 +212,57 @@ Jika ada pertanyaan, hubungi kami melalui WhatsApp:
 </div>
 </div>
 
- <h2>Contact Us</h2>
-    <p>Jika ada pertanyaan, silakan hubungi kami melalui WhatsApp:</p>
-
-    <a href="https://wa.me/6282274070591?text=Halo%20saya%20ingin%20bertanya%20tentang%20Perpustakaan%20Emia" 
-       target="_blank">
-       <button style="background:#25D366;">Chat via WhatsApp</button>
-    </a>
+<!-- POPUP CONTACT US -->
+<div id="contactPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <h2>Contact Us</h2>
+        <p>📞 WhatsApp: 0812-3456-7890</p>
+        <p>📧 Email: perpus@email.com</p>
+        <p>📍 Alamat: Patisah Hulu</p>
+    </div>
 </div>
 
+<style>
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+    background: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 15% auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 22px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function openPopup() {
+    document.getElementById("contactPopup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("contactPopup").style.display = "none";
+}
+</script>
+    
 </body>
 </html>
