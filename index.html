@@ -47,7 +47,7 @@ function hideAllPages() {
 }
 
 function hideInnerPages() {
-    document.querySelectorAll(".inner").forEach(p => p.style.display="none");
+     document.querySelectorAll(".inner").forEach(p => p.style.display="none");
 }
 
 function showLogin() {
@@ -124,24 +124,13 @@ Password:<br>
 <input type="password" id="password" required><br><br>
 <button type="submit">Login</button>
 </form>
-<br>   
-<button onclick="showRegister()">Daftar di sini</button>
-</div>
-</div>
-<hr style="margin:20px 0;">
-
-<h4>Contact Us</h4>
-<p style="font-size:14px;">
-Jika ada pertanyaan, hubungi kami melalui WhatsApp:
-</p>
-
-<a href="https://wa.me/6282274070591?text=Halo%20saya%20ingin%20bertanya%20tentang%20Perpustakaan%20Emia" 
-   target="_blank">
-   <button style="background:#25D366; width:100%;">
-      Chat via WhatsApp
-   </button>
-</a>
+<br>
     
+<button onclick="showRegister()">Daftar di sini</button>
+
+</div>
+</div>
+
 <!-- REGISTER -->
 <div id="register" class="page">
 <div class="container">
@@ -210,59 +199,49 @@ Jika ada pertanyaan, hubungi kami melalui WhatsApp:
 <p>Senin - Jumat : 08.00 - 16.00</p>
 <p>Sabtu : 09.00 - 14.00</p>
 </div>
+
 </div>
 
-<!-- POPUP CONTACT US -->
-<div id="contactPopup" class="popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">&times;</span>
-        <h2>Contact Us</h2>
-        <p>📞 WhatsApp: 0812-3456-7890</p>
-        <p>📧 Email: perpus@email.com</p>
-        <p>📍 Alamat: Patisah Hulu</p>
+<!-- CHAT BOT WIDGET -->
+<div id="chatBot" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
+    background: #f4f4f4;
+    border: 2px solid #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+">
+    <!-- HEADER -->
+    <div style="background:#2c3e50; color:white; padding:10px; cursor:pointer;" onclick="toggleChat()">
+        💬 Chat Admin
+    </div>
+    <!-- BODY -->
+    <div id="chatBody" style="padding:10px; display:none; text-align:center;">
+        <p>Butuh bantuan? Klik tombol di bawah untuk chat via WhatsApp</p>
+        <a href="https://wa.me/6282274070591" target="_blank">
+            <button style="background:#25D366; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer;">
+                Chat via WhatsApp
+            </button>
+        </a>
     </div>
 </div>
-
-<style>
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-
-.popup-content {
-    background: white;
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    margin: 15% auto;
-    position: relative;
-}
-
-.close-btn {
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    font-size: 22px;
-    cursor: pointer;
-}
-</style>
-
 <script>
-function openPopup() {
-    document.getElementById("contactPopup").style.display = "block";
-}
-
-function closePopup() {
-    document.getElementById("contactPopup").style.display = "none";
+function toggleChat(){
+    let body = document.getElementById("chatBody");
+    if(body.style.display === "none"){
+        body.style.display = "block";
+    } else {
+        body.style.display = "none";
+    }
 }
 </script>
+
     
 </body>
 </html>
