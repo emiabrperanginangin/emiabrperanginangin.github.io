@@ -3,61 +3,19 @@
 <head>
 <title>Perpustakaan Emia</title>
 <style>
-body { 
-    font-family: Arial; 
-    margin: 0; 
-}
-
-/* ===== BACKGROUND LOGIN MIRIP KHASTARA ===== */
-#login {
-    background: 
-        linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.7)),
-        url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') 
-        no-repeat center center;
+body {
+    font-family: Arial;
+    margin: 0;
+    background: url('https://pin.it/1nvBaGSgV') no-repeat center center fixed;
     background-size: cover;
-    height: 100vh;
-}
-
-#login .container {
-    max-width:400px;
-    margin:120px auto;
-    background: rgba(255, 248, 230, 0.9); /* kertas tua/sepia */
-    padding:20px;
-    border-radius:8px;
-    text-align:center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-}
-
-#login h2 {
-    color:#3f2a0a;
-    font-family: "Times New Roman", serif;
-    font-weight:bold;
-}
-
-button {
-    background:#49311c;
-    color:#fff;
-}
-
-button:hover {
-    background:#2f200f;
-}
-
-input {
-    border:1px solid #b99a6b;
-}
-
+<style>
 <script>
 function hideAllPages() {
     document.querySelectorAll(".page").forEach(p => p.style.display="none");
 }
 
 function hideInnerPages() {
-    document.querySelectorAll(".page").forEach(p => p.style.display="none");
-}
-
-function hideInnerPages() {
-     document.querySelectorAll(".inner").forEach(p => p.style.display="none");
+    document.querySelectorAll(".inner").forEach(p => p.style.display="none");
 }
 
 function showLogin() {
@@ -137,10 +95,10 @@ window.onload = showLogin;
       <input type="email" id="email" required><br><br>
       Password:<br>
       <input type="password" id="password" required><br><br>
+
       <button type="submit">Login</button>
     </form>
 
-      
     <br>
     <!-- TEKS PENGANTAR SEBELUM DAFTAR -->
     <p style="margin:10px 0; font-weight:bold;">Belum punya akun?</p>
