@@ -2,13 +2,74 @@
 <html>
 <head>
 <title>Perpustakaan Emia</title>
+
 <style>
 body {
     font-family: Arial;
     margin: 0;
-    background: url('https://pin.it/1nvBaGSgV') no-repeat center center fixed;
+}
+
+/* Background khusus halaman login */
+#login {
+    background: url('LINK_GAMBAR_PINTEREST') no-repeat center center fixed;
     background-size: cover;
-<style>
+    height: 100vh;
+}
+
+/* Overlay gelap */
+#login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+}
+
+/* Box login & register */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width:400px;
+    margin:120px auto;
+    background: rgba(255,255,255,0.95);
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+nav {
+    background:#2c3e50;
+    padding:15px;
+}
+
+nav a {
+    color:white;
+    margin-right:20px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.page { display:none; padding:20px; }
+.inner { display:none; }
+
+input {
+    width:100%;
+    padding:8px;
+}
+
+button {
+    padding:8px 15px;
+    background:#2c3e50;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+</style>
+
 <script>
 function hideAllPages() {
     document.querySelectorAll(".page").forEach(p => p.style.display="none");
@@ -49,6 +110,11 @@ function showService() {
     document.getElementById("service").style.display="block";
 }
 
+function showContact() {
+    hideInnerPages();
+    document.getElementById("contact").style.display="block";
+}
+
 function registerUser() {
     let email = document.getElementById("regEmail").value;
     let password = document.getElementById("regPassword").value;
@@ -61,11 +127,6 @@ function registerUser() {
     return false;
 }
 
-function showContact() {
-    hideInnerPages();
-    document.getElementById("contact").style.display="block";
-}
-    
 function loginUser() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
@@ -86,6 +147,7 @@ window.onload = showLogin;
 </head>
 
 <body>
+
 <!-- LOGIN -->
 <div id="login" class="page">
   <div class="container">
@@ -95,13 +157,10 @@ window.onload = showLogin;
       <input type="email" id="email" required><br><br>
       Password:<br>
       <input type="password" id="password" required><br><br>
-
       <button type="submit">Login</button>
     </form>
-
     <br>
-    <!-- TEKS PENGANTAR SEBELUM DAFTAR -->
-    <p style="margin:10px 0; font-weight:bold;">Belum punya akun?</p>
+    <p><b>Belum punya akun?</b></p>
     <button onclick="showRegister()">Daftar di sini</button>
   </div>
 </div>
@@ -111,15 +170,9 @@ window.onload = showLogin;
 <div class="container">
 <h2>Daftar Akun</h2>
 <form onsubmit="return registerUser()">
-    Last Name:<br>
-<input type="last name" id="last name" required><br><br>
-    First Name:<br>
-<input type="first name" id="first name" required><br><br>
-    Email:<br>
+Email:<br>
 <input type="email" id="regEmail" required><br><br>
-    No HP:<br>
-<input type="no hp" id="no hp" required><br><br>
-    Password:<br>
+Password:<br>
 <input type="password" id="regPassword" required><br><br>
 <button type="submit">Daftar</button>
 </form>
@@ -141,27 +194,10 @@ window.onload = showLogin;
 
 <div id="home" class="inner">
 <h1>Selamat Datang di Perpustakaan Emia</h1>
-    <!DOCTYPE html>
-<html>
-<head>
-<title>halaman Web Pertama Saya</title>
-</head>
-<body>
-<h2>About Me</h2>
-    <p>Nama: Emia Br Perangin-Angin</p>
-    <p>NIM: 230709035</p>
-    <p>Mahasiswi Perpustakaan dan Sains Informasi</p>
-
-<h2>Jika Ingin Mengenal Saya Lebih Jauh, Silakan Klik Tautan Di bawah Ini</h2>
-    </p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz">Instagram</a></p> 
-</p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp">Curriculum Vitae</a></p>
-    
-<h3>Jika ingin mengenal saya lebih jauh lagi, dengarkan lagu favorit saya berikut ini:</h3>   
-<iframe width="560" height="315" src="https://www.youtube.com/embed/osdoLjUNFnA?si=Yp4yBsKdrXKRDJD5">
-</iframe>
+<p>Mahasiswi Perpustakaan dan Sains Informasi</p>
 </div>
 
-<div id="collection" class="inner" style="display:none;">
+<div id="collection" class="inner">
 <h2>Koleksi Buku</h2>
 <ul>
 <li>Buku Teknologi Informasi</li>
@@ -170,47 +206,20 @@ window.onload = showLogin;
 </ul>
 </div>
 
-<div id="contact" class="inner" style="display:none;">
-<h2>Contact Us</h2>
-<p>Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan hubungi kami melalui WhatsApp:</p>
-
-<br>
-
-<a href="https://wa.me/6282274070591" target="_blank">
-<button style="background:#25D366;">
-    💬 Hubungi via WhatsApp
-</button>
-</a>
-
-<br><br>
-</div>
-    
-<div id="service" class="inner" style="display:none;">
+<div id="service" class="inner">
 <h2>Jam Layanan</h2>
 <p>Senin - Jumat : 08.00 - 16.00</p>
 <p>Sabtu : 09.00 - 14.00</p>
 </div>
 
+<div id="contact" class="inner">
+<h2>Contact Us</h2>
+<a href="https://wa.me/6282274070591" target="_blank">
+<button style="background:#25D366;">💬 Hubungi via WhatsApp</button>
+</a>
 </div>
 
-<!-- CHAT BOT MINI -->
-<div id="chatBotMini" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 180px;
-    background: #25D366;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-align: center;
-    cursor: pointer;
-    z-index: 1000;
-">
-
-    <a href="https://wa.me/6282274070591" target="_blank" style="display:block; color:white; text-decoration:none; padding:12px 0; font-weight:bold;">
-        💬 Chat via WhatsApp
-    </a>
 </div>
-    
+
 </body>
 </html>
