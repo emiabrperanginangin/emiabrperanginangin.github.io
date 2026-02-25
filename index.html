@@ -4,17 +4,11 @@
 <title>Perpustakaan Emia</title>
 <style>
 body { font-family: Arial; margin: 0; }
+
 nav {
     background:#2c3e50;
     padding:15px;
 }
-    <head>
-    <style>
-        Hr {color:sienna;}
-        P {margin-left:20px;}
-        Body {background-image:url("images/back40.gif");}
-    </style>
-</head>
     
 nav a {
     color:white;
@@ -49,6 +43,10 @@ button {
 
 <script>
 function hideAllPages() {
+    document.querySelectorAll(".page").forEach(p => p.style.display="none");
+}
+
+function hideInnerPages() {
     document.querySelectorAll(".page").forEach(p => p.style.display="none");
 }
 
@@ -133,10 +131,36 @@ window.onload = showLogin;
       <input type="email" id="email" required><br><br>
       Password:<br>
       <input type="password" id="password" required><br><br>
-
       <button type="submit">Login</button>
     </form>
 
+#login {
+    background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+}
+
+/* Efek gelap supaya teks lebih jelas */
+#login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 62, 80, 0.7);
+}
+
+/* Supaya container tetap di atas overlay */
+#login .container {
+    position: relative;
+    z-index: 1;
+    background: rgba(255,255,255,0.9);
+}
+
+      
     <br>
     <!-- TEKS PENGANTAR SEBELUM DAFTAR -->
     <p style="margin:10px 0; font-weight:bold;">Belum punya akun?</p>
