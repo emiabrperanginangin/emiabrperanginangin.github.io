@@ -288,6 +288,14 @@
         <p>Nama: Emia Br Perangin-Angin</p>
         <p>NIM: 230709035</p>
         <p>Mahasiswi Perpustakaan dan Sains Informasi</p>
+        <h3>Jika Ingin Mengenal Saya Lebih Jauh, Silakan Klik Tautan Di bawah Ini</h3>
+    </p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz">Instagram</a></p> 
+</p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp">Curriculum Vitae</a></p>
+    
+<h3>Jika ingin mengenal saya lebih jauh lagi, dengarkan lagu favorit saya berikut ini:</h3>   
+<iframe width="560" height="315" src="https://www.youtube.com/embed/osdoLjUNFnA?si=Yp4yBsKdrXKRDJD5">
+</iframe>
+</div>
     </div>
 </div>
 
@@ -327,14 +335,23 @@
 
 <!-- REGISTER -->
 <div id="register" class="page">
-    <div class="container">
-        <h2>Daftar Akun</h2>
-        <form>
-            <input type="email" placeholder="Email" required><br><br>
-            <input type="password" placeholder="Password" required><br><br>
-            <button type="submit">Daftar</button>
-        </form>
-    </div>
+<div class="container">
+<h2>Daftar Akun</h2>
+<form onsubmit="return registerUser()">
+    Last Name:<br>
+<input type="last name" id="last name" required><br><br>
+    First Name:<br>
+<input type="first name" id="first name" required><br><br>
+    Email:<br>
+<input type="email" id="regEmail" required><br><br>
+    No HP:<br>
+<input type="no hp" id="no hp" required><br><br>
+    Password:<br>
+<input type="password" id="regPassword" required><br><br>
+<button type="submit">Daftar</button>
+</form>
+<br>
+<button onclick="showLogin()">Kembali ke Login</button>
 </div>
 
 <!-- CHAT BOT MINI -->
