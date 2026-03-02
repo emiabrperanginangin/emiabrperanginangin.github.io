@@ -3,18 +3,13 @@
 <head>
 <title>Bhumi Historia</title>
 <style>
-/* ======================
-   FONT & BODY
-====================== */
 body {
     font-family: "Georgia", serif;
     margin: 0;
     color: #3e2f1c;
 }
 
-/* ======================
-   NAVIGATION
-====================== */
+/* NAVIGATION */
 nav {
     background:#2c3e50;
     padding:15px;
@@ -30,139 +25,21 @@ nav {
     font-weight:bold;
 }
 
-.nav-right a {
-    margin-left:20px;
-}
+.nav-right a { margin-left:20px; }
 
 .nav-left a:hover,
-.nav-right a:hover {
-    color:#25D366;
-}
+.nav-right a:hover { color:#25D366; }
 
-/* ======================
-   PAGE DEFAULT
-====================== */
-.page {
-    display:none;
-    min-height: 100vh;
-    padding:30px;
-}
+/* PAGE */
+.page { display:none; min-height:100vh; padding:30px; }
+.active { display:block; }
 
-.active {
-    display:block;
-}
-
-/* ======================
-   LOGIN / REGISTER
-====================== */
-.container {
-    max-width:400px;
-    margin:50px auto;
-    background:white;
-    padding:20px;
-    border-radius:8px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    text-align:center;
-}
-
-input {
-    width:100%;
-    padding:8px;
-    margin-top:5px;
-}
-
-button {
-    padding:8px 15px;
-    background:#2c3e50;
-    color:white;
-    border:none;
-    cursor:pointer;
-}
-
-button:hover {
-    background:#25D366;
-}
-
-/* ======================
-   CHAT BOT
-====================== */
-#chatBotMini {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 180px;
-    background: #25D366;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-align: center;
-    z-index: 1000;
-}
-
-#chatBotMini a {
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:12px 0;
-    font-weight:bold;
-}
-
-/* ======================
-   BACKGROUND KHUSUS HALAMAN
-====================== */
-#home {
-    background: linear-gradient(rgba(90,70,50,0.7), rgba(90,70,50,0.7)),
-                url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-    color: #fffdf8;
-}
-
-#collection {
-    background: linear-gradient(rgba(220,200,170,0.7), rgba(220,200,170,0.7)),
-                url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80'); /* kertas koran */
-    background-size: cover;
-    background-position: center;
-    color: #3e2f1c;
-}
-
-#service {
-    background: linear-gradient(rgba(200,170,140,0.7), rgba(200,170,140,0.7)),
-                url('https://images.unsplash.com/photo-1524492449090-1a3c9c7d3035?auto=format&fit=crop&w=1600&q=80'); /* peta tua */
-    background-size: cover;
-    background-position: center;
-    color: #3e2f1c;
-}
-
-#aboutme, #aboutadmin {
-    background: linear-gradient(rgba(230,220,200,0.7), rgba(230,220,200,0.7)),
-                url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80'); /* manuskrip / dokumen kuno */
-    background-size: cover;
-    background-position: center;
-    color: #3e2f1c;
-}
-
-#contact {
-    background: linear-gradient(rgba(245,235,210,0.7), rgba(245,235,210,0.7)),
-                url('https://images.unsplash.com/photo-1519923041320-01f0f7d4ee31?auto=format&fit=crop&w=1600&q=80'); /* vintage soft */
-    background-size: cover;
-    background-position: center;
-    color: #3e2f1c;
-}
-
-/* ======================
-   HOME SECTIONS
-====================== */
-.hero {
-    padding: 120px 20px;
-    text-align: center;
-    font-size: 40px;
-}
-
+/* SECTION STYLE */
 .section {
     max-width:800px;
     margin:50px auto;
     padding:25px;
-    background: rgba(255, 253, 248, 0.9);
+    background: rgba(255, 253, 248, 0.85);
     border-radius:8px;
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
@@ -186,15 +63,99 @@ button:hover {
     box-shadow:0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* HERO */
+.hero {
+    padding:120px 20px;
+    text-align:center;
+    font-size:40px;
+    font-weight:bold;
+}
+
+/* PAGE SPECIFIC BACKGROUNDS */
+#home { 
+    background: linear-gradient(rgba(200,170,130,0.7), rgba(200,170,130,0.7)),
+                url('ea6c2d6c-5286-4a68-af8f-49469bee0c62.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#collection {
+    background: linear-gradient(rgba(210,180,140,0.7), rgba(210,180,140,0.7)),
+                url('https://images.unsplash.com/photo-1581091870626-bd875c5c29b0?auto=format&fit=crop&w=1600&q=80'); /* contoh peta tua */
+    background-size: cover;
+    background-position: center;
+}
+
+#service {
+    background: linear-gradient(rgba(200,170,130,0.7), rgba(200,170,130,0.7)),
+                url('https://images.unsplash.com/photo-1559056199-dedaf94b42d5?auto=format&fit=crop&w=1600&q=80'); /* contoh manuskrip */
+    background-size: cover;
+    background-position: center;
+}
+
+#aboutme {
+    background: linear-gradient(rgba(190,160,120,0.7), rgba(190,160,120,0.7)),
+                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80'); /* contoh buku terbuka */
+    background-size: cover;
+    background-position: center;
+}
+
+#aboutus {
+    background: linear-gradient(rgba(180,150,110,0.7), rgba(180,150,110,0.7)),
+                url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=1600&q=80'); /* contoh dokumen kuno */
+    background-size: cover;
+    background-position: center;
+}
+
+#contact, #login, #register {
+    background: linear-gradient(rgba(200,170,130,0.7), rgba(200,170,130,0.7));
+}
+
+/* CONTAINER FOR FORMS */
+.container {
+    max-width:400px;
+    margin:50px auto;
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+input { width:100%; padding:8px; margin-top:5px; }
+
+button {
+    padding:8px 15px;
+    background:#2c3e50;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+button:hover { background:#25D366; }
+
+/* CHAT BOT */
+#chatBotMini {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 180px;
+    background: #25D366;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+}
+#chatBotMini a {
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px 0;
+    font-weight:bold;
+}
+
 /* RESPONSIVE */
 @media (max-width:900px){
-    .section, .quote {
-        margin:30px 20px;
-    }
-    .hero {
-        font-size:32px;
-        padding:80px 20px;
-    }
+    .section, .quote, .container { margin:30px 20px; }
+    .hero { font-size:32px; padding:80px 20px; }
 }
 </style>
 
@@ -222,25 +183,22 @@ function loginUser(){
     if(email === savedEmail && password === savedPassword){
         alert("Login berhasil!");
         showPage("home");
-    } else {
-        alert("Email atau Password salah!");
-    }
+    } else { alert("Email atau Password salah!"); }
     return false;
 }
 
-window.onload = function(){ showPage("home"); }
+window.onload = function(){ showPage('home'); }
 </script>
 </head>
 <body>
 
-<!-- NAVIGATION -->
 <nav>
     <div class="nav-left">
         <a href="#" onclick="showPage('home')">Beranda</a>
         <a href="#" onclick="showPage('collection')">Koleksi</a>
         <a href="#" onclick="showPage('service')">Layanan</a>
         <a href="#" onclick="showPage('aboutme')">About Me</a>
-        <a href="#" onclick="showPage('aboutadmin')">About Admin</a>
+        <a href="#" onclick="showPage('aboutus')">About Admin</a>
         <a href="#" onclick="showPage('contact')">Contact Us</a>
     </div>
     <div class="nav-right">
@@ -251,17 +209,25 @@ window.onload = function(){ showPage("home"); }
 
 <!-- HOME -->
 <div id="home" class="page">
-    <div class="hero">
-        Selamat Datang di BHUMI HISTORIA
-    </div>
+    <div class="hero">Selamat Datang di BHUMI HISTORIA</div>
+
     <div class="section">
         <h2>Arti Nama Bhumi Historia</h2>
-        <p>“Bhumi Historia” berasal dari kata <b>Bhumi</b> yang berarti tanah atau bumi, dan <b>Historia</b> yang berarti sejarah. Nama ini melambangkan perjalanan peradaban manusia yang terukir di atas tanah waktu.</p>
+        <p>
+        “Bhumi Historia” berasal dari kata <b>Bhumi</b> yang berarti tanah atau bumi,
+        dan <b>Historia</b> yang berarti sejarah. Nama ini melambangkan perjalanan peradaban manusia
+        yang terukir di atas tanah waktu.
+        </p>
     </div>
+
     <div class="section">
         <h2>Visi</h2>
-        <p>Bhumi Historia hadir sebagai ruang digital untuk melestarikan, mendokumentasikan, dan menyebarluaskan pengetahuan sejarah kepada generasi masa kini dan masa depan.</p>
+        <p>
+        Bhumi Historia hadir sebagai ruang digital untuk melestarikan, mendokumentasikan,
+        dan menyebarluaskan pengetahuan sejarah kepada generasi masa kini dan masa depan.
+        </p>
     </div>
+
     <div class="quote">
         "Jasmerah! Jangan sekali-kali meninggalkan sejarah." <br> – Bung Karno
     </div>
@@ -269,47 +235,55 @@ window.onload = function(){ showPage("home"); }
 
 <!-- KOLEKSI -->
 <div id="collection" class="page">
-    <h2>Koleksi Buku</h2>
-    <ul>
-        <li>Buku Teknologi Informasi</li>
-        <li>Buku Manajemen</li>
-        <li>Jurnal Internasional</li>
-    </ul>
+    <div class="section">
+        <h2>Koleksi Buku</h2>
+        <ul>
+            <li>Buku Teknologi Informasi</li>
+            <li>Buku Manajemen</li>
+            <li>Jurnal Internasional</li>
+        </ul>
+    </div>
 </div>
 
 <!-- LAYANAN -->
 <div id="service" class="page">
-    <h2>Jam Layanan</h2>
-    <p>Senin - Jumat : 08.00 - 16.00</p>
-    <p>Sabtu : 09.00 - 14.00</p>
+    <div class="section">
+        <h2>Jam Layanan</h2>
+        <p>Senin - Jumat : 08.00 - 16.00</p>
+        <p>Sabtu : 09.00 - 14.00</p>
+    </div>
 </div>
 
 <!-- ABOUT ME -->
 <div id="aboutme" class="page">
-    <h2>About Me</h2>
-    <p>Nama: Emia Br Perangin-Angin</p>
-    <p>NIM: 230709035</p>
-    <p>Mahasiswi Perpustakaan dan Sains Informasi</p>
-    <h2>Jika Ingin Mengenal Saya Lebih Jauh, Silakan Klik Tautan Di bawah Ini</h2>
-    <p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz">Instagram</a></p>
-    <p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp">Curriculum Vitae</a></p>
-    <h3>Jika ingin mengenal saya lebih jauh lagi, dengarkan lagu favorit saya berikut ini:</h3>   
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/osdoLjUNFnA?si=Yp4yBsKdrXKRDJD5"></iframe>
+    <div class="section">
+        <h2>About Me</h2>
+        <p>Nama: Emia Br Perangin-Angin</p>
+        <p>NIM: 230709035</p>
+        <p>Mahasiswi Perpustakaan dan Sains Informasi</p>
+        <h3>Jika Ingin Mengenal Saya Lebih Jauh:</h3>
+        <p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz">Instagram</a></p>
+        <p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp">Curriculum Vitae</a></p>
+    </div>
 </div>
 
 <!-- ABOUT ADMIN -->
-<div id="aboutadmin" class="page">
-    <h2>About Admin</h2>
-    <p>Admin website ini bertugas mengelola koleksi buku, memperbarui informasi layanan, dan membantu pengguna dalam mengakses layanan perpustakaan.</p>
+<div id="aboutus" class="page">
+    <div class="section">
+        <h2>About Admin</h2>
+        <p>Admin website ini bertugas mengelola koleksi buku, memperbarui informasi layanan, dan membantu pengguna dalam mengakses layanan perpustakaan.</p>
+    </div>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="page">
-    <h2>Contact Us</h2>
-    <p>Hubungi kami melalui WhatsApp:</p>
-    <a href="https://wa.me/6282274070591" target="_blank">
-        <button>💬 Hubungi via WhatsApp</button>
-    </a>
+    <div class="section">
+        <h2>Contact Us</h2>
+        <p>Hubungi kami melalui WhatsApp:</p>
+        <a href="https://wa.me/6282274070591" target="_blank">
+            <button>💬 Hubungi via WhatsApp</button>
+        </a>
+    </div>
 </div>
 
 <!-- LOGIN -->
@@ -342,9 +316,7 @@ window.onload = function(){ showPage("home"); }
 
 <!-- CHAT BOT MINI -->
 <div id="chatBotMini">
-    <a href="https://wa.me/6282274070591" target="_blank">
-        💬 Chat via WhatsApp
-    </a>
+    <a href="https://wa.me/6282274070591" target="_blank">💬 Chat via WhatsApp</a>
 </div>
 
 </body>
