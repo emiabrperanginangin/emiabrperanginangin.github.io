@@ -1,339 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Bhumi Historia</title>
+<title>Perpustakaan Bhumi Historia</title>
+
 <style>
 body {
-    font-family: "Georgia", serif;
     margin: 0;
-    color: #3e2f1c;
+    font-family: Arial, sans-serif;
 }
 
-/* NAVIGATION */
+/* Navbar */
 nav {
     background:#2c3e50;
     padding:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
 }
-
-.nav-left a, .nav-right a {
+nav a {
     color:white;
     margin-right:20px;
     text-decoration:none;
     font-weight:bold;
 }
 
-.nav-right a { margin-left:20px; }
-
-.nav-left a:hover,
-.nav-right a:hover { color:#25D366; }
-
-/* PAGE */
-.page { display:none; min-height:100vh; padding:30px; }
-.active { display:block; }
-
-/* SECTION STYLE */
-.section {
-    max-width:800px;
-    margin:50px auto;
-    padding:25px;
-    background: rgba(255, 253, 248, 0.85);
-    border-radius:8px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+/* Background utama */
+.home {
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.section h2 {
-    border-bottom:2px solid #c2a66b;
-    padding-bottom:10px;
-    margin-bottom:20px;
-}
-
-.quote {
-    max-width:700px;
-    margin:50px auto;
-    padding:30px;
-    background: rgba(244, 239, 230, 0.9);
-    border-radius:8px;
-    text-align:center;
-    font-style:italic;
-    font-size:20px;
-    color:#5a4632;
-    box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* HERO */
+/* Hero versi elegan (versi ke-3) */
 .hero {
-    padding:120px 20px;
     text-align:center;
-    font-size:40px;
+}
+
+.hero span {
+    display:inline-block;
+    padding:20px 40px;
+    background: rgba(50,30,10,0.6);
+    color:white;
+    font-size:42px;
     font-weight:bold;
-}
-    
-/* PAGE SPECIFIC BACKGROUNDS - TEMA SEJARAH KLASIK */
-/* HOME - Perpustakaan klasik */
-#home { 
-    background: linear-gradient(rgba(120,90,60,0.65), rgba(120,90,60,0.65)),
-                url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* KOLEKSI - Rak buku tua */
-#collection {
-    background: linear-gradient(rgba(110,80,50,0.65), rgba(110,80,50,0.65)),
-                url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* LAYANAN - Manuskrip kuno */
-#service {
-    background: linear-gradient(rgba(130,100,70,0.65), rgba(130,100,70,0.65)),
-                url('https://images.unsplash.com/photo-1559056199-dedaf94b42d5?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* ABOUT ME - Buku tua terbuka */
-#aboutme {
-    background: linear-gradient(rgba(125,95,65,0.65), rgba(125,95,65,0.65)),
-                url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* ABOUT ADMIN - Arsip sejarah */
-#aboutus {
-    background: linear-gradient(rgba(115,85,55,0.65), rgba(115,85,55,0.65)),
-                url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* CONTACT - Meja kerja klasik */
-#contact {
-    background: linear-gradient(rgba(130,100,70,0.65), rgba(130,100,70,0.65)),
-                url('https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* LOGIN & REGISTER - Perpustakaan abad pertengahan */
-#login, #register {
-    background: linear-gradient(rgba(100,70,40,0.75), rgba(100,70,40,0.75)),
-                url('https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-}
-
-/* CONTAINER FOR FORMS */
-.container {
-    max-width:400px;
-    margin:50px auto;
-    background:white;
-    padding:20px;
+    border:2px solid #c2a66b;
     border-radius:8px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    text-align:center;
-}
-
-input { width:100%; padding:8px; margin-top:5px; }
-
-button {
-    padding:8px 15px;
-    background:#2c3e50;
-    color:white;
-    border:none;
-    cursor:pointer;
-}
-button:hover { background:#25D366; }
-
-/* CHAT BOT */
-#chatBotMini {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 180px;
-    background: #25D366;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    text-align: center;
-}
-#chatBotMini a {
-    display:block;
-    color:white;
-    text-decoration:none;
-    padding:12px 0;
-    font-weight:bold;
-}
-
-/* RESPONSIVE */
-@media (max-width:900px){
-    .section, .quote, .container { margin:30px 20px; }
-    .hero { font-size:32px; padding:80px 20px; }
+    text-shadow:2px 2px 8px rgba(0,0,0,0.6);
 }
 </style>
 
-<script>
-function showPage(pageId){
-    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-    document.getElementById(pageId).classList.add("active");
-}
-
-function registerUser(){
-    let email = document.getElementById("regEmail").value;
-    let password = document.getElementById("regPassword").value;
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-    alert("Pendaftaran berhasil!");
-    showPage("login");
-    return false;
-}
-
-function loginUser(){
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let savedEmail = localStorage.getItem("email");
-    let savedPassword = localStorage.getItem("password");
-    if(email === savedEmail && password === savedPassword){
-        alert("Login berhasil!");
-        showPage("home");
-    } else { alert("Email atau Password salah!"); }
-    return false;
-}
-
-window.onload = function(){ showPage('home'); }
-</script>
 </head>
+
 <body>
 
 <nav>
-    <div class="nav-left">
-        <a href="#" onclick="showPage('home')">Beranda</a>
-        <a href="#" onclick="showPage('collection')">Koleksi</a>
-        <a href="#" onclick="showPage('service')">Layanan</a>
-        <a href="#" onclick="showPage('aboutme')">About Me</a>
-        <a href="#" onclick="showPage('aboutus')">About Admin</a>
-        <a href="#" onclick="showPage('contact')">Contact Us</a>
-    </div>
-    <div class="nav-right">
-        <a href="#" onclick="showPage('login')">Login</a>
-        <a href="#" onclick="showPage('register')">Register</a>
-    </div>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="page">
-    <div class="hero">SELAMAT DATANG DI PERPUSTAKAAN BHUMI HISTORIA</div>
-
-    <div class="section">
-        <h2>Arti Nama Bhumi Historia</h2>
-        <p>
-        “Bhumi Historia” berasal dari kata <b>Bhumi</b> yang berarti tanah atau bumi,
-        dan <b>Historia</b> yang berarti sejarah. Nama ini melambangkan perjalanan peradaban manusia
-        yang terukir di atas tanah waktu.
-        </p>
+<div class="home">
+    <div class="hero">
+        <span>SELAMAT DATANG DI PERPUSTAKAAN BHUMI HISTORIA</span>
     </div>
-
-    <div class="section">
-        <h2>Visi</h2>
-        <p>
-        Bhumi Historia hadir sebagai ruang digital untuk melestarikan, mendokumentasikan,
-        dan menyebarluaskan pengetahuan sejarah kepada generasi masa kini dan masa depan.
-        </p>
-    </div>
-
-    <div class="quote">
-        "Jasmerah! Jangan sekali-kali meninggalkan sejarah." <br> – Bung Karno
-    </div>
-</div>
-
-<!-- KOLEKSI -->
-<div id="collection" class="page">
-    <div class="section">
-        <h2>Koleksi Buku</h2>
-        <ul>
-            <li>Buku Teknologi Informasi</li>
-            <li>Buku Manajemen</li>
-            <li>Jurnal Internasional</li>
-        </ul>
-    </div>
-</div>
-
-<!-- LAYANAN -->
-<div id="service" class="page">
-    <div class="section">
-        <h2>Jam Layanan</h2>
-        <p>Senin - Jumat : 08.00 - 16.00</p>
-        <p>Sabtu : 09.00 - 14.00</p>
-    </div>
-</div>
-
-<!-- ABOUT ME -->
-<div id="aboutme" class="page">
-    <div class="section">
-        <h2>About Me</h2>
-        <p>Nama: Emia Br Perangin-Angin</p>
-        <p>NIM: 230709035</p>
-        <p>Mahasiswi Perpustakaan dan Sains Informasi</p>
-        <h3>Jika Ingin Mengenal Saya Lebih Jauh:</h3>
-        <p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz">Instagram</a></p>
-        <p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp">Curriculum Vitae</a></p>
-    </div>
-</div>
-
-<!-- ABOUT ADMIN -->
-<div id="aboutus" class="page">
-    <div class="section">
-        <h2>About Admin</h2>
-        <p>Admin website ini bertugas mengelola koleksi buku, memperbarui informasi layanan, dan membantu pengguna dalam mengakses layanan perpustakaan.</p>
-    </div>
-</div>
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-    <div class="section">
-        <h2>Contact Us</h2>
-        <p>Hubungi kami melalui WhatsApp:</p>
-        <a href="https://wa.me/6282274070591" target="_blank">
-            <button>💬 Hubungi via WhatsApp</button>
-        </a>
-    </div>
-</div>
-
-<!-- LOGIN -->
-<div id="login" class="page">
-    <div class="container">
-        <h2>Login</h2>
-        <form onsubmit="return loginUser()">
-            Email:<br>
-            <input type="email" id="email" required><br><br>
-            Password:<br>
-            <input type="password" id="password" required><br><br>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</div>
-
-<!-- REGISTER -->
-<div id="register" class="page">
-    <div class="container">
-        <h2>Daftar Akun</h2>
-        <form onsubmit="return registerUser()">
-            Email:<br>
-            <input type="email" id="regEmail" required><br><br>
-            Password:<br>
-            <input type="password" id="regPassword" required><br><br>
-            <button type="submit">Daftar</button>
-        </form>
-    </div>
-</div>
-
-<!-- CHAT BOT MINI -->
-<div id="chatBotMini">
-    <a href="https://wa.me/6282274070591" target="_blank">💬 Chat via WhatsApp</a>
 </div>
 
 </body>
