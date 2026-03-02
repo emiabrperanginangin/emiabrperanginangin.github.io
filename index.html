@@ -2,34 +2,65 @@
 <html>
 <head>
 <title>Perpustakaan Emia</title>
-<style>
-body { font-family: Arial; margin: 0; }
 
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f4f6f9;
+}
+
+/* NAVIGATION */
 nav {
     background:#2c3e50;
     padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
-    
-nav a {
+
+.nav-left a, .nav-right a {
     color:white;
     margin-right:20px;
     text-decoration:none;
     font-weight:bold;
 }
 
-.page { display:none; padding:20px; }
+.nav-right a {
+    margin-right:0;
+    margin-left:20px;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+    color:#25D366;
+}
+
+/* PAGE */
+.page {
+    display:none;
+    padding:30px;
+}
+
+.active {
+    display:block;
+}
+
+/* CONTAINER */
 .container {
     max-width:400px;
-    margin:100px auto;
-    background:#f4f4f4;
+    margin:50px auto;
+    background:white;
     padding:20px;
     border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
     text-align:center;
 }
 
 input {
     width:100%;
     padding:8px;
+    margin-top:5px;
 }
 
 button {
@@ -39,194 +70,13 @@ button {
     border:none;
     cursor:pointer;
 }
-</style>
 
-<script>
-function hideAllPages() {
-    document.querySelectorAll(".page").forEach(p => p.style.display="none");
+button:hover {
+    background:#25D366;
 }
 
-function hideInnerPages() {
-     document.querySelectorAll(".inner").forEach(p => p.style.display="none");
-}
-
-function showLogin() {
-    hideAllPages();
-    document.getElementById("login").style.display="block";
-}
-
-function showRegister() {
-    hideAllPages();
-    document.getElementById("register").style.display="block";
-}
-
-function showMain() {
-    hideAllPages();
-    document.getElementById("main").style.display="block";
-    showHome();
-}
-
-function showHome() {
-    hideInnerPages();
-    document.getElementById("home").style.display="block";
-}
-
-function showCollection() {
-    hideInnerPages();
-    document.getElementById("collection").style.display="block";
-}
-
-function showService() {
-    hideInnerPages();
-    document.getElementById("service").style.display="block";
-}
-
-function registerUser() {
-    let email = document.getElementById("regEmail").value;
-    let password = document.getElementById("regPassword").value;
-
-    localStorage.setItem("email", email);
-    localStorage.setItem("password", password);
-
-    alert("Pendaftaran berhasil!");
-    showLogin();
-    return false;
-}
-
-function showContact() {
-    hideInnerPages();
-    document.getElementById("contact").style.display="block";
-}
-    
-function loginUser() {
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-
-    let savedEmail = localStorage.getItem("email");
-    let savedPassword = localStorage.getItem("password");
-
-    if(email === savedEmail && password === savedPassword){
-        showMain();
-    } else {
-        alert("Email atau Password salah!");
-    }
-    return false;
-}
-
-window.onload = showLogin;
-</script>
-</head>
-
-<body>
-<!-- LOGIN -->
-<div id="login" class="page">
-  <div class="container">
-    <h2>Login Perpustakaan</h2>
-    <form onsubmit="return loginUser()">
-      Email:<br>
-      <input type="email" id="email" required><br><br>
-      Password:<br>
-      <input type="password" id="password" required><br><br>
-
-      <button type="submit">Login</button>
-    </form>
-
-    <br>
-    <!-- TEKS PENGANTAR SEBELUM DAFTAR -->
-    <p style="margin:10px 0; font-weight:bold;">Belum punya akun?</p>
-    <button onclick="showRegister()">Daftar di sini</button>
-  </div>
-</div>
-
-<!-- REGISTER -->
-<div id="register" class="page">
-<div class="container">
-<h2>Daftar Akun</h2>
-<form onsubmit="return registerUser()">
-    Last Name:<br>
-<input type="last name" id="last name" required><br><br>
-    First Name:<br>
-<input type="first name" id="first name" required><br><br>
-    Email:<br>
-<input type="email" id="regEmail" required><br><br>
-    No HP:<br>
-<input type="no hp" id="no hp" required><br><br>
-    Password:<br>
-<input type="password" id="regPassword" required><br><br>
-<button type="submit">Daftar</button>
-</form>
-<br>
-<button onclick="showLogin()">Kembali ke Login</button>
-</div>
-</div>
-
-<!-- MAIN -->
-<div id="main" class="page">
-
-<nav>
-<a href="#" onclick="showHome()">Beranda</a>
-<a href="#" onclick="showCollection()">Koleksi</a>
-<a href="#" onclick="showService()">Layanan</a>
-<a href="#" onclick="showContact()">Contact Us</a>
-<a href="#" onclick="showLogin()">Logout</a>
-</nav>
-
-<div id="home" class="inner">
-<h1>Selamat Datang di Perpustakaan Emia</h1>
-    <!DOCTYPE html>
-<html>
-<head>
-<title>halaman Web Pertama Saya</title>
-</head>
-<body>
-<h2>About Me</h2>
-    <p>Nama: Emia Br Perangin-Angin</p>
-    <p>NIM: 230709035</p>
-    <p>Mahasiswi Perpustakaan dan Sains Informasi</p>
-
-<h2>Jika Ingin Mengenal Saya Lebih Jauh, Silakan Klik Tautan Di bawah Ini</h2>
-    </p><a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz">Instagram</a></p> 
-</p><a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp">Curriculum Vitae</a></p>
-    
-<h3>Jika ingin mengenal saya lebih jauh lagi, dengarkan lagu favorit saya berikut ini:</h3>   
-<iframe width="560" height="315" src="https://www.youtube.com/embed/osdoLjUNFnA?si=Yp4yBsKdrXKRDJD5">
-</iframe>
-</div>
-
-<div id="collection" class="inner" style="display:none;">
-<h2>Koleksi Buku</h2>
-<ul>
-<li>Buku Teknologi Informasi</li>
-<li>Buku Manajemen</li>
-<li>Jurnal Internasional</li>
-</ul>
-</div>
-
-<div id="contact" class="inner" style="display:none;">
-<h2>Contact Us</h2>
-<p>Jika Anda memiliki pertanyaan atau membutuhkan bantuan, silakan hubungi kami melalui WhatsApp:</p>
-
-<br>
-
-<a href="https://wa.me/6282274070591" target="_blank">
-<button style="background:#25D366;">
-    💬 Hubungi via WhatsApp
-</button>
-</a>
-
-<br><br>
-</div>
-    
-<div id="service" class="inner" style="display:none;">
-<h2>Jam Layanan</h2>
-<p>Senin - Jumat : 08.00 - 16.00</p>
-<p>Sabtu : 09.00 - 14.00</p>
-</div>
-
-</div>
-
-<!-- CHAT BOT MINI -->
-<div id="chatBotMini" style="
+/* CHAT BOT */
+#chatBotMini {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -235,14 +85,160 @@ window.onload = showLogin;
     border-radius: 50px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     text-align: center;
-    cursor: pointer;
-    z-index: 1000;
-">
+}
 
-    <a href="https://wa.me/6282274070591" target="_blank" style="display:block; color:white; text-decoration:none; padding:12px 0; font-weight:bold;">
+#chatBotMini a {
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px 0;
+    font-weight:bold;
+}
+</style>
+
+<script>
+function showPage(pageId){
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+}
+
+function registerUser(){
+    let email = document.getElementById("regEmail").value;
+    let password = document.getElementById("regPassword").value;
+
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+
+    alert("Pendaftaran berhasil!");
+    showPage("login");
+    return false;
+}
+
+function loginUser(){
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let savedEmail = localStorage.getItem("email");
+    let savedPassword = localStorage.getItem("password");
+
+    if(email === savedEmail && password === savedPassword){
+        alert("Login berhasil!");
+        showPage("home");
+    } else {
+        alert("Email atau Password salah!");
+    }
+    return false;
+}
+
+window.onload = function(){
+    showPage("home");
+}
+</script>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+    <div class="nav-left">
+        <a href="#" onclick="showPage('home')">Beranda</a>
+        <a href="#" onclick="showPage('collection')">Koleksi</a>
+        <a href="#" onclick="showPage('service')">Layanan</a>
+        <a href="#" onclick="showPage('aboutme')">About Me</a>
+        <a href="#" onclick="showPage('aboutadmin')">About Admin</a>
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="#" onclick="showPage('login')">Login</a>
+        <a href="#" onclick="showPage('register')">Register</a>
+    </div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page">
+<h1>Selamat Datang di Perpustakaan Emia</h1>
+<p>Website ini menyediakan berbagai koleksi buku dan layanan perpustakaan.</p>
+</div>
+
+<!-- KOLEKSI -->
+<div id="collection" class="page">
+<h2>Koleksi Buku</h2>
+<ul>
+<li>Buku Teknologi Informasi</li>
+<li>Buku Manajemen</li>
+<li>Jurnal Internasional</li>
+</ul>
+</div>
+
+<!-- LAYANAN -->
+<div id="service" class="page">
+<h2>Jam Layanan</h2>
+<p>Senin - Jumat : 08.00 - 16.00</p>
+<p>Sabtu : 09.00 - 14.00</p>
+</div>
+
+<!-- ABOUT ME -->
+<div id="aboutme" class="page">
+<h2>About Me</h2>
+<p>Nama: Emia Br Perangin-Angin</p>
+<p>NIM: 230709035</p>
+<p>Mahasiswi Perpustakaan dan Sains Informasi</p>
+
+<h3>Media Sosial</h3>
+<a href="https://www.instagram.com/emia.prgn" target="_blank">Instagram</a><br><br>
+<a href="https://drive.google.com" target="_blank">Curriculum Vitae</a>
+</div>
+
+<!-- ABOUT ADMIN -->
+<div id="aboutadmin" class="page">
+<h2>About Admin</h2>
+<p>Admin website ini bertugas mengelola koleksi buku, memperbarui informasi layanan, dan membantu pengguna dalam mengakses layanan perpustakaan.</p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<h2>Contact Us</h2>
+<p>Hubungi kami melalui WhatsApp:</p>
+<a href="https://wa.me/6282274070591" target="_blank">
+<button style="background:#25D366;">💬 Hubungi via WhatsApp</button>
+</a>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="page">
+<div class="container">
+<h2>Login</h2>
+<form onsubmit="return loginUser()">
+Email:<br>
+<input type="email" id="email" required><br><br>
+Password:<br>
+<input type="password" id="password" required><br><br>
+<button type="submit">Login</button>
+</form>
+</div>
+</div>
+
+<!-- REGISTER -->
+<div id="register" class="page">
+<div class="container">
+<h2>Daftar Akun</h2>
+<form onsubmit="return registerUser()">
+Email:<br>
+<input type="email" id="regEmail" required><br><br>
+Password:<br>
+<input type="password" id="regPassword" required><br><br>
+<button type="submit">Daftar</button>
+</form>
+</div>
+</div>
+
+<!-- CHAT BOT MINI -->
+<div id="chatBotMini">
+    <a href="https://wa.me/6282274070591" target="_blank">
         💬 Chat via WhatsApp
     </a>
 </div>
-    
+
 </body>
 </html>
