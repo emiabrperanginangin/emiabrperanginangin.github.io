@@ -156,37 +156,86 @@ window.onload = function(){
 </nav>
 
 <!-- HOME -->
-<div id="home" class="page">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Bhumi Historia</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Georgia", serif;
+    background-color: #f4efe6;
+    color: #3e2f1c;
+}
 
-<!-- HERO -->
-<div style="
-   .hero {
+/* HERO SECTION */
+.hero {
     background: linear-gradient(rgba(90,70,50,0.7), rgba(90,70,50,0.7)),
-                url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c');
+        url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
     padding: 120px 20px;
     text-align: center;
     color: #fffdf8;
 }
-    <h1 style="font-size:40px; letter-spacing:2px;">
-        Selamat Datang di BHUMI HISTORIA
-    </h1>
+
+.hero h1 {
+    font-size: 48px;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* SECTION */
+.section {
+    max-width: 800px; /* agar tidak terlalu melebar */
+    margin: 50px auto;
+    padding: 25px;
+    background: rgba(255, 253, 248, 0.9); /* agak transparan biar background tetap terlihat */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.section h2 {
+    border-bottom: 2px solid #c2a66b;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* QUOTE */
+.quote {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(244, 239, 230, 0.9);
+    border-radius: 8px;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    color: #5a4632;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px){
+    .section, .quote {
+        margin: 30px 20px;
+    }
+    .hero h1 {
+        font-size: 36px;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Selamat Datang di BHUMI HISTORIA</h1>
 </div>
 
-<br><br>
-
 <!-- ARTI NAMA -->
-<div style="
-    background:white;
-    padding:25px;
-    border-radius:8px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom:30px;
-">
-    <h2 style="border-bottom:2px solid #c2a66b; padding-bottom:10px;">
-        Arti Nama Bhumi Historia
-    </h2>
+<div class="section">
+    <h2>Arti Nama Bhumi Historia</h2>
     <p>
         “Bhumi Historia” berasal dari kata <b>Bhumi</b> yang berarti tanah atau bumi, 
         dan <b>Historia</b> yang berarti sejarah. Nama ini melambangkan perjalanan 
@@ -195,16 +244,8 @@ window.onload = function(){
 </div>
 
 <!-- VISI -->
-<div style="
-    background:white;
-    padding:25px;
-    border-radius:8px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom:30px;
-">
-    <h2 style="border-bottom:2px solid #c2a66b; padding-bottom:10px;">
-        Visi
-    </h2>
+<div class="section">
+    <h2>Visi</h2>
     <p>
         Bhumi Historia hadir sebagai ruang digital untuk melestarikan, 
         mendokumentasikan, dan menyebarluaskan pengetahuan sejarah kepada 
@@ -213,21 +254,11 @@ window.onload = function(){
 </div>
 
 <!-- KUTIPAN -->
-<div style="
-    background:#f4efe6;
-    padding:30px;
-    border-radius:8px;
-    text-align:center;
-    font-style:italic;
-    font-size:18px;
-    color:#5a4632;
-">
+<div class="quote">
     "Jasmerah! Jangan sekali-kali meninggalkan sejarah." <br>
     – Bung Karno
 </div>
 
-</div>
- 
 
 <!-- KOLEKSI -->
 <div id="collection" class="page">
