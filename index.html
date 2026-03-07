@@ -203,6 +203,26 @@ window.onload=function(){
 showPage('home');
 }
 
+function cariKoleksi(){
+
+let input=document.getElementById("searchKoleksi").value.toLowerCase();
+let ul=document.getElementById("daftarKoleksi");
+let li=ul.getElementsByTagName("li");
+
+for(let i=0;i<li.length;i++){
+
+let teks=li[i].innerText.toLowerCase();
+
+if(teks.includes(input)){
+li[i].style.display="";
+}else{
+li[i].style.display="none";
+}
+
+}
+
+}
+
 </script>
 </head>
 
@@ -246,9 +266,13 @@ showPage('home');
 <div id="collection" class="page">
 
 <div class="section">
+
 <h2>Koleksi</h2>
 
-<ul>
+<input type="text" id="searchKoleksi" placeholder="Cari koleksi..."
+onkeyup="cariKoleksi()" style="width:100%;padding:8px;margin-bottom:15px;">
+
+<ul id="daftarKoleksi">
 <li>Infografis Naskah</li>
 <li>Biografi Pahlawan</li>
 <li>Foto, Gambar, Lukisan</li>
@@ -263,6 +287,7 @@ showPage('home');
 <div id="service" class="page">
 
 <div class="section">
+
 <h2>Jam Layanan</h2>
 
 <p>Senin - Jumat : 08.00 - 16.00</p>
