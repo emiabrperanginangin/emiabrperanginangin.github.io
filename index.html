@@ -204,13 +204,11 @@ showPage('home');
 }
 
 function cariKoleksi(){
-
 let input=document.getElementById("searchKoleksi").value.toLowerCase();
 let ul=document.getElementById("daftarKoleksi");
 let li=ul.getElementsByTagName("li");
 
 for(let i=0;i<li.length;i++){
-
 let teks=li[i].innerText.toLowerCase();
 
 if(teks.includes(input)){
@@ -218,9 +216,11 @@ li[i].style.display="";
 }else{
 li[i].style.display="none";
 }
-
+}
 }
 
+function daftarBerhasil(){
+alert("Pendaftaran berhasil! Silakan login.");
 }
 
 </script>
@@ -305,22 +305,9 @@ onkeyup="cariKoleksi()" style="width:100%;padding:8px;margin-bottom:15px;">
 
 <h2>Profil Bhumi Historia</h2>
 
-<h3>Arti Nama Bhumi Historia</h3>
-
 <p>
-Bhumi Historia berasal dari kata Bhumi yang berarti bumi atau tanah,
-dan Historia yang berarti sejarah. Nama ini menggambarkan tempat
-yang menjadi wadah untuk menyimpan, menjaga, dan menyebarkan
-pengetahuan sejarah kepada masyarakat.
-</p>
-
-<h3>Visi</h3>
-
-<p>
-Bhumi Historia hadir sebagai ruang digital untuk melestarikan,
-mendokumentasikan, dan menyebarluaskan pengetahuan sejarah
-agar dapat diakses oleh pelajar, mahasiswa, peneliti,
-dan masyarakat umum.
+Bhumi Historia adalah ruang digital untuk menyimpan dan menyebarkan
+pengetahuan sejarah kepada masyarakat luas.
 </p>
 
 </div>
@@ -337,29 +324,6 @@ dan masyarakat umum.
 
 <p><b>Nama :</b> Emia Br Perangin-Angin</p>
 <p><b>NIM :</b> 230709035</p>
-<p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
-
-<h3>Kenali Saya Lebih Lanjut</h3>
-
-<p>
-<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
-Instagram
-</a>
-</p>
-
-<p>
-<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
-Curriculum Vitae
-</a>
-</p>
-
-<h3>Lagu Favorit Saya</h3>
-
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/osdoLjUNFnA"
-frameborder="0"
-allowfullscreen>
-</iframe>
 
 </div>
 
@@ -389,15 +353,10 @@ allowfullscreen>
 
 <h2>Login</h2>
 
-<form>
+<input type="email" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
 
-<input type="email" placeholder="Email" required><br><br>
-
-<input type="password" placeholder="Password" required><br><br>
-
-<button type="submit">Login</button>
-
-</form>
+<button>Login</button>
 
 </div>
 
@@ -411,21 +370,13 @@ allowfullscreen>
 
 <h2>Daftar Akun</h2>
 
-<form>
+<input type="text" placeholder="Last Name"><br><br>
+<input type="text" placeholder="First Name"><br><br>
+<input type="email" placeholder="Email"><br><br>
+<input type="text" placeholder="No HP"><br><br>
+<input type="password" placeholder="Password"><br><br>
 
-<input type="text" placeholder="Last Name" required><br><br>
-
-<input type="text" placeholder="First Name" required><br><br>
-
-<input type="email" placeholder="Email" required><br><br>
-
-<input type="text" placeholder="No HP" required><br><br>
-
-<input type="password" placeholder="Password" required><br><br>
-
-<button type="submit">Daftar</button>
-
-</form>
+<button onclick="daftarBerhasil()">Daftar</button>
 
 </div>
 
@@ -434,11 +385,9 @@ allowfullscreen>
 <!-- CHAT BOT MINI -->
 
 <div id="chatBotMini">
-
 <a href="https://wa.me/6282274070591" target="_blank">
 💬 Chat via WhatsApp
 </a>
-
 </div>
 
 </body>
