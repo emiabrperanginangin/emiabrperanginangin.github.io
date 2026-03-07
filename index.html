@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -203,26 +204,6 @@ window.onload=function(){
 showPage('home');
 }
 
-function cariKoleksi(){
-let input=document.getElementById("searchKoleksi").value.toLowerCase();
-let ul=document.getElementById("daftarKoleksi");
-let li=ul.getElementsByTagName("li");
-
-for(let i=0;i<li.length;i++){
-let teks=li[i].innerText.toLowerCase();
-
-if(teks.includes(input)){
-li[i].style.display="";
-}else{
-li[i].style.display="none";
-}
-}
-}
-
-function daftarBerhasil(){
-alert("Pendaftaran berhasil! Silakan login.");
-}
-
 </script>
 </head>
 
@@ -266,13 +247,9 @@ alert("Pendaftaran berhasil! Silakan login.");
 <div id="collection" class="page">
 
 <div class="section">
-
 <h2>Koleksi</h2>
 
-<input type="text" id="searchKoleksi" placeholder="Cari koleksi..."
-onkeyup="cariKoleksi()" style="width:100%;padding:8px;margin-bottom:15px;">
-
-<ul id="daftarKoleksi">
+<ul>
 <li>Infografis Naskah</li>
 <li>Biografi Pahlawan</li>
 <li>Foto, Gambar, Lukisan</li>
@@ -287,7 +264,6 @@ onkeyup="cariKoleksi()" style="width:100%;padding:8px;margin-bottom:15px;">
 <div id="service" class="page">
 
 <div class="section">
-
 <h2>Jam Layanan</h2>
 
 <p>Senin - Jumat : 08.00 - 16.00</p>
@@ -337,6 +313,29 @@ dan masyarakat umum.
 
 <p><b>Nama :</b> Emia Br Perangin-Angin</p>
 <p><b>NIM :</b> 230709035</p>
+<p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
+
+<h3>Kenali Saya Lebih Lanjut</h3>
+
+<p>
+<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
+Instagram
+</a>
+</p>
+
+<p>
+<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
+Curriculum Vitae
+</a>
+</p>
+
+<h3>Lagu Favorit Saya</h3>
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/osdoLjUNFnA"
+frameborder="0"
+allowfullscreen>
+</iframe>
 
 </div>
 
@@ -366,10 +365,15 @@ dan masyarakat umum.
 
 <h2>Login</h2>
 
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
+<form>
 
-<button>Login</button>
+<input type="email" placeholder="Email" required><br><br>
+
+<input type="password" placeholder="Password" required><br><br>
+
+<button type="submit">Login</button>
+
+</form>
 
 </div>
 
@@ -383,13 +387,21 @@ dan masyarakat umum.
 
 <h2>Daftar Akun</h2>
 
-<input type="text" placeholder="Last Name"><br><br>
-<input type="text" placeholder="First Name"><br><br>
-<input type="email" placeholder="Email"><br><br>
-<input type="text" placeholder="No HP"><br><br>
-<input type="password" placeholder="Password"><br><br>
+<form>
 
-<button onclick="daftarBerhasil()">Daftar</button>
+<input type="text" placeholder="Last Name" required><br><br>
+
+<input type="text" placeholder="First Name" required><br><br>
+
+<input type="email" placeholder="Email" required><br><br>
+
+<input type="text" placeholder="No HP" required><br><br>
+
+<input type="password" placeholder="Password" required><br><br>
+
+<button type="submit">Daftar</button>
+
+</form>
 
 </div>
 
@@ -398,9 +410,11 @@ dan masyarakat umum.
 <!-- CHAT BOT MINI -->
 
 <div id="chatBotMini">
+
 <a href="https://wa.me/6282274070591" target="_blank">
 💬 Chat via WhatsApp
 </a>
+
 </div>
 
 </body>
