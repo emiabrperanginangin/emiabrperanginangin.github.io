@@ -314,6 +314,7 @@ document.getElementById("pesanBalas"+id).value="";
 }
 
 </script>
+
 </head>
 
 <body>
@@ -386,11 +387,8 @@ document.getElementById("pesanBalas"+id).value="";
 <h2>Forum Diskusi Sejarah</h2>
 
 <input type="text" id="namaForum" placeholder="Nama">
-
 <textarea id="pesanForum" placeholder="Tulis komentar atau diskusi"></textarea>
-
 <br><br>
-
 <button onclick="kirimKomentar()">Kirim Komentar</button>
 
 <div class="forumBox" id="forumList"></div>
@@ -401,22 +399,37 @@ document.getElementById("pesanBalas"+id).value="";
 <!-- PROFIL -->
 
 <div id="aboutadmin" class="page">
+
 <div class="section">
 
 <h2>Profil Bhumi Historia</h2>
 
+<h3>Arti Nama Bhumi Historia</h3>
+
 <p>
-Bhumi Historia adalah ruang digital yang menyimpan,
-melestarikan, dan menyebarkan pengetahuan sejarah
-kepada masyarakat luas.
+Bhumi Historia berasal dari kata Bhumi yang berarti bumi atau tanah,
+dan Historia yang berarti sejarah. Nama ini menggambarkan tempat
+yang menjadi wadah untuk menyimpan, menjaga, dan menyebarkan
+pengetahuan sejarah kepada masyarakat.
+</p>
+
+<h3>Visi</h3>
+
+<p>
+Bhumi Historia hadir sebagai ruang digital untuk melestarikan,
+mendokumentasikan, dan menyebarluaskan pengetahuan sejarah
+agar dapat diakses oleh pelajar, mahasiswa, peneliti,
+dan masyarakat umum.
 </p>
 
 </div>
+
 </div>
 
 <!-- ABOUT ADMIN -->
 
 <div id="aboutus" class="page">
+
 <div class="section">
 
 <h2>About Admin</h2>
@@ -425,12 +438,36 @@ kepada masyarakat luas.
 <p><b>NIM :</b> 230709035</p>
 <p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
 
+<h3>Kenali Saya Lebih Lanjut</h3>
+
+<p>
+<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
+Instagram
+</a>
+</p>
+
+<p>
+<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
+Curriculum Vitae
+</a>
+</p>
+
+<h3>Lagu Favorit Saya</h3>
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/osdoLjUNFnA"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
 </div>
+
 </div>
 
 <!-- CONTACT -->
 
 <div id="contact" class="page">
+
 <div class="section">
 
 <h2>Contact Us</h2>
@@ -440,39 +477,52 @@ kepada masyarakat luas.
 </a>
 
 </div>
+
 </div>
 
 <!-- LOGIN -->
 
 <div id="login" class="page">
+
 <div class="container">
 
 <h2>Login</h2>
 
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
+<form>
 
-<button>Login</button>
+<input type="email" placeholder="Email" required><br><br>
+<input type="password" placeholder="Password" required><br><br>
+
+<button type="submit">Login</button>
+
+</form>
 
 </div>
+
 </div>
 
 <!-- REGISTER -->
 
 <div id="register" class="page">
+
 <div class="container">
 
 <h2>Daftar Akun</h2>
 
-<input type="text" placeholder="Last Name"><br><br>
-<input type="text" placeholder="First Name"><br><br>
-<input type="email" placeholder="Email"><br><br>
-<input type="text" placeholder="No HP"><br><br>
-<input type="password" placeholder="Password"><br><br>
+<form>
 
-<button>Daftar</button>
+<input type="text" placeholder="Last Name" required><br><br>
+<input type="text" placeholder="First Name" required><br><br>
+<input type="email" placeholder="Email" required><br><br>
+<input type="text" placeholder="No HP" required><br><br>
+<input type="password" placeholder="Password" required><br><br>
+
+<button type="submit">Daftar</button>
+
+</form>
 
 </div>
+
 </div>
 
 <!-- CHAT BOT MINI -->
