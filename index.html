@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -118,6 +118,12 @@ url('https://images.unsplash.com/photo-1559056199-dedaf94b42d5');
 background-size:cover;
 }
 
+#forum{
+background:linear-gradient(rgba(120,90,60,0.7),rgba(120,90,60,0.7)),
+url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
+background-size:cover;
+}
+
 #aboutadmin{
 background:linear-gradient(rgba(125,95,65,0.65),rgba(125,95,65,0.65)),
 url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
@@ -153,7 +159,7 @@ border-radius:8px;
 text-align:center;
 }
 
-input{
+input, textarea{
 width:100%;
 padding:8px;
 margin-top:5px;
@@ -169,6 +175,33 @@ cursor:pointer;
 
 button:hover{
 background:#25D366;
+}
+
+/* FORUM */
+
+.forumBox{
+background:white;
+padding:20px;
+border-radius:8px;
+margin-top:20px;
+}
+
+.post{
+border-bottom:1px solid #ddd;
+padding:10px;
+}
+
+.nama{
+font-weight:bold;
+color:#2c3e50;
+}
+
+.reply{
+margin-left:30px;
+background:#f4f4f4;
+padding:10px;
+border-radius:5px;
+margin-top:5px;
 }
 
 /* CHAT BOT */
@@ -204,6 +237,83 @@ window.onload=function(){
 showPage('home');
 }
 
+/* FORUM */
+
+let idPost=0;
+
+function kirimKomentar(){
+
+let nama=document.getElementById("namaForum").value;
+let pesan=document.getElementById("pesanForum").value;
+
+if(nama==""||pesan==""){
+alert("Isi nama dan komentar dulu");
+return;
+}
+
+idPost++;
+
+let forum=document.getElementById("forumList");
+
+let post=document.createElement("div");
+post.className="post";
+post.id="post"+idPost;
+
+post.innerHTML=`
+<div class="nama">${nama}</div>
+<div>${pesan}</div>
+
+<button onclick="tampilBalas(${idPost})">Balas</button>
+
+<div id="balasForm${idPost}" style="display:none;">
+<input type="text" id="namaBalas${idPost}" placeholder="Nama">
+<textarea id="pesanBalas${idPost}" placeholder="Tulis balasan"></textarea>
+<button onclick="kirimBalasan(${idPost})">Kirim Balasan</button>
+</div>
+
+<div id="daftarBalasan${idPost}"></div>
+`;
+
+forum.prepend(post);
+
+document.getElementById("pesanForum").value="";
+}
+
+function tampilBalas(id){
+
+let form=document.getElementById("balasForm"+id);
+
+if(form.style.display=="none"){
+form.style.display="block";
+}else{
+form.style.display="none";
+}
+
+}
+
+function kirimBalasan(id){
+
+let nama=document.getElementById("namaBalas"+id).value;
+let pesan=document.getElementById("pesanBalas"+id).value;
+
+if(nama==""||pesan==""){
+alert("Isi balasan dulu");
+return;
+}
+
+let balasan=document.createElement("div");
+balasan.className="reply";
+
+balasan.innerHTML=`
+<div class="nama">${nama}</div>
+<div>${pesan}</div>
+`;
+
+document.getElementById("daftarBalasan"+id).appendChild(balasan);
+
+document.getElementById("pesanBalas"+id).value="";
+}
+
 </script>
 </head>
 
@@ -215,6 +325,7 @@ showPage('home');
 <a href="#" onclick="showPage('home')">Beranda</a>
 <a href="#" onclick="showPage('collection')">Koleksi</a>
 <a href="#" onclick="showPage('service')">Layanan</a>
+<a href="#" onclick="showPage('forum')">Forum</a>
 <a href="#" onclick="showPage('aboutadmin')">Profil</a>
 <a href="#" onclick="showPage('aboutus')">About Admin</a>
 <a href="#" onclick="showPage('contact')">Contact Us</a>
@@ -236,8 +347,7 @@ showPage('home');
 </div>
 
 <div class="quote">
-"Jasmerah! Jangan sekali-kali meninggalkan sejarah."<br>
-– Bung Karno
+"Jasmerah! Jangan sekali-kali meninggalkan sejarah." – Bung Karno
 </div>
 
 </div>
@@ -245,7 +355,6 @@ showPage('home');
 <!-- KOLEKSI -->
 
 <div id="collection" class="page">
-
 <div class="section">
 <h2>Koleksi</h2>
 
@@ -256,13 +365,11 @@ showPage('home');
 </ul>
 
 </div>
-
 </div>
 
 <!-- LAYANAN -->
 
 <div id="service" class="page">
-
 <div class="section">
 <h2>Jam Layanan</h2>
 
@@ -270,43 +377,47 @@ showPage('home');
 <p>Sabtu : 09.00 - 14.00</p>
 
 </div>
+</div>
 
+<!-- FORUM -->
+
+<div id="forum" class="page">
+<div class="section">
+
+<h2>Forum Diskusi Sejarah</h2>
+
+<input type="text" id="namaForum" placeholder="Nama">
+
+<textarea id="pesanForum" placeholder="Tulis komentar atau diskusi"></textarea>
+
+<br><br>
+
+<button onclick="kirimKomentar()">Kirim Komentar</button>
+
+<div class="forumBox" id="forumList"></div>
+
+</div>
 </div>
 
 <!-- PROFIL -->
 
 <div id="aboutadmin" class="page">
-
 <div class="section">
 
 <h2>Profil Bhumi Historia</h2>
 
-<h3>Arti Nama Bhumi Historia</h3>
-
 <p>
-Bhumi Historia berasal dari kata Bhumi yang berarti bumi atau tanah,
-dan Historia yang berarti sejarah. Nama ini menggambarkan tempat
-yang menjadi wadah untuk menyimpan, menjaga, dan menyebarkan
-pengetahuan sejarah kepada masyarakat.
-</p>
-
-<h3>Visi</h3>
-
-<p>
-Bhumi Historia hadir sebagai ruang digital untuk melestarikan,
-mendokumentasikan, dan menyebarluaskan pengetahuan sejarah
-agar dapat diakses oleh pelajar, mahasiswa, peneliti,
-dan masyarakat umum.
+Bhumi Historia adalah ruang digital yang menyimpan,
+melestarikan, dan menyebarkan pengetahuan sejarah
+kepada masyarakat luas.
 </p>
 
 </div>
-
 </div>
 
 <!-- ABOUT ADMIN -->
 
 <div id="aboutus" class="page">
-
 <div class="section">
 
 <h2>About Admin</h2>
@@ -315,36 +426,12 @@ dan masyarakat umum.
 <p><b>NIM :</b> 230709035</p>
 <p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
 
-<h3>Kenali Saya Lebih Lanjut</h3>
-
-<p>
-<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
-Instagram
-</a>
-</p>
-
-<p>
-<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
-Curriculum Vitae
-</a>
-</p>
-
-<h3>Lagu Favorit Saya</h3>
-
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/osdoLjUNFnA"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
 </div>
-
 </div>
 
 <!-- CONTACT -->
 
 <div id="contact" class="page">
-
 <div class="section">
 
 <h2>Contact Us</h2>
@@ -354,57 +441,39 @@ allowfullscreen>
 </a>
 
 </div>
-
 </div>
 
 <!-- LOGIN -->
 
 <div id="login" class="page">
-
 <div class="container">
 
 <h2>Login</h2>
 
-<form>
+<input type="email" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
 
-<input type="email" placeholder="Email" required><br><br>
-
-<input type="password" placeholder="Password" required><br><br>
-
-<button type="submit">Login</button>
-
-</form>
+<button>Login</button>
 
 </div>
-
 </div>
 
 <!-- REGISTER -->
 
 <div id="register" class="page">
-
 <div class="container">
 
 <h2>Daftar Akun</h2>
 
-<form>
+<input type="text" placeholder="Last Name"><br><br>
+<input type="text" placeholder="First Name"><br><br>
+<input type="email" placeholder="Email"><br><br>
+<input type="text" placeholder="No HP"><br><br>
+<input type="password" placeholder="Password"><br><br>
 
-<input type="text" placeholder="Last Name" required><br><br>
-
-<input type="text" placeholder="First Name" required><br><br>
-
-<input type="email" placeholder="Email" required><br><br>
-
-<input type="text" placeholder="No HP" required><br><br>
-
-<input type="password" placeholder="Password" required><br><br>
-
-<button type="submit">Daftar</button>
-
-</form>
+<button>Daftar</button>
 
 </div>
-
 </div>
 
 <!-- CHAT BOT MINI -->
@@ -419,3 +488,4 @@ allowfullscreen>
 
 </body>
 </html>
+```
