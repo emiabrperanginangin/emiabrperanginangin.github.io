@@ -20,14 +20,16 @@ justify-content:space-between;
 align-items:center;
 }
 
-.nav-left a,.nav-right a{
+.nav-left a,
+.nav-right a{
 color:white;
-margin:10px;
+margin:20px;
 text-decoration:none;
 font-weight:bold;
 }
 
-.nav-left a:hover,.nav-right a:hover{
+.nav-left a:hover,
+.nav-right a:hover{
 color:#25D366;
 }
 
@@ -38,75 +40,84 @@ min-height:100vh;
 padding:30px;
 }
 
-.active{display:block;}
+.active{
+display:block;
+}
 
 /* SECTION */
 .section{
 max-width:800px;
 margin:50px auto;
 padding:25px;
-background:rgba(255,253,248,0.9);
+background:rgba(255,253,248,0.85);
 border-radius:8px;
 }
 
 /* HERO */
 .hero{
-padding:120px;
+padding:120px 20px;
 text-align:center;
 }
 
 .hero span{
-font-size:42px;
+display:inline-block;
+padding:20px 40px;
 background:rgba(50,30,10,0.6);
 color:white;
-padding:20px;
+font-size:42px;
+font-weight:bold;
+border:2px solid #c2a66b;
 border-radius:8px;
 }
 
-/* BACKGROUND */
-#home{background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');background-size:cover;}
-#collection{background:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');background-size:cover;}
-#service{background:url('https://images.unsplash.com/photo-1559056199-dedaf94b42d5');background-size:cover;}
-#forum{background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba');background-size:cover;}
-#event{background:url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;}
-#aboutadmin{background:url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;}
-#aboutus{background:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');background-size:cover;}
-#contact{background:url('https://images.unsplash.com/photo-1476275466078-4007374efbbe');background-size:cover;}
-#login,#register{background:url('https://images.unsplash.com/photo-1528207776546-365bb710ee93');background-size:cover;}
-
-/* FORM */
-input,textarea{
-width:100%;
-padding:8px;
-margin-top:5px;
+/* BACKGROUND (TETAP ASLI KECUALI LAYANAN) */
+#home{
+background:linear-gradient(rgba(120,90,60,0.65),rgba(120,90,60,0.65)),
+url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
+background-size:cover;
 }
 
-button{
-padding:8px 15px;
-background:#2c3e50;
-color:white;
-border:none;
-cursor:pointer;
+#collection{
+background:linear-gradient(rgba(110,80,50,0.65),rgba(110,80,50,0.65)),
+url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');
+background-size:cover;
 }
 
-button:hover{background:#25D366;}
-
-/* FORUM */
-.forumBox{
-background:white;
-padding:20px;
-border-radius:8px;
-margin-top:20px;
+/* ✅ BACKGROUND LAYANAN DIGANTI */
+#service{
+background:linear-gradient(rgba(100,70,40,0.7),rgba(100,70,40,0.7)),
+url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d');
+background-size:cover;
 }
 
-.post{border-bottom:1px solid #ddd;padding:10px;}
+#forum{
+background:linear-gradient(rgba(120,90,60,0.7),rgba(120,90,60,0.7)),
+url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
+background-size:cover;
+}
 
-.reply{
-margin-left:30px;
-background:#f4f4f4;
-padding:10px;
-border-radius:5px;
-margin-top:5px;
+#event{
+background:linear-gradient(rgba(120,90,60,0.7),rgba(120,90,60,0.7)),
+url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
+background-size:cover;
+}
+
+#aboutadmin{
+background:linear-gradient(rgba(125,95,65,0.65),rgba(125,95,65,0.65)),
+url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
+background-size:cover;
+}
+
+#aboutus{
+background:linear-gradient(rgba(115,85,55,0.65),rgba(115,85,55,0.65)),
+url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');
+background-size:cover;
+}
+
+#contact{
+background:linear-gradient(rgba(130,100,70,0.65),rgba(130,100,70,0.65)),
+url('https://images.unsplash.com/photo-1476275466078-4007374efbbe');
+background-size:cover;
 }
 
 /* EVENT */
@@ -115,6 +126,19 @@ background:white;
 padding:20px;
 border-radius:8px;
 margin-top:20px;
+}
+
+/* BUTTON */
+button{
+padding:8px 15px;
+background:#2c3e50;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+button:hover{
+background:#25D366;
 }
 
 /* CHAT */
@@ -137,7 +161,6 @@ text-decoration:none;
 
 <script>
 
-// NAVIGATION
 function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
@@ -147,48 +170,10 @@ window.onload=function(){
 showPage('home');
 }
 
-// ================= EVENT =================
-function toggleDetail(){
+/* EVENT HANDLER */
+function toggleEvent(){
 let d=document.getElementById("detailEvent");
 d.style.display=(d.style.display=="none")?"block":"none";
-}
-
-function daftarEvent(){
-let nama=document.getElementById("namaEvent").value;
-if(nama==""){alert("Isi nama dulu");return;}
-document.getElementById("hasilDaftar").innerHTML=
-"Terima kasih <b>"+nama+"</b> sudah mendaftar!";
-}
-
-// ================= FORUM =================
-let idPost=0;
-
-function kirimKomentar(){
-let nama=document.getElementById("namaForum").value;
-let pesan=document.getElementById("pesanForum").value;
-
-if(nama==""||pesan==""){alert("Isi dulu");return;}
-
-idPost++;
-
-let post=document.createElement("div");
-post.className="post";
-
-post.innerHTML=`
-<b>${nama}</b><br>${pesan}
-<button onclick="balas(${idPost})">Balas</button>
-<div id="balasan${idPost}"></div>
-`;
-
-document.getElementById("forumList").prepend(post);
-}
-
-function balas(id){
-let isi=prompt("Tulis balasan:");
-if(isi){
-document.getElementById("balasan"+id).innerHTML+=
-"<div class='reply'>"+isi+"</div>";
-}
 }
 
 </script>
@@ -208,11 +193,6 @@ document.getElementById("balasan"+id).innerHTML+=
 <a onclick="showPage('aboutus')">About Admin</a>
 <a onclick="showPage('contact')">Contact</a>
 </div>
-
-<div class="nav-right">
-<a onclick="showPage('login')">Login</a>
-<a onclick="showPage('register')">Register</a>
-</div>
 </nav>
 
 <!-- HOME -->
@@ -227,9 +207,9 @@ document.getElementById("balasan"+id).innerHTML+=
 <div class="section">
 <h2>Koleksi</h2>
 <ul>
-<li>Infografis Naskah</li>
-<li>Biografi Pahlawan</li>
-<li>Foto & Lukisan</li>
+<li>Infografis Sejarah</li>
+<li>Naskah Kuno</li>
+<li>Lukisan dan Foto Sejarah</li>
 </ul>
 </div>
 </div>
@@ -240,91 +220,103 @@ document.getElementById("balasan"+id).innerHTML+=
 <h2>Jam Layanan</h2>
 <p>Senin - Jumat : 08.00 - 16.00</p>
 <p>Sabtu : 09.00 - 14.00</p>
+
+<h3>Layanan Kami</h3>
+<ul>
+<li>Peminjaman Buku</li>
+<li>Referensi Sejarah</li>
+<li>Konsultasi Penelitian</li>
+</ul>
 </div>
 </div>
 
 <!-- EVENT -->
 <div id="event" class="page">
 <div class="section">
-<h2>Pameran Buku Sejarah</h2>
+<h2>Pameran Buku Koleksi Bhumi Historia</h2>
 
 <div class="eventBox">
-<h3>Pameran Buku Nusantara</h3>
+<h3>Pameran Koleksi Sejarah Nusantara</h3>
 <p>Tanggal: 20 April 2026</p>
-<button onclick="toggleDetail()">Lihat Detail</button>
+
+<button onclick="toggleEvent()">Lihat Detail</button>
 
 <div id="detailEvent" style="display:none;">
-<p>Menampilkan buku sejarah langka dan naskah kuno.</p>
-</div>
-</div>
-
-<h3>Daftar Event</h3>
-<input id="namaEvent" placeholder="Nama">
-<br><br>
-<button onclick="daftarEvent()">Daftar</button>
-<p id="hasilDaftar"></p>
-
-</div>
+<p>
+Pameran ini menampilkan berbagai koleksi unggulan Bhumi Historia,
+meliputi infografis sejarah, naskah kuno, serta lukisan sejarah
+yang menggambarkan perjalanan bangsa Indonesia dari masa ke masa.
+Pengunjung dapat mempelajari sejarah secara visual dan interaktif.
+</p>
 </div>
 
-<!-- FORUM -->
-<div id="forum" class="page">
-<div class="section">
-<h2>Forum Diskusi</h2>
-
-<input id="namaForum" placeholder="Nama">
-<textarea id="pesanForum"></textarea>
-<br><br>
-<button onclick="kirimKomentar()">Kirim</button>
-
-<div class="forumBox" id="forumList"></div>
+</div>
 </div>
 </div>
 
 <!-- PROFIL -->
 <div id="aboutadmin" class="page">
 <div class="section">
+
 <h2>Profil Bhumi Historia</h2>
-<p>Bhumi Historia adalah wadah digital sejarah.</p>
+
+<h3>Arti Nama</h3>
+<p>
+Bhumi berarti tanah atau bumi, sedangkan Historia berarti sejarah.
+Bhumi Historia adalah wadah yang merepresentasikan tempat
+berkumpulnya berbagai pengetahuan sejarah.
+</p>
+
+<h3>Visi</h3>
+<p>
+Menjadi platform digital yang melestarikan dan menyebarkan
+informasi sejarah kepada masyarakat luas.
+</p>
+
+<h3>Misi</h3>
+<ul>
+<li>Menyediakan koleksi sejarah yang berkualitas</li>
+<li>Meningkatkan minat baca sejarah</li>
+<li>Menjadi pusat informasi sejarah digital</li>
+</ul>
+
 </div>
 </div>
 
-<!-- ABOUT -->
+<!-- ABOUT ADMIN -->
 <div id="aboutus" class="page">
 <div class="section">
+
 <h2>About Admin</h2>
-<p>Nama: Emia Br Perangin-Angin</p>
+
+<p><b>Nama:</b> Emia Br Perangin-Angin</p>
+<p><b>NIM:</b> 230709035</p>
+<p><b>Program Studi:</b> Perpustakaan dan Sains Informasi</p>
+
+<p>
+Saya adalah mahasiswa yang memiliki minat dalam bidang sejarah
+dan pengelolaan informasi. Website ini dibuat sebagai sarana
+pembelajaran sekaligus media untuk berbagi informasi sejarah.
+</p>
+
+<h3>Media Sosial</h3>
+<a href="https://www.instagram.com/emia.prgn" target="_blank">Instagram</a>
+
+<h3>Video Favorit</h3>
+<iframe width="100%" height="315"
+src="https://www.youtube.com/embed/osdoLjUNFnA"
+allowfullscreen></iframe>
+
 </div>
 </div>
 
 <!-- CONTACT -->
 <div id="contact" class="page">
 <div class="section">
-<h2>Contact</h2>
+<h2>Contact Us</h2>
 <a href="https://wa.me/6282274070591" target="_blank">
-<button>WhatsApp</button>
+<button>Hubungi via WhatsApp</button>
 </a>
-</div>
-</div>
-
-<!-- LOGIN -->
-<div id="login" class="page">
-<div class="section">
-<h2>Login</h2>
-<input placeholder="Email">
-<input placeholder="Password">
-<button>Login</button>
-</div>
-</div>
-
-<!-- REGISTER -->
-<div id="register" class="page">
-<div class="section">
-<h2>Register</h2>
-<input placeholder="Nama">
-<input placeholder="Email">
-<input placeholder="Password">
-<button>Daftar</button>
 </div>
 </div>
 
