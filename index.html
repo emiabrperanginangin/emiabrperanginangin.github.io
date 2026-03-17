@@ -11,124 +11,84 @@ margin:0;
 color:#3e2f1c;
 }
 
-/* NAVIGATION */
+/* NAV */
 nav{
 background:#2c3e50;
 padding:15px;
 display:flex;
 justify-content:space-between;
-align-items:center;
 }
 
-.nav-left a,
-.nav-right a{
+nav a{
 color:white;
-margin:20px;
+margin:15px;
 text-decoration:none;
 font-weight:bold;
 }
 
-.nav-left a:hover,
-.nav-right a:hover{
-color:#25D366;
-}
+nav a:hover{color:#25D366;}
 
 /* PAGE */
-.page{
-display:none;
-min-height:100vh;
-padding:30px;
+.page{display:none; padding:30px;}
+.active{display:block;}
+
+/* HERO */
+.hero{
+padding:120px;
+text-align:center;
 }
 
-.active{
-display:block;
+.hero span{
+font-size:42px;
+background:rgba(50,30,10,0.6);
+color:white;
+padding:20px;
+border-radius:8px;
+}
+
+/* QUOTE */
+.quote{
+text-align:center;
+font-style:italic;
+margin:30px;
+font-size:20px;
 }
 
 /* SECTION */
 .section{
 max-width:800px;
-margin:50px auto;
-padding:25px;
-background:rgba(255,253,248,0.85);
-border-radius:8px;
-}
-
-/* HERO */
-.hero{
-padding:120px 20px;
-text-align:center;
-}
-
-.hero span{
-display:inline-block;
-padding:20px 40px;
-background:rgba(50,30,10,0.6);
-color:white;
-font-size:42px;
-font-weight:bold;
-border:2px solid #c2a66b;
-border-radius:8px;
-}
-
-/* BACKGROUND (TETAP ASLI KECUALI LAYANAN) */
-#home{
-background:linear-gradient(rgba(120,90,60,0.65),rgba(120,90,60,0.65)),
-url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
-background-size:cover;
-}
-
-#collection{
-background:linear-gradient(rgba(110,80,50,0.65),rgba(110,80,50,0.65)),
-url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');
-background-size:cover;
-}
-
-/* ✅ BACKGROUND LAYANAN DIGANTI */
-#service{
-background:linear-gradient(rgba(100,70,40,0.7),rgba(100,70,40,0.7)),
-url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d');
-background-size:cover;
-}
-
-#forum{
-background:linear-gradient(rgba(120,90,60,0.7),rgba(120,90,60,0.7)),
-url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
-background-size:cover;
-}
-
-#event{
-background:linear-gradient(rgba(120,90,60,0.7),rgba(120,90,60,0.7)),
-url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
-background-size:cover;
-}
-
-#aboutadmin{
-background:linear-gradient(rgba(125,95,65,0.65),rgba(125,95,65,0.65)),
-url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
-background-size:cover;
-}
-
-#aboutus{
-background:linear-gradient(rgba(115,85,55,0.65),rgba(115,85,55,0.65)),
-url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');
-background-size:cover;
-}
-
-#contact{
-background:linear-gradient(rgba(130,100,70,0.65),rgba(130,100,70,0.65)),
-url('https://images.unsplash.com/photo-1476275466078-4007374efbbe');
-background-size:cover;
-}
-
-/* EVENT */
-.eventBox{
+margin:auto;
 background:white;
 padding:20px;
 border-radius:8px;
+}
+
+/* EVENT CARD */
+.event-card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 margin-top:20px;
 }
 
-/* BUTTON */
+.event-card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.event-content{
+padding:15px;
+}
+
+/* FORM */
+input,textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+}
+
 button{
 padding:8px 15px;
 background:#2c3e50;
@@ -137,8 +97,17 @@ border:none;
 cursor:pointer;
 }
 
-button:hover{
-background:#25D366;
+button:hover{background:#25D366;}
+
+/* BACKGROUND */
+#home{
+background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
+background-size:cover;
+}
+
+#service{
+background:url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d');
+background-size:cover;
 }
 
 /* CHAT */
@@ -166,14 +135,11 @@ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
 
-window.onload=function(){
-showPage('home');
-}
+window.onload=function(){showPage('home');}
 
-/* EVENT HANDLER */
-function toggleEvent(){
-let d=document.getElementById("detailEvent");
-d.style.display=(d.style.display=="none")?"block":"none";
+/* EVENT */
+function showDetail(){
+alert("Pameran berisi infografis, naskah kuno, dan lukisan sejarah!");
 }
 
 </script>
@@ -183,23 +149,56 @@ d.style.display=(d.style.display=="none")?"block":"none";
 <body>
 
 <nav>
-<div class="nav-left">
+<div>
 <a onclick="showPage('home')">Beranda</a>
 <a onclick="showPage('collection')">Koleksi</a>
 <a onclick="showPage('service')">Layanan</a>
-<a onclick="showPage('event')">Event</a>
-<a onclick="showPage('forum')">Forum</a>
-<a onclick="showPage('aboutadmin')">Profil</a>
-<a onclick="showPage('aboutus')">About Admin</a>
+<a onclick="showPage('about')">Profil</a>
+<a onclick="showPage('admin')">About Admin</a>
 <a onclick="showPage('contact')">Contact</a>
+</div>
+
+<div>
+<a onclick="showPage('login')">Login</a>
+<a onclick="showPage('register')">Register</a>
 </div>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="page">
+
 <div class="hero">
 <span>SELAMAT DATANG DI PERPUSTAKAAN BHUMI HISTORIA</span>
 </div>
+
+<div class="quote">
+"Jasmerah! Jangan sekali-kali meninggalkan sejarah." – Bung Karno
+</div>
+
+<!-- EVENT DI HOMEPAGE -->
+<div class="section">
+
+<h2>Event Pameran Buku</h2>
+
+<div class="event-card">
+
+<!-- GANTI src DENGAN GAMBAR KAMU -->
+<img src="gambar-event.jpg">
+
+<div class="event-content">
+<h3>Pameran Koleksi Bhumi Historia</h3>
+<p>
+Menampilkan infografis sejarah, naskah kuno,
+dan lukisan sejarah Indonesia.
+</p>
+
+<button onclick="showDetail()">Lihat Detail</button>
+
+</div>
+</div>
+
+</div>
+
 </div>
 
 <!-- KOLEKSI -->
@@ -209,7 +208,7 @@ d.style.display=(d.style.display=="none")?"block":"none";
 <ul>
 <li>Infografis Sejarah</li>
 <li>Naskah Kuno</li>
-<li>Lukisan dan Foto Sejarah</li>
+<li>Lukisan Sejarah</li>
 </ul>
 </div>
 </div>
@@ -220,92 +219,27 @@ d.style.display=(d.style.display=="none")?"block":"none";
 <h2>Jam Layanan</h2>
 <p>Senin - Jumat : 08.00 - 16.00</p>
 <p>Sabtu : 09.00 - 14.00</p>
-
-<h3>Layanan Kami</h3>
-<ul>
-<li>Peminjaman Buku</li>
-<li>Referensi Sejarah</li>
-<li>Konsultasi Penelitian</li>
-</ul>
-</div>
-</div>
-
-<!-- EVENT -->
-<div id="event" class="page">
-<div class="section">
-<h2>Pameran Buku Koleksi Bhumi Historia</h2>
-
-<div class="eventBox">
-<h3>Pameran Koleksi Sejarah Nusantara</h3>
-<p>Tanggal: 20 April 2026</p>
-
-<button onclick="toggleEvent()">Lihat Detail</button>
-
-<div id="detailEvent" style="display:none;">
-<p>
-Pameran ini menampilkan berbagai koleksi unggulan Bhumi Historia,
-meliputi infografis sejarah, naskah kuno, serta lukisan sejarah
-yang menggambarkan perjalanan bangsa Indonesia dari masa ke masa.
-Pengunjung dapat mempelajari sejarah secara visual dan interaktif.
-</p>
-</div>
-
-</div>
 </div>
 </div>
 
 <!-- PROFIL -->
-<div id="aboutadmin" class="page">
+<div id="about" class="page">
 <div class="section">
-
 <h2>Profil Bhumi Historia</h2>
-
-<h3>Arti Nama</h3>
-<p>
-Bhumi berarti tanah atau bumi, sedangkan Historia berarti sejarah.
-Bhumi Historia adalah wadah yang merepresentasikan tempat
-berkumpulnya berbagai pengetahuan sejarah.
-</p>
-
-<h3>Visi</h3>
-<p>
-Menjadi platform digital yang melestarikan dan menyebarkan
-informasi sejarah kepada masyarakat luas.
-</p>
-
-<h3>Misi</h3>
-<ul>
-<li>Menyediakan koleksi sejarah yang berkualitas</li>
-<li>Meningkatkan minat baca sejarah</li>
-<li>Menjadi pusat informasi sejarah digital</li>
-</ul>
-
+<p>Bhumi Historia adalah wadah digital untuk menyimpan dan menyebarkan sejarah.</p>
 </div>
 </div>
 
-<!-- ABOUT ADMIN -->
-<div id="aboutus" class="page">
+<!-- ADMIN -->
+<div id="admin" class="page">
 <div class="section">
-
 <h2>About Admin</h2>
+<p>Nama: Emia Br Perangin-Angin</p>
+<p>NIM: 230709035</p>
+<p>Program Studi: Perpustakaan dan Sains Informasi</p>
 
-<p><b>Nama:</b> Emia Br Perangin-Angin</p>
-<p><b>NIM:</b> 230709035</p>
-<p><b>Program Studi:</b> Perpustakaan dan Sains Informasi</p>
-
-<p>
-Saya adalah mahasiswa yang memiliki minat dalam bidang sejarah
-dan pengelolaan informasi. Website ini dibuat sebagai sarana
-pembelajaran sekaligus media untuk berbagi informasi sejarah.
-</p>
-
-<h3>Media Sosial</h3>
-<a href="https://www.instagram.com/emia.prgn" target="_blank">Instagram</a>
-
-<h3>Video Favorit</h3>
-<iframe width="100%" height="315"
-src="https://www.youtube.com/embed/osdoLjUNFnA"
-allowfullscreen></iframe>
+<iframe width="100%" height="300"
+src="https://www.youtube.com/embed/osdoLjUNFnA"></iframe>
 
 </div>
 </div>
@@ -313,10 +247,31 @@ allowfullscreen></iframe>
 <!-- CONTACT -->
 <div id="contact" class="page">
 <div class="section">
-<h2>Contact Us</h2>
-<a href="https://wa.me/6282274070591" target="_blank">
-<button>Hubungi via WhatsApp</button>
+<h2>Contact</h2>
+<a href="https://wa.me/6282274070591">
+<button>WhatsApp</button>
 </a>
+</div>
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="page">
+<div class="section">
+<h2>Login</h2>
+<input placeholder="Email">
+<input placeholder="Password">
+<button>Login</button>
+</div>
+</div>
+
+<!-- REGISTER -->
+<div id="register" class="page">
+<div class="section">
+<h2>Register</h2>
+<input placeholder="Nama">
+<input placeholder="Email">
+<input placeholder="Password">
+<button>Daftar</button>
 </div>
 </div>
 
