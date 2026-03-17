@@ -12,7 +12,6 @@ color:#3e2f1c;
 }
 
 /* NAVIGATION */
-
 nav{
 background:#2c3e50;
 padding:15px;
@@ -21,144 +20,62 @@ justify-content:space-between;
 align-items:center;
 }
 
-.nav-left a,
-.nav-right a{
+.nav-left a,.nav-right a{
 color:white;
-margin-right:20px;
+margin:10px;
 text-decoration:none;
 font-weight:bold;
 }
 
-.nav-right a{
-margin-left:20px;
-}
-
-.nav-left a:hover,
-.nav-right a:hover{
+.nav-left a:hover,.nav-right a:hover{
 color:#25D366;
 }
 
 /* PAGE */
-
 .page{
 display:none;
 min-height:100vh;
 padding:30px;
 }
 
-.active{
-display:block;
-}
+.active{display:block;}
 
 /* SECTION */
-
 .section{
 max-width:800px;
 margin:50px auto;
 padding:25px;
-background:rgba(255,253,248,0.85);
+background:rgba(255,253,248,0.9);
 border-radius:8px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
-}
-
-.section h2{
-border-bottom:2px solid #c2a66b;
-padding-bottom:10px;
-margin-bottom:20px;
-}
-
-.quote{
-max-width:700px;
-margin:50px auto;
-padding:30px;
-background:rgba(244,239,230,0.9);
-border-radius:8px;
-text-align:center;
-font-style:italic;
-font-size:20px;
-color:#5a4632;
 }
 
 /* HERO */
-
 .hero{
-padding:120px 20px;
+padding:120px;
 text-align:center;
 }
 
 .hero span{
-display:inline-block;
-padding:20px 40px;
+font-size:42px;
 background:rgba(50,30,10,0.6);
 color:white;
-font-size:42px;
-font-weight:bold;
-border:2px solid #c2a66b;
+padding:20px;
 border-radius:8px;
 }
 
 /* BACKGROUND */
-
-#home{
-background:linear-gradient(rgba(120,90,60,0.65),rgba(120,90,60,0.65)),
-url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
-background-size:cover;
-}
-
-#collection{
-background:linear-gradient(rgba(110,80,50,0.65),rgba(110,80,50,0.65)),
-url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');
-background-size:cover;
-}
-
-#service{
-background:linear-gradient(rgba(130,100,70,0.65),rgba(130,100,70,0.65)),
-url('https://images.unsplash.com/photo-1559056199-dedaf94b42d5');
-background-size:cover;
-}
-
-#forum{
-background:linear-gradient(rgba(120,90,60,0.7),rgba(120,90,60,0.7)),
-url('https://images.unsplash.com/photo-1519681393784-d120267933ba');
-background-size:cover;
-}
-
-#aboutadmin{
-background:linear-gradient(rgba(125,95,65,0.65),rgba(125,95,65,0.65)),
-url('https://images.unsplash.com/photo-1512820790803-83ca734da794');
-background-size:cover;
-}
-
-#aboutus{
-background:linear-gradient(rgba(115,85,55,0.65),rgba(115,85,55,0.65)),
-url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');
-background-size:cover;
-}
-
-#contact{
-background:linear-gradient(rgba(130,100,70,0.65),rgba(130,100,70,0.65)),
-url('https://images.unsplash.com/photo-1476275466078-4007374efbbe');
-background-size:cover;
-}
-
-#login,#register{
-background:linear-gradient(rgba(100,70,40,0.75),rgba(100,70,40,0.75)),
-url('https://images.unsplash.com/photo-1528207776546-365bb710ee93');
-background-size:cover;
-}
+#home{background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');background-size:cover;}
+#collection{background:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66');background-size:cover;}
+#service{background:url('https://images.unsplash.com/photo-1559056199-dedaf94b42d5');background-size:cover;}
+#forum{background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba');background-size:cover;}
+#event{background:url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;}
+#aboutadmin{background:url('https://images.unsplash.com/photo-1512820790803-83ca734da794');background-size:cover;}
+#aboutus{background:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');background-size:cover;}
+#contact{background:url('https://images.unsplash.com/photo-1476275466078-4007374efbbe');background-size:cover;}
+#login,#register{background:url('https://images.unsplash.com/photo-1528207776546-365bb710ee93');background-size:cover;}
 
 /* FORM */
-
-.container{
-max-width:400px;
-margin:50px auto;
-background:white;
-padding:20px;
-border-radius:8px;
-text-align:center;
-}
-
-input, textarea{
+input,textarea{
 width:100%;
 padding:8px;
 margin-top:5px;
@@ -172,12 +89,9 @@ border:none;
 cursor:pointer;
 }
 
-button:hover{
-background:#25D366;
-}
+button:hover{background:#25D366;}
 
 /* FORUM */
-
 .forumBox{
 background:white;
 padding:20px;
@@ -185,15 +99,7 @@ border-radius:8px;
 margin-top:20px;
 }
 
-.post{
-border-bottom:1px solid #ddd;
-padding:10px;
-}
-
-.nama{
-font-weight:bold;
-color:#2c3e50;
-}
+.post{border-bottom:1px solid #ddd;padding:10px;}
 
 .reply{
 margin-left:30px;
@@ -203,114 +109,86 @@ border-radius:5px;
 margin-top:5px;
 }
 
-/* CHAT BOT */
+/* EVENT */
+.eventBox{
+background:white;
+padding:20px;
+border-radius:8px;
+margin-top:20px;
+}
 
+/* CHAT */
 #chatBotMini{
 position:fixed;
 bottom:20px;
 right:20px;
-width:200px;
 background:#25D366;
 border-radius:50px;
-text-align:center;
 }
 
 #chatBotMini a{
-display:block;
 color:white;
-text-decoration:none;
 padding:12px;
-font-weight:bold;
+display:block;
+text-decoration:none;
 }
 
 </style>
 
 <script>
 
-function showPage(pageId){
+// NAVIGATION
+function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(pageId).classList.add("active");
+document.getElementById(id).classList.add("active");
 }
 
 window.onload=function(){
 showPage('home');
 }
 
-/* FORUM */
+// ================= EVENT =================
+function toggleDetail(){
+let d=document.getElementById("detailEvent");
+d.style.display=(d.style.display=="none")?"block":"none";
+}
 
+function daftarEvent(){
+let nama=document.getElementById("namaEvent").value;
+if(nama==""){alert("Isi nama dulu");return;}
+document.getElementById("hasilDaftar").innerHTML=
+"Terima kasih <b>"+nama+"</b> sudah mendaftar!";
+}
+
+// ================= FORUM =================
 let idPost=0;
 
 function kirimKomentar(){
-
 let nama=document.getElementById("namaForum").value;
 let pesan=document.getElementById("pesanForum").value;
 
-if(nama==""||pesan==""){
-alert("Isi nama dan komentar dulu");
-return;
-}
+if(nama==""||pesan==""){alert("Isi dulu");return;}
 
 idPost++;
 
-let forum=document.getElementById("forumList");
-
 let post=document.createElement("div");
 post.className="post";
-post.id="post"+idPost;
 
 post.innerHTML=`
-<div class="nama">${nama}</div>
-<div>${pesan}</div>
-
-<button onclick="tampilBalas(${idPost})">Balas</button>
-
-<div id="balasForm${idPost}" style="display:none;">
-<input type="text" id="namaBalas${idPost}" placeholder="Nama">
-<textarea id="pesanBalas${idPost}" placeholder="Tulis balasan"></textarea>
-<button onclick="kirimBalasan(${idPost})">Kirim Balasan</button>
-</div>
-
-<div id="daftarBalasan${idPost}"></div>
+<b>${nama}</b><br>${pesan}
+<button onclick="balas(${idPost})">Balas</button>
+<div id="balasan${idPost}"></div>
 `;
 
-forum.prepend(post);
-
-document.getElementById("pesanForum").value="";
+document.getElementById("forumList").prepend(post);
 }
 
-function tampilBalas(id){
-
-let form=document.getElementById("balasForm"+id);
-
-if(form.style.display=="none"){
-form.style.display="block";
-}else{
-form.style.display="none";
+function balas(id){
+let isi=prompt("Tulis balasan:");
+if(isi){
+document.getElementById("balasan"+id).innerHTML+=
+"<div class='reply'>"+isi+"</div>";
 }
-
-}
-
-function kirimBalasan(id){
-
-let nama=document.getElementById("namaBalas"+id).value;
-let pesan=document.getElementById("pesanBalas"+id).value;
-
-if(nama==""||pesan==""){
-alert("Isi balasan dulu");
-return;
-}
-
-let balasan=document.createElement("div");
-balasan.className="reply";
-
-balasan.innerHTML=`
-<div class="nama">${nama}</div>
-<div>${pesan}</div>
-`;
-
-document.getElementById("daftarBalasan"+id).appendChild(balasan);
-
-document.getElementById("pesanBalas"+id).value="";
 }
 
 </script>
@@ -320,221 +198,140 @@ document.getElementById("pesanBalas"+id).value="";
 <body>
 
 <nav>
-
 <div class="nav-left">
-<a href="#" onclick="showPage('home')">Beranda</a>
-<a href="#" onclick="showPage('collection')">Koleksi</a>
-<a href="#" onclick="showPage('service')">Layanan</a>
-<a href="#" onclick="showPage('forum')">Forum</a>
-<a href="#" onclick="showPage('aboutadmin')">Profil</a>
-<a href="#" onclick="showPage('aboutus')">About Admin</a>
-<a href="#" onclick="showPage('contact')">Contact Us</a>
+<a onclick="showPage('home')">Beranda</a>
+<a onclick="showPage('collection')">Koleksi</a>
+<a onclick="showPage('service')">Layanan</a>
+<a onclick="showPage('event')">Event</a>
+<a onclick="showPage('forum')">Forum</a>
+<a onclick="showPage('aboutadmin')">Profil</a>
+<a onclick="showPage('aboutus')">About Admin</a>
+<a onclick="showPage('contact')">Contact</a>
 </div>
 
 <div class="nav-right">
-<a href="#" onclick="showPage('login')">Login</a>
-<a href="#" onclick="showPage('register')">Register</a>
+<a onclick="showPage('login')">Login</a>
+<a onclick="showPage('register')">Register</a>
 </div>
-
 </nav>
 
-<!-- BERANDA -->
-
+<!-- HOME -->
 <div id="home" class="page">
-
 <div class="hero">
 <span>SELAMAT DATANG DI PERPUSTAKAAN BHUMI HISTORIA</span>
 </div>
-
-<div class="quote">
-"Jasmerah! Jangan sekali-kali meninggalkan sejarah." – Bung Karno
-</div>
-
 </div>
 
 <!-- KOLEKSI -->
-
 <div id="collection" class="page">
 <div class="section">
 <h2>Koleksi</h2>
-
 <ul>
 <li>Infografis Naskah</li>
 <li>Biografi Pahlawan</li>
-<li>Foto, Gambar, Lukisan</li>
+<li>Foto & Lukisan</li>
 </ul>
-
 </div>
 </div>
 
 <!-- LAYANAN -->
-
 <div id="service" class="page">
 <div class="section">
 <h2>Jam Layanan</h2>
-
 <p>Senin - Jumat : 08.00 - 16.00</p>
 <p>Sabtu : 09.00 - 14.00</p>
+</div>
+</div>
+
+<!-- EVENT -->
+<div id="event" class="page">
+<div class="section">
+<h2>Pameran Buku Sejarah</h2>
+
+<div class="eventBox">
+<h3>Pameran Buku Nusantara</h3>
+<p>Tanggal: 20 April 2026</p>
+<button onclick="toggleDetail()">Lihat Detail</button>
+
+<div id="detailEvent" style="display:none;">
+<p>Menampilkan buku sejarah langka dan naskah kuno.</p>
+</div>
+</div>
+
+<h3>Daftar Event</h3>
+<input id="namaEvent" placeholder="Nama">
+<br><br>
+<button onclick="daftarEvent()">Daftar</button>
+<p id="hasilDaftar"></p>
 
 </div>
 </div>
 
 <!-- FORUM -->
-
 <div id="forum" class="page">
 <div class="section">
+<h2>Forum Diskusi</h2>
 
-<h2>Forum Diskusi Sejarah</h2>
-
-<input type="text" id="namaForum" placeholder="Nama">
-<textarea id="pesanForum" placeholder="Tulis komentar atau diskusi"></textarea>
+<input id="namaForum" placeholder="Nama">
+<textarea id="pesanForum"></textarea>
 <br><br>
-<button onclick="kirimKomentar()">Kirim Komentar</button>
+<button onclick="kirimKomentar()">Kirim</button>
 
 <div class="forumBox" id="forumList"></div>
-
 </div>
 </div>
 
 <!-- PROFIL -->
-
 <div id="aboutadmin" class="page">
-
 <div class="section">
-
 <h2>Profil Bhumi Historia</h2>
-
-<h3>Arti Nama Bhumi Historia</h3>
-
-<p>
-Bhumi Historia berasal dari kata Bhumi yang berarti bumi atau tanah,
-dan Historia yang berarti sejarah. Nama ini menggambarkan tempat
-yang menjadi wadah untuk menyimpan, menjaga, dan menyebarkan
-pengetahuan sejarah kepada masyarakat.
-</p>
-
-<h3>Visi</h3>
-
-<p>
-Bhumi Historia hadir sebagai ruang digital untuk melestarikan,
-mendokumentasikan, dan menyebarluaskan pengetahuan sejarah
-agar dapat diakses oleh pelajar, mahasiswa, peneliti,
-dan masyarakat umum.
-</p>
-
+<p>Bhumi Historia adalah wadah digital sejarah.</p>
+</div>
 </div>
 
-</div>
-
-<!-- ABOUT ADMIN -->
-
+<!-- ABOUT -->
 <div id="aboutus" class="page">
-
 <div class="section">
-
 <h2>About Admin</h2>
-
-<p><b>Nama :</b> Emia Br Perangin-Angin</p>
-<p><b>NIM :</b> 230709035</p>
-<p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
-
-<h3>Kenali Saya Lebih Lanjut</h3>
-
-<p>
-<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
-Instagram
-</a>
-</p>
-
-<p>
-<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
-Curriculum Vitae
-</a>
-</p>
-
-<h3>Lagu Favorit Saya</h3>
-
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/osdoLjUNFnA"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
+<p>Nama: Emia Br Perangin-Angin</p>
 </div>
-
 </div>
 
 <!-- CONTACT -->
-
 <div id="contact" class="page">
-
 <div class="section">
-
-<h2>Contact Us</h2>
-
+<h2>Contact</h2>
 <a href="https://wa.me/6282274070591" target="_blank">
-<button>Hubungi via WhatsApp</button>
+<button>WhatsApp</button>
 </a>
-
 </div>
-
 </div>
 
 <!-- LOGIN -->
-
 <div id="login" class="page">
-
-<div class="container">
-
+<div class="section">
 <h2>Login</h2>
-
-<form>
-
-<input type="email" placeholder="Email" required><br><br>
-<input type="password" placeholder="Password" required><br><br>
-
-<button type="submit">Login</button>
-
-</form>
-
+<input placeholder="Email">
+<input placeholder="Password">
+<button>Login</button>
 </div>
-
 </div>
 
 <!-- REGISTER -->
-
 <div id="register" class="page">
-
-<div class="container">
-
-<h2>Daftar Akun</h2>
-
-<form>
-
-<input type="text" placeholder="Last Name" required><br><br>
-<input type="text" placeholder="First Name" required><br><br>
-<input type="email" placeholder="Email" required><br><br>
-<input type="text" placeholder="No HP" required><br><br>
-<input type="password" placeholder="Password" required><br><br>
-
-<button type="submit">Daftar</button>
-
-</form>
-
+<div class="section">
+<h2>Register</h2>
+<input placeholder="Nama">
+<input placeholder="Email">
+<input placeholder="Password">
+<button>Daftar</button>
+</div>
 </div>
 
-</div>
-
-<!-- CHAT BOT MINI -->
-
+<!-- CHAT -->
 <div id="chatBotMini">
-
-<a href="https://wa.me/6282274070591" target="_blank">
-💬 Chat via WhatsApp
-</a>
-
+<a href="https://wa.me/6282274070591">💬 Chat WA</a>
 </div>
 
 </body>
 </html>
-```
