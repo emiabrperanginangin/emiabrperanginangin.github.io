@@ -58,22 +58,37 @@
 
         .nav-links a:hover { color: var(--secondary); }
 
-        /* --- HERO --- */
+        /* --- HERO SLIDESHOW --- */
         .hero {
-            height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070');
-            background-size: cover;
-            background-position: center;
+            height: 500px;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
+            overflow: hidden;
+            transition: background-image 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; color: var(--secondary); }
+        /* Overlay gelap agar teks terbaca */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .hero h1, .hero p, .hero .search-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; color: var(--secondary); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
 
         .search-container {
             margin-top: 25px;
@@ -221,18 +236,20 @@
 </nav>
 
 <div id="home" class="page active">
-    <div class="hero">
+    <div class="hero" id="hero-bg">
         <h1>BHUMI HISTORIA</h1>
-        <p>"JAS MERAH" Jangan Sekali-kali Melupakan Sejarah. Ir.Soekarno</p>
+        <p>"JAS MERAH" Jangan Sekali-kali Melupakan Sejarah. - Ir. Soekarno</p>
         <div class="search-container">
-            <input type="text" placeholder="Cari koleksi sejarah...">
+            <input type="text" placeholder="Cari naskah, peta, atau biografi...">
             <button>CARI</button>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 40px;">
-        <p id="clock" style="font-weight: bold; color: var(--secondary);"></p>
-        <h3>Statistik Pengunjung</h3>
-        <div style="font-size: 2rem; font-weight: bold;" id="visitorCount">0</div>
+    
+    <div style="padding: 50px 0; text-align: center;">
+        <h2 style="color: var(--primary);">Selamat Datang di Portal Sejarah Digital</h2>
+        <p style="max-width: 700px; margin: 0 auto; color: #555;">
+            Temukan berbagai arsip penting, naskah nusantara, dan catatan sejarah peradaban dunia dalam satu platform digital yang mudah diakses.
+        </p>
     </div>
 </div>
 
@@ -347,12 +364,14 @@
 </a>
 
 <script>
+    // --- FUNGSI NAVIGASI ---
     function showPage(id) {
         document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
         document.getElementById(id).classList.add("active");
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
+    // --- FUNGSI REGISTRASI ---
     function registerSukes() {
         const first = document.getElementById('regFirst').value;
         if(first) {
@@ -363,16 +382,26 @@
         }
     }
 
-    function updateClock() {
-        document.getElementById("clock").innerHTML = new Date().toLocaleString('id-ID');
+    // --- SLIDESHOW BACKGROUND HERO ---
+    const images = [
+        'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070', // Perpustakaan Klasik
+        'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2000', // Buku Tua
+        'https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=2074', // Patung/Museum
+        'https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1974'  // Naskah Kuno
+    ];
+
+    let currentIndex = 0;
+    const heroElement = document.getElementById('hero-bg');
+
+    function changeBackground() {
+        heroElement.style.backgroundImage = `url('${images[currentIndex]}')`;
+        currentIndex = (currentIndex + 1) % images.length;
     }
 
+    // Jalankan slideshow setiap 5 detik
     window.onload = function() {
-        setInterval(updateClock, 1000);
-        let count = localStorage.getItem("visitor") || 0;
-        count++;
-        localStorage.setItem("visitor", count);
-        document.getElementById("visitorCount").innerText = count;
+        changeBackground(); 
+        setInterval(changeBackground, 5000);
     }
 </script>
 
