@@ -1,351 +1,334 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>Bhumi Historia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhumi Historia | Perpustakaan Sejarah Digital</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3e2f1c; /* Cokelat Tua Sejarah */
+            --secondary: #c2a66b; /* Emas Klasik */
+            --accent: #8b4513;
+            --bg-paper: #f5f0e6; /* Warna kertas kuno */
+            --white: #ffffff;
+        }
 
-<style>
-body{
-font-family:"Georgia",serif;
-margin:0;
-background:#f5f0e6;
-color:#3e2f1c;
-}
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            background: var(--bg-paper);
+            color: var(--primary);
+            line-height: 1.6;
+        }
 
-/* NAV */
-nav{
-background:#3e2f1c;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        /* --- NAVIGASI --- */
+        nav {
+            background: var(--primary);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
 
-nav a{
-color:#f5e6c8;
-margin:0 10px;
-text-decoration:none;
-font-weight:bold;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
 
-nav a:hover{color:#c2a66b;}
+        .nav-links a {
+            color: #f5e6c8;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
-.logo img{width:40px;}
+        .nav-links a:hover { color: var(--secondary); }
 
-/* PAGE */
-.page{display:none;padding:30px;}
-.active{display:block;}
+        .btn-auth {
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-/* HERO */
-.hero{
-text-align:center;
-padding:80px;
-background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
-background-size:cover;
-color:white;
-}
+        /* --- HERO --- */
+        .hero {
+            height: 450px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=2074');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            border-bottom: 6px solid var(--secondary);
+        }
 
-.hero img{width:100px;}
+        .hero h1 { font-size: 3.5rem; margin-bottom: 5px; }
 
-/* SECTION */
-.section{
-background:white;
-padding:20px;
-margin:40px auto;
-border-radius:10px;
-max-width:900px;
-}
+        /* --- LAYOUT UTAMA --- */
+        .page { display: none; padding: 40px 10%; animation: fadeIn 0.6s ease; }
+        .active { display: block; }
 
-/* CARD */
-.card-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.card{
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
-cursor:pointer;
-}
+        .card-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            border-top: 4px solid var(--secondary);
+        }
 
-.card img{
-width:100%;
-height:150px;
-object-fit:cover;
-}
+        /* --- FORM LOGIN/REGIS --- */
+        .auth-box {
+            max-width: 450px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
 
-/* POPUP */
-#popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-}
+        .auth-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-.popup-content{
-background:white;
-padding:20px;
-border-radius:10px;
-text-align:center;
-}
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-/* FORUM */
-.forumBox{
-background:white;
-padding:20px;
-border-radius:8px;
-margin-top:20px;
-}
+        /* --- EVENT INTERAKTIF --- */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
 
-/* CHAT */
-#chatBotMini{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:15px;
-border-radius:50px;
-}
-</style>
+        .item-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.4s;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
 
-<script>
+        .item-card:hover { transform: translateY(-10px); }
+        .item-card img { width: 100%; height: 200px; object-fit: cover; }
+        .item-content { padding: 15px; text-align: center; }
 
-function showPage(id){
-document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(id).classList.add("active");
-}
-
-/* CLOCK */
-function updateClock(){
-let now=new Date();
-document.getElementById("clock").innerHTML=
-now.toLocaleDateString()+" | "+now.toLocaleTimeString();
-}
-
-/* SEARCH */
-function cariKoleksi(){
-let input=document.getElementById("searchKoleksi").value.toLowerCase();
-let cards=document.querySelectorAll(".card");
-
-cards.forEach(card=>{
-let text=card.innerText.toLowerCase();
-card.style.display=text.includes(input)?"block":"none";
-});
-}
-
-/* UPLOAD */
-function uploadKoleksi(){
-let judul=document.getElementById("judulUpload").value;
-let file=document.getElementById("gambarUpload").files[0];
-
-if(!judul || !file){alert("Isi dulu!");return;}
-
-let reader=new FileReader();
-
-reader.onload=function(e){
-let container=document.querySelector(".card-container");
-
-let card=document.createElement("div");
-card.className="card";
-
-card.innerHTML=`
-<img src="${e.target.result}">
-<p align="center">${judul}</p>
-`;
-
-container.appendChild(card);
-}
-
-reader.readAsDataURL(file);
-}
-
-/* POPUP */
-function showDetail(title,img){
-document.getElementById("popup").style.display="flex";
-document.getElementById("popupTitle").innerText=title;
-document.getElementById("popupImg").src=img;
-}
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
-
-/* VISITOR */
-function updateVisitor(){
-let count=localStorage.getItem("visitor") || 0;
-count++;
-localStorage.setItem("visitor", count);
-document.getElementById("visitorCount").innerText=count;
-}
-
-/* INIT */
-window.onload=function(){
-showPage('home');
-updateClock();
-setInterval(updateClock,1000);
-updateVisitor();
-}
-
-</script>
-
+        /* --- FOOTER CHAT --- */
+        #chatWA {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
-
 <body>
 
 <nav>
-<div class="logo">
-<img src="logo.png">
-<b style="color:#f5e6c8;">Bhumi Historia</b>
-</div>
-
-<div>
-<a onclick="showPage('home')">Beranda</a>
-<a onclick="showPage('collection')">Koleksi</a>
-<a onclick="showPage('event')">Event</a>
-<a onclick="showPage('service')">Layanan</a>
-<a onclick="showPage('forum')">Forum</a>
-<a onclick="showPage('aboutadmin')">Profil</a>
-<a onclick="showPage('aboutus')">About Admin</a>
-</div>
+    <a class="logo" onclick="showPage('home')">
+        <i class="fas fa-scroll"></i> <b>BHUMI HISTORIA</b>
+    </a>
+    <div class="nav-links">
+        <a onclick="showPage('home')">Beranda</a>
+        <a onclick="showPage('collection')">Koleksi</a>
+        <a onclick="showPage('event')">Event</a>
+        <a onclick="showPage('aboutadmin')">Profil</a>
+        <a onclick="showPage('aboutus')">About Admin</a>
+    </div>
+    <button class="btn-auth" onclick="showPage('login')">Masuk</button>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="page">
-<div class="hero">
-<img src="logo.png">
-<h1>Bhumi Historia</h1>
-<div id="clock"></div>
+<div id="home" class="page active">
+    <div class="hero">
+        <h1>Bhumi Historia</h1>
+        <p>Arsip Digital Pengetahuan Sejarah & Budaya</p>
+        <div id="clock" style="margin-top:20px; font-weight: bold; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 5px;"></div>
+    </div>
+    
+    <div class="card-section" style="margin-top: -40px;">
+        <h2 align="center">Selamat Datang</h2>
+        <p align="center">Pusat dokumentasi sejarah digital untuk masa depan bangsa.</p>
+        <hr>
+        <p align="center"><b>Total Pengunjung:</b> <span id="visitorCount">0</span></p>
+    </div>
 </div>
 
-<div class="section">
-<h3>Statistik Pengunjung</h3>
-<p>Total: <span id="visitorCount"></span></p>
-</div>
+<div id="login" class="page">
+    <div class="auth-box">
+        <h2>Masuk Akun</h2>
+        <input type="email" placeholder="Email Anda">
+        <input type="password" placeholder="Password">
+        <button class="btn-submit">Masuk</button>
+        <p>Belum punya akun? <a onclick="showPage('register')" style="color:var(--accent); cursor:pointer;">Daftar di sini</a></p>
+    </div>
 </div>
 
-<!-- KOLEKSI -->
+<div id="register" class="page">
+    <div class="auth-box">
+        <h2>Pendaftaran Anggota</h2>
+        <input type="text" id="regFirst" placeholder="First Name">
+        <input type="text" id="regLast" placeholder="Last Name">
+        <input type="email" id="regEmail" placeholder="Email">
+        <input type="tel" id="regPhone" placeholder="No. Handphone (08...)">
+        <input type="password" placeholder="Password Baru">
+        <button class="btn-submit" onclick="registerSukes()">Daftar</button>
+    </div>
+</div>
+
 <div id="collection" class="page">
-
-<div class="section">
-<input type="text" id="searchKoleksi" placeholder="Cari koleksi..." onkeyup="cariKoleksi()">
+    <div class="card-section">
+        <h3>Cari Arsip</h3>
+        <input type="text" id="searchKoleksi" onkeyup="cariKoleksi()" placeholder="Cari judul..." style="width:100%; padding:10px;">
+    </div>
+    <div class="grid-container" id="collectionGrid">
+        <div class="item-card card">
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+            <div class="item-content"><b>Infografis Sejarah</b></div>
+        </div>
+        <div class="item-card card">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66">
+            <div class="item-content"><b>Biografi Tokoh</b></div>
+        </div>
+    </div>
 </div>
 
-<div class="section">
-<div class="card-container">
-
-<div class="card" onclick="showDetail('Infografis','https://images.unsplash.com/photo-1512820790803-83ca734da794')">
-<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
-<p align="center">Infografis</p>
-</div>
-
-<div class="card" onclick="showDetail('Biografi','https://images.unsplash.com/photo-1507842217343-583bb7270b66')">
-<img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66">
-<p align="center">Biografi</p>
-</div>
-
-</div>
-</div>
-
-<div class="section">
-<h3>Upload Koleksi</h3>
-<input type="text" id="judulUpload" placeholder="Judul"><br><br>
-<input type="file" id="gambarUpload"><br><br>
-<button onclick="uploadKoleksi()">Upload</button>
-</div>
-
-</div>
-
-<!-- EVENT -->
 <div id="event" class="page">
-<div class="section">
-<h2>Event</h2>
-<p>Pameran Sejarah, Naskah, dan Lukisan</p>
-</div>
-</div>
-
-<!-- SERVICE -->
-<div id="service" class="page">
-<div class="section">
-<h2>Jam Layanan</h2>
-<p>Senin - Jumat : 08.00 - 16.00</p>
-<p>Sabtu : 09.00 - 14.00</p>
-</div>
-</div>
-
-<!-- FORUM -->
-<div id="forum" class="page">
-<div class="section">
-<textarea placeholder="Diskusi..."></textarea><br><br>
-<button>Kirim</button>
-</div>
+    <h2 align="center">Event & Pameran Terdekat</h2>
+    <div class="grid-container">
+        <div class="item-card" onclick="alert('Event: Pameran Lukisan Klasik\nLokasi: Galeri Nasional\nTanggal: 20 Mei 2026')">
+            <img src="https://images.unsplash.com/photo-1577083552431-6e5fd01988ec">
+            <div class="item-content">
+                <b>Pameran Lukisan Sejarah</b>
+                <p>Klik untuk Detail</p>
+            </div>
+        </div>
+        <div class="item-card" onclick="alert('Event: Webinar Naskah Kuno\nVia: Zoom Meeting\nJam: 10.00 WIB')">
+            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765">
+            <div class="item-content">
+                <b>Webinar Naskah Nusantara</b>
+                <p>Klik untuk Detail</p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- PROFIL -->
 <div id="aboutadmin" class="page">
-<div class="section">
-<h2>Profil Bhumi Historia</h2>
-<h3>Arti Nama Bhumi Historia</h3>
-<p>Bhumi Historia berasal dari kata Bhumi yang berarti bumi atau tanah, dan Historia yang berarti sejarah. Nama ini menggambarkan tempat yang menjadi wadah untuk menyimpan, menjaga, dan menyebarkan pengetahuan sejarah kepada masyarakat.</p>
-<h3>Visi</h3>
-<p>Bhumi Historia hadir sebagai ruang digital untuk melestarikan, mendokumentasikan, dan menyebarluaskan pengetahuan sejarah agar dapat diakses oleh pelajar, mahasiswa, peneliti, dan masyarakat umum.</p>
-</div>
+    <div class="card-section">
+        <h2>Profil Bhumi Historia</h2>
+        <h3>Arti Nama</h3>
+        <p><b>Bhumi Historia</b> berasal dari kata <i>Bhumi</i> (Bumi/Tanah) dan <i>Historia</i> (Sejarah). Nama ini bermakna sebagai landasan atau wadah di mana sejarah dunia berpijak dan dilestarikan.</p>
+        <hr>
+        <h3>Visi & Misi</h3>
+        <p>Menjadi pusat referensi sejarah digital yang kredibel bagi mahasiswa, peneliti, dan masyarakat umum demi menjaga memori kolektif bangsa.</p>
+    </div>
 </div>
 
-<!-- ABOUT ADMIN -->
 <div id="aboutus" class="page">
-<div class="section">
-<h2>About Admin</h2>
-<p><b>Nama :</b> Emia Br Perangin-Angin</p>
-<p><b>NIM :</b> 230709035</p>
-<p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
+    <div class="card-section" style="text-align: center;">
+        <h2>Tentang Pengembang</h2>
+        <img src="https://ui-avatars.com/api/?name=Emia+Perangin&background=3e2f1c&color=fff&size=150" style="border-radius: 50%; border: 4px solid var(--secondary);">
+        <h3>Emia Br Perangin-Angin</h3>
+        <p><b>NIM :</b> 230709035</p>
+        <p><b>Prodi :</b> Perpustakaan dan Sains Informasi</p>
+        <div style="margin: 20px 0;">
+            <a href="https://www.instagram.com/emia.prgn" target="_blank" style="margin: 10px; color: var(--accent); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="margin: 10px; color: var(--accent); font-size: 1.5rem;"><i class="fas fa-file-pdf"></i></a>
+        </div>
+        <h4>Lagu Favorit</h4>
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/osdoLjUNFnA" frameborder="0" style="border-radius: 10px;"></iframe>
+    </div>
+</div>
 
-<h3>Kenali Saya Lebih Lanjut</h3>
-
-<p>
-<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
-Instagram
+<a id="chatWA" href="https://wa.me/6282274070591">
+    <i class="fab fa-whatsapp"></i> Chat Admin
 </a>
-</p>
 
-<p>
-<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
-Curriculum Vitae
-</a>
-</p>
+<script>
+    function showPage(id) {
+        document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        window.scrollTo(0,0);
+    }
 
-<h3>Lagu Favorit Saya</h3>
+    function registerSukes() {
+        const first = document.getElementById('regFirst').value;
+        const last = document.getElementById('regLast').value;
+        const email = document.getElementById('regEmail').value;
+        
+        if(first && last && email) {
+            alert("Halo " + first + " " + last + ", Anda telah TERDAFTAR sebagai anggota Bhumi Historia!");
+            showPage('login');
+        } else {
+            alert("Mohon lengkapi seluruh formulir!");
+        }
+    }
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/osdoLjUNFnA"
-frameborder="0"
-allowfullscreen>
-</iframe>
+    function updateClock() {
+        let now = new Date();
+        document.getElementById("clock").innerHTML = now.toLocaleString('id-ID');
+    }
 
-</div>
-</div>
+    function cariKoleksi() {
+        let input = document.getElementById("searchKoleksi").value.toLowerCase();
+        let cards = document.querySelectorAll(".card");
+        cards.forEach(card => {
+            card.style.display = card.innerText.toLowerCase().includes(input) ? "block" : "none";
+        });
+    }
 
-<!-- POPUP -->
-<div id="popup" onclick="closePopup()">
-<div class="popup-content">
-<h3 id="popupTitle"></h3>
-<img id="popupImg" width="300">
-</div>
-</div>
-
-<div id="chatBotMini">
-<a href="https://wa.me/6282274070591">💬 Chat</a>
-</div>
+    window.onload = function() {
+        setInterval(updateClock, 1000);
+        let count = localStorage.getItem("visitor") || 0;
+        count++;
+        localStorage.setItem("visitor", count);
+        document.getElementById("visitorCount").innerText = count;
+    }
+</script>
 
 </body>
 </html>
