@@ -4,27 +4,20 @@
 <title>Bhumi Historia</title>
 
 <style>
-
-/* GLOBAL */
 body{
 font-family:"Georgia",serif;
 margin:0;
 background:#f5f0e6;
 color:#3e2f1c;
-scroll-behavior:smooth;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
-position:sticky;
-top:0;
 background:#3e2f1c;
-padding:12px 30px;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-z-index:999;
-box-shadow:0 2px 10px rgba(0,0,0,0.3);
 }
 
 nav a{
@@ -41,82 +34,45 @@ display:flex;
 align-items:center;
 gap:10px;
 }
-
-.logo img{
-width:40px;
-}
+.logo img{width:40px;}
 
 /* PAGE */
 .page{display:none;padding:30px;}
-.active{display:block;animation:fade 0.5s;}
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-/* SLIDER */
-.slider{
-position:relative;
-height:300px;
-overflow:hidden;
-border-radius:10px;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-opacity:0;
-transition:1s;
-}
-
-.slide.active{
-opacity:1;
-}
+.active{display:block;}
 
 /* HERO */
 .hero{
 text-align:center;
-margin-top:20px;
+padding:80px;
+background:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
+background-size:cover;
+color:white;
 }
 
-.hero img{
-width:100px;
-}
+.hero img{width:100px;}
 
 /* SECTION */
 .section{
 background:white;
 padding:20px;
+margin:40px auto;
 border-radius:10px;
 max-width:900px;
-margin:40px auto;
-box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* CARD */
 .card-container{
-display:flex;
-flex-wrap:wrap;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
-justify-content:center;
 }
 
 .card{
-width:250px;
 background:white;
 border-radius:10px;
 overflow:hidden;
 box-shadow:0 4px 10px rgba(0,0,0,0.2);
 cursor:pointer;
-transition:0.3s;
-}
-
-.card:hover{
-transform:scale(1.05);
 }
 
 .card img{
@@ -145,12 +101,6 @@ border-radius:10px;
 text-align:center;
 }
 
-/* JAM */
-.clock{
-text-align:center;
-margin-top:10px;
-}
-
 /* FORUM */
 .forumBox{
 background:white;
@@ -158,9 +108,6 @@ padding:20px;
 border-radius:8px;
 margin-top:20px;
 }
-
-.post{padding:10px;border-bottom:1px solid #ddd;}
-.reply{margin-left:20px;background:#eee;padding:5px;border-radius:5px;}
 
 /* CHAT */
 #chatBotMini{
@@ -171,12 +118,10 @@ background:#25D366;
 padding:15px;
 border-radius:50px;
 }
-
 </style>
 
 <script>
 
-/* PAGE */
 function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(id).classList.add("active");
@@ -189,13 +134,41 @@ document.getElementById("clock").innerHTML=
 now.toLocaleDateString()+" | "+now.toLocaleTimeString();
 }
 
-/* SLIDER */
-let index=0;
-function autoSlide(){
-let slides=document.querySelectorAll(".slide");
-slides.forEach(s=>s.classList.remove("active"));
-index=(index+1)%slides.length;
-slides[index].classList.add("active");
+/* SEARCH */
+function cariKoleksi(){
+let input=document.getElementById("searchKoleksi").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+let text=card.innerText.toLowerCase();
+card.style.display=text.includes(input)?"block":"none";
+});
+}
+
+/* UPLOAD */
+function uploadKoleksi(){
+let judul=document.getElementById("judulUpload").value;
+let file=document.getElementById("gambarUpload").files[0];
+
+if(!judul || !file){alert("Isi dulu!");return;}
+
+let reader=new FileReader();
+
+reader.onload=function(e){
+let container=document.querySelector(".card-container");
+
+let card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<img src="${e.target.result}">
+<p align="center">${judul}</p>
+`;
+
+container.appendChild(card);
+}
+
+reader.readAsDataURL(file);
 }
 
 /* POPUP */
@@ -208,49 +181,12 @@ function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
-/* FORUM */
-let idPost=0;
-
-function kirimKomentar(){
-let nama=document.getElementById("namaForum").value;
-let pesan=document.getElementById("pesanForum").value;
-
-if(nama==""||pesan==""){alert("Isi dulu");return;}
-
-idPost++;
-
-let forum=document.getElementById("forumList");
-
-let post=document.createElement("div");
-post.className="post";
-
-post.innerHTML=`
-<b>${nama}</b><br>${pesan}
-<br><button onclick="tampilBalas(${idPost})">Balas</button>
-<div id="balasForm${idPost}" style="display:none;">
-<input id="namaBalas${idPost}">
-<textarea id="pesanBalas${idPost}"></textarea>
-<button onclick="kirimBalasan(${idPost})">Kirim</button>
-</div>
-<div id="daftarBalasan${idPost}"></div>
-`;
-
-forum.prepend(post);
-}
-
-function tampilBalas(id){
-let f=document.getElementById("balasForm"+id);
-f.style.display=(f.style.display=="none")?"block":"none";
-}
-
-function kirimBalasan(id){
-let nama=document.getElementById("namaBalas"+id).value;
-let pesan=document.getElementById("pesanBalas"+id).value;
-
-let balasan=document.createElement("div");
-balasan.className="reply";
-balasan.innerHTML=`<b>${nama}</b>: ${pesan}`;
-document.getElementById("daftarBalasan"+id).appendChild(balasan);
+/* VISITOR */
+function updateVisitor(){
+let count=localStorage.getItem("visitor") || 0;
+count++;
+localStorage.setItem("visitor", count);
+document.getElementById("visitorCount").innerText=count;
 }
 
 /* INIT */
@@ -258,7 +194,7 @@ window.onload=function(){
 showPage('home');
 updateClock();
 setInterval(updateClock,1000);
-setInterval(autoSlide,3000);
+updateVisitor();
 }
 
 </script>
@@ -276,6 +212,7 @@ setInterval(autoSlide,3000);
 <div>
 <a onclick="showPage('home')">Beranda</a>
 <a onclick="showPage('collection')">Koleksi</a>
+<a onclick="showPage('event')">Event</a>
 <a onclick="showPage('service')">Layanan</a>
 <a onclick="showPage('forum')">Forum</a>
 <a onclick="showPage('aboutadmin')">Profil</a>
@@ -285,52 +222,55 @@ setInterval(autoSlide,3000);
 
 <!-- HOME -->
 <div id="home" class="page">
-
-<div class="slider">
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d')"></div>
-</div>
-
 <div class="hero">
 <img src="logo.png">
-<h2>SELAMAT DATANG DI PERPUSTAKAAN BHUMI HISTORIA</h2>
-<div class="clock" id="clock"></div>
+<h1>Bhumi Historia</h1>
+<div id="clock"></div>
 </div>
 
 <div class="section">
-<h2>Pameran</h2>
+<h3>Statistik Pengunjung</h3>
+<p>Total: <span id="visitorCount"></span></p>
+</div>
+</div>
 
+<!-- KOLEKSI -->
+<div id="collection" class="page">
+
+<div class="section">
+<input type="text" id="searchKoleksi" placeholder="Cari koleksi..." onkeyup="cariKoleksi()">
+</div>
+
+<div class="section">
 <div class="card-container">
+
 <div class="card" onclick="showDetail('Infografis','https://images.unsplash.com/photo-1512820790803-83ca734da794')">
 <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
 <p align="center">Infografis</p>
 </div>
 
-<div class="card" onclick="showDetail('Naskah','https://images.unsplash.com/photo-1507842217343-583bb7270b66')">
+<div class="card" onclick="showDetail('Biografi','https://images.unsplash.com/photo-1507842217343-583bb7270b66')">
 <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66">
-<p align="center">Naskah</p>
-</div>
-
-<div class="card" onclick="showDetail('Lukisan','https://images.unsplash.com/photo-1495446815901-a7297e633e8d')">
-<img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d">
-<p align="center">Lukisan</p>
-</div>
+<p align="center">Biografi</p>
 </div>
 
 </div>
-
 </div>
 
-<!-- KOLEKSI (ISI ASLI TETAP) -->
-<div id="collection" class="page">
 <div class="section">
-<h2>Koleksi</h2>
-<ul>
-<li>Infografis Naskah</li>
-<li>Biografi Pahlawan</li>
-<li>Foto, Gambar, Lukisan</li>
-</ul>
+<h3>Upload Koleksi</h3>
+<input type="text" id="judulUpload" placeholder="Judul"><br><br>
+<input type="file" id="gambarUpload"><br><br>
+<button onclick="uploadKoleksi()">Upload</button>
+</div>
+
+</div>
+
+<!-- EVENT -->
+<div id="event" class="page">
+<div class="section">
+<h2>Event</h2>
+<p>Pameran Sejarah, Naskah, dan Lukisan</p>
 </div>
 </div>
 
@@ -346,10 +286,52 @@ setInterval(autoSlide,3000);
 <!-- FORUM -->
 <div id="forum" class="page">
 <div class="section">
-<input id="namaForum" placeholder="Nama">
-<textarea id="pesanForum"></textarea><br>
-<button onclick="kirimKomentar()">Kirim</button>
-<div class="forumBox" id="forumList"></div>
+<textarea placeholder="Diskusi..."></textarea><br><br>
+<button>Kirim</button>
+</div>
+</div>
+
+<!-- PROFIL -->
+<div id="aboutadmin" class="page">
+<div class="section">
+<h2>Profil Bhumi Historia</h2>
+<h3>Arti Nama Bhumi Historia</h3>
+<p>Bhumi Historia berasal dari kata Bhumi yang berarti bumi atau tanah, dan Historia yang berarti sejarah. Nama ini menggambarkan tempat yang menjadi wadah untuk menyimpan, menjaga, dan menyebarkan pengetahuan sejarah kepada masyarakat.</p>
+<h3>Visi</h3>
+<p>Bhumi Historia hadir sebagai ruang digital untuk melestarikan, mendokumentasikan, dan menyebarluaskan pengetahuan sejarah agar dapat diakses oleh pelajar, mahasiswa, peneliti, dan masyarakat umum.</p>
+</div>
+</div>
+
+<!-- ABOUT ADMIN -->
+<div id="aboutus" class="page">
+<div class="section">
+<h2>About Admin</h2>
+<p><b>Nama :</b> Emia Br Perangin-Angin</p>
+<p><b>NIM :</b> 230709035</p>
+<p><b>Program Studi :</b> Perpustakaan dan Sains Informasi</p>
+
+<h3>Kenali Saya Lebih Lanjut</h3>
+
+<p>
+<a href="https://www.instagram.com/emia.prgn?igsh=dTVlam4wamhibXVz" target="_blank">
+Instagram
+</a>
+</p>
+
+<p>
+<a href="https://drive.google.com/file/d/1ifHWUd7YWswCRChKAUJR3FvjmWw4aDns/view?usp=sharing" target="_blank">
+Curriculum Vitae
+</a>
+</p>
+
+<h3>Lagu Favorit Saya</h3>
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/osdoLjUNFnA"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
 </div>
 </div>
 
