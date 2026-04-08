@@ -13,6 +13,7 @@
             --bg-paper: #efebe9; /* Warna kertas lama */
             --white: #ffffff;
             --accent: #8d6e63;
+            --label-blue: #1565c0; /* Warna biru untuk label seperti di gambar */
         }
 
         body { 
@@ -98,27 +99,62 @@
         .section-title h2 { color: var(--primary); font-size: 2rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
         .section-title .line { width: 60px; height: 3px; background: var(--secondary); margin: 0 auto; }
 
-        /* --- KOLEKSI GRID --- */
+        /* --- KOLEKSI GRID (MODIFIED TO MATCH IMAGE) --- */
         .container { width: 85%; margin: 0 auto; }
-        .koleksi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .koleksi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        
         .koleksi-item { 
             background: var(--white); 
-            border-bottom: 4px solid var(--secondary); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
             transition: 0.3s; 
             border-radius: 4px;
             overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
         }
-        .koleksi-item:hover { transform: translateY(-8px); }
-        .koleksi-img { height: 180px; background-size: cover; background-position: center; }
-        .koleksi-info { padding: 20px; }
-        .koleksi-info h4 { margin: 0; color: var(--primary); font-size: 1.2rem; }
-        .koleksi-info p { font-size: 0.85rem; color: #5d4037; margin: 12px 0; line-height: 1.5; }
-        .koleksi-stats { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #efebe9; padding-top: 15px; }
-        .btn-view { background: var(--primary); color: white; padding: 7px 18px; text-decoration: none; font-size: 0.8rem; border-radius: 3px; transition: 0.3s; }
-        .btn-view:hover { background: var(--secondary); }
+        .koleksi-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        /* Badge Label seperti di gambar */
+        .item-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--label-blue);
+            color: white;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
+        }
 
-        /* --- COKLAT BANNER (REPLACEMENT FOR BLUE) --- */
+        .koleksi-img { 
+            height: 150px; 
+            background-image: url('https://khastara.perpusnas.go.id/uploads/opac/koleksi_digital_default.jpg'); /* Placeholder naskah */
+            background-size: cover; 
+            background-position: center; 
+            border-bottom: 1px solid #eee;
+        }
+        
+        .koleksi-info { padding: 15px; text-align: center; flex-grow: 1; }
+        .koleksi-info h4 { 
+            margin: 0; 
+            color: #333; 
+            font-size: 0.95rem; 
+            line-height: 1.4;
+            height: 2.8em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .koleksi-info .date { font-size: 0.75rem; color: #888; margin-top: 10px; display: block; }
+
+        /* --- COKLAT BANNER --- */
         .banner-brown { 
             background: var(--primary); 
             color: #d7ccc8; 
@@ -215,44 +251,46 @@
 
     <div class="container">
         <div class="section-title">
-            <h2>Koleksi Utama</h2>
+            <h2>Koleksi Unggulan</h2>
             <div class="line"></div>
         </div>
         
         <div class="koleksi-grid">
             <div class="koleksi-item">
-                <div class="koleksi-img" style="background-image: url('https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?q=80&w=2070');"></div>
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
+                <div class="koleksi-img"></div>
                 <div class="koleksi-info">
-                    <h4>Naskah Kuno</h4>
-                    <p>Manuskrip tulisan tangan asli di atas daun lontar dan kertas kuno dari berbagai kesultanan Nusantara.</p>
-                    <div class="koleksi-stats">
-                        <span style="font-size: 0.75rem; color: var(--primary);"><i class="fas fa-book-open"></i> 1.240 Arsip</span>
-                        <a onclick="showPage('collection')" class="btn-view" style="cursor:pointer">Buka</a>
-                    </div>
+                    <h4>Bijvoegsel tot het staatsblad van het koninkrijk der Nederlanden...</h4>
+                    <span class="date">3/8/2017</span>
                 </div>
             </div>
             <div class="koleksi-item">
-                <div class="koleksi-img" style="background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=2033');"></div>
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
+                <div class="koleksi-img"></div>
                 <div class="koleksi-info">
-                    <h4>Peta Sejarah</h4>
-                    <p>Koleksi peta navigasi kuno yang menggambarkan jalur rempah dan wilayah Indonesia di masa kolonial.</p>
-                    <div class="koleksi-stats">
-                        <span style="font-size: 0.75rem; color: var(--primary);"><i class="fas fa-map-marked-alt"></i> 850 Item</span>
-                        <a onclick="showPage('collection')" class="btn-view" style="cursor:pointer">Buka</a>
-                    </div>
+                    <h4>The Asiatic journal and monthly register for british and foreign...</h4>
+                    <span class="date">3/13/2012</span>
                 </div>
             </div>
             <div class="koleksi-item">
-                <div class="koleksi-img" style="background-image: url('https://images.unsplash.com/photo-1551029170-143694364671?q=80&w=2086');"></div>
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
                 <div class="koleksi-info">
-                    <h4>Biografi Tokoh</h4>
-                    <p>Arsip foto dan catatan sejarah para pahlawan nasional yang membentuk kedaulatan bangsa Indonesia.</p>
-                    <div class="koleksi-stats">
-                        <span style="font-size: 0.75rem; color: var(--primary);"><i class="fas fa-user-shield"></i> 420 Tokoh</span>
-                        <a onclick="showPage('collection')" class="btn-view" style="cursor:pointer">Buka</a>
-                    </div>
+                    <h4>Syarh 'Aja'ib al-Qalb</h4>
+                    <span class="date">11/21/2007</span>
                 </div>
             </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-book"></i> Monograf</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Hubungan faktor-faktor dalam pembentukan reputasi...</h4>
+                    <span class="date">11/21/2011</span>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn-view" onclick="showPage('collection')" style="padding: 12px 30px; cursor: pointer; border: none;">Lihat Semua Koleksi Digital</button>
         </div>
     </div>
 
@@ -318,10 +356,96 @@
 </div>
 
 <div id="collection" class="page">
-    <div class="container" style="padding: 50px 0; text-align: center;">
-        <h2 style="color: var(--primary);">Arsip Koleksi Digital</h2>
-        <p>Halaman ini sedang dalam proses sinkronisasi dengan database Perpustakaan Nasional.</p>
-        <button class="btn-full" style="max-width: 200px;" onclick="showPage('home')">Kembali ke Beranda</button>
+    <div class="container" style="padding: 40px 0;">
+        <h2 style="color: var(--primary); text-align: center; text-transform: uppercase;">Arsip Koleksi Digital</h2>
+        <p style="text-align: center; margin-bottom: 40px;">Menampilkan hasil dari database Perpustakaan Nasional</p>
+        
+        <div class="koleksi-grid">
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Bijvoegsel tot het staatsblad van het koninkrijk der Nederlanden...</h4>
+                    <span class="date">3/8/2017</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>The Asiatic journal and monthly register for british and foreign...</h4>
+                    <span class="date">3/13/2012</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Syarh 'Aja'ib al-Qalb</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-book"></i> Monograf</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Hubungan faktor-faktor dalam pembentukan reputasi...</h4>
+                    <span class="date">11/21/2011</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-book"></i> Monograf</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Tafel voor snel opslaan van Coördinaten verschillen...</h4>
+                    <span class="date">12/11/2006</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Fath al-Muluk</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Ilm At-Tasawwuf</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-archive"></i> Bahan Campuran</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Industri Lampu Pijar-Peninjauan : Menteri Perindustrian M. Jus...</h4>
+                    <span class="date">7/11/2011</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-archive"></i> Bahan Campuran</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Demonstrasi anggota-anggota gerakan anti komunis...</h4>
+                    <span class="date">7/14/2011</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-archive"></i> Bahan Campuran</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Pembukaan, upacara [gambar] : pembukaan PT. Gunung Agun...</h4>
+                    <span class="date">3/28/2011</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center;">
+             <button class="btn-full" style="max-width: 200px;" onclick="showPage('home')">Kembali ke Beranda</button>
+        </div>
     </div>
 </div>
 
@@ -376,6 +500,15 @@
         <h2 style="color: var(--primary); margin-top: 20px;">Emia Br Perangin-Angin</h2>
         <p style="color: var(--secondary); font-weight: bold; font-size: 1.1rem;">NIM: 230709035</p>
         <p>Program Studi Perpustakaan dan Sains Informasi</p>
+        
+        <div style="margin-top: 40px; padding: 20px; border-top: 1px dashed #d7ccc8;">
+            <h4 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-music"></i> Lagu Favorit</h4>
+            <div style="max-width: 560px; margin: 0 auto; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/ItvyueWMAjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top: 10px; font-style: italic; font-size: 0.9rem; color: #795548;">Sal Priadi - Gala Bunga Matahari</p>
+        </div>
+
         <div style="margin-top: 30px;">
             <a href="https://www.instagram.com/emia.prgn" target="_blank" style="font-size: 2.2rem; color: var(--primary); margin: 0 15px;"><i class="fab fa-instagram"></i></a>
             <a href="#" style="font-size: 2.2rem; color: var(--primary); margin: 0 15px;"><i class="fas fa-envelope"></i></a>
@@ -422,11 +555,8 @@
 <script>
     // Fungsi Navigasi Menu
     function showPage(id) {
-        // Hilangkan class active dari semua page
         document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-        // Tambahkan ke page yang dipilih
         document.getElementById(id).classList.add("active");
-        // Scroll ke atas otomatis
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
