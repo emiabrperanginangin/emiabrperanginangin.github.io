@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,13 +8,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #5d4037; 
-            --secondary: #b8860b; 
+            --primary: #5d4037; /* Coklat Tua Klasik */
+            --secondary: #b8860b; /* Emas */
             --dark: #2c1e12;
-            --bg-paper: #efebe9; 
+            --bg-paper: #efebe9; /* Warna kertas lama */
             --white: #ffffff;
             --accent: #8d6e63;
-            --label-blue: #1565c0; 
+            --label-blue: #1565c0; /* Warna biru untuk label seperti di gambar */
         }
 
         body { 
@@ -21,10 +22,10 @@
             margin: 0; 
             background: var(--bg-paper); 
             color: #3e2723; 
-            overflow-x: hidden;
+            overflow-x: hidden; 
         }
 
-        /* --- NAVIGATION --- */
+        /* --- NAV --- */
         nav { 
             background: var(--primary); 
             padding: 15px 8%; 
@@ -44,6 +45,7 @@
             font-size: 1.4rem; 
             text-decoration: none; 
             font-weight: bold; 
+            cursor: pointer;
         }
         .nav-links a { 
             color: #d7ccc8; 
@@ -56,7 +58,7 @@
         }
         .nav-links a:hover { color: var(--secondary); }
 
-        /* --- HERO --- */
+        /* --- HERO SLIDESHOW --- */
         .hero { 
             height: 450px; 
             position: relative; 
@@ -67,7 +69,7 @@
             text-align: center; 
             background-size: cover; 
             background-position: center; 
-            background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070');
+            transition: 1s; 
         }
         .hero::before { 
             content: ""; 
@@ -76,211 +78,515 @@
             background: rgba(44, 30, 18, 0.6); 
         }
         .hero-content { position: relative; z-index: 2; width: 60%; }
+        .search-box { 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 5px; 
+            border-radius: 5px; 
+            display: flex; 
+            margin-top: 20px; 
+        }
+        .search-box input { flex: 1; border: none; padding: 12px; outline: none; background: transparent; }
+        .search-box button { 
+            background: var(--primary); 
+            color: white; 
+            border: none; 
+            padding: 0 20px; 
+            cursor: pointer; 
+            border-radius: 3px; 
+        }
 
-        /* --- CONTAINER & TITLES --- */
-        .container { width: 85%; margin: 0 auto; }
+        /* --- SECTION TITLES --- */
         .section-title { text-align: center; margin: 50px 0 30px; }
-        .section-title h2 { color: var(--primary); font-size: 2rem; text-transform: uppercase; letter-spacing: 2px; }
-        .line { width: 60px; height: 3px; background: var(--secondary); margin: 0 auto; }
+        .section-title h2 { color: var(--primary); font-size: 2rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 2px; }
+        .section-title .line { width: 60px; height: 3px; background: var(--secondary); margin: 0 auto; }
 
-        /* --- GRID COLLECTIONS --- */
+        /* --- KOLEKSI GRID (MODIFIED TO MATCH IMAGE) --- */
+        .container { width: 85%; margin: 0 auto; }
         .koleksi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        
         .koleksi-item { 
             background: var(--white); 
-            border-radius: 4px; 
-            overflow: hidden; 
-            border: 1px solid #ddd; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
             transition: 0.3s; 
+            border-radius: 4px;
+            overflow: hidden;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #ddd;
         }
-        .koleksi-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .item-label { 
-            position: absolute; top: 10px; left: 10px; 
-            background: var(--label-blue); color: white; 
-            font-size: 0.65rem; padding: 4px 10px; border-radius: 3px; z-index: 2; 
+        .koleksi-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        
+        /* Badge Label seperti di gambar */
+        .item-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--label-blue);
+            color: white;
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 2;
         }
-        .koleksi-img { height: 150px; background-image: url('https://khastara.perpusnas.go.id/uploads/opac/koleksi_digital_default.jpg'); background-size: cover; }
-        .koleksi-info { padding: 15px; text-align: center; }
 
-        /* --- ABOUT ADMIN CARD --- */
-        .admin-profile-card { 
-            background: white; 
-            border-radius: 15px; 
-            padding: 40px; 
-            border: 1px solid #d7ccc8; 
-            display: grid; 
-            grid-template-columns: 300px 1fr; 
-            gap: 40px; 
-            margin-top: 30px;
+        .koleksi-img { 
+            height: 150px; 
+            background-image: url('https://khastara.perpusnas.go.id/uploads/opac/koleksi_digital_default.jpg'); /* Placeholder naskah */
+            background-size: cover; 
+            background-position: center; 
+            border-bottom: 1px solid #eee;
         }
-        .fav-section { 
-            margin-top: 20px; 
-            padding: 15px; 
-            background: var(--bg-paper); 
-            border-radius: 8px; 
-            text-align: center;
+        
+        .koleksi-info { padding: 15px; text-align: center; flex-grow: 1; }
+        .koleksi-info h4 { 
+            margin: 0; 
+            color: #333; 
+            font-size: 0.95rem; 
+            line-height: 1.4;
+            height: 2.8em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
         }
+        .koleksi-info .date { font-size: 0.75rem; color: #888; margin-top: 10px; display: block; }
+
+        /* --- COKLAT BANNER --- */
+        .banner-brown { 
+            background: var(--primary); 
+            color: #d7ccc8; 
+            padding: 70px 0; 
+            text-align: center; 
+            margin: 60px 0; 
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png'); 
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        }
+        .banner-brown h2 { color: var(--secondary); font-size: 2.2rem; margin-bottom: 15px; }
+        .banner-brown button { 
+            background: var(--secondary); 
+            color: var(--white); 
+            border: none; 
+            padding: 12px 30px; 
+            font-weight: bold; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin-top: 25px; 
+            transition: 0.3s;
+        }
+        .banner-brown button:hover { background: #946d08; transform: scale(1.05); }
+
+        /* --- VIDEO SECTION --- */
+        .video-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .video-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid #d7ccc8; }
+        .video-placeholder { 
+            background: #000; 
+            height: 220px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            background-size: cover;
+            background-position: center;
+        }
+        .play-btn { font-size: 3.5rem; color: var(--secondary); opacity: 0.9; transition: 0.3s; cursor: pointer; text-shadow: 0 0 15px rgba(0,0,0,0.5); }
+        .play-btn:hover { opacity: 1; transform: scale(1.1); }
+
+        /* --- LAYANAN ICON --- */
+        .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; text-align: center; margin: 40px 0 60px; }
+        .layanan-item { padding: 20px; transition: 0.3s; cursor: pointer; }
+        .layanan-item:hover { background: var(--white); border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .layanan-item i { font-size: 2.8rem; color: var(--secondary); margin-bottom: 15px; }
+        .layanan-item h5 { margin: 0; font-size: 1rem; color: var(--primary); }
 
         /* --- FOOTER --- */
-        footer { background: var(--dark); color: #bcaaa4; padding: 60px 0 20px; border-top: 4px solid var(--secondary); }
+        footer { background: var(--dark); border-top: 4px solid var(--secondary); padding: 60px 0 30px; color: #bcaaa4; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-col h4 { color: var(--secondary); margin-bottom: 20px; text-transform: uppercase; }
-        .footer-col ul { list-style: none; padding: 0; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col a { color: #bcaaa4; text-decoration: none; transition: 0.3s; }
-        .footer-col a:hover { color: var(--secondary); padding-left: 5px; }
-        .footer-bottom { border-top: 1px solid #4e342e; margin-top: 40px; padding-top: 20px; text-align: center; font-size: 0.8rem; }
-        .social-links a { color: white; margin-right: 15px; font-size: 1.2rem; }
+        .footer-logo { font-size: 1.6rem; color: var(--secondary); font-weight: bold; margin-bottom: 20px; }
+        .footer-bottom { border-top: 1px solid #4e342e; margin-top: 40px; padding-top: 25px; text-align: center; font-size: 0.8rem; color: #8d6e63; }
+        .social-links a { margin-right: 20px; color: #d7ccc8; font-size: 1.3rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--secondary); }
 
         /* --- PAGE CONTROL --- */
         .page { display: none; padding-bottom: 50px; animation: fadeIn 0.6s ease; }
         .active { display: block; }
         @keyframes fadeIn { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
-        
-        button { cursor: pointer; border-radius: 5px; font-weight: bold; }
+
+        /* Auth Style */
+        .auth-box { max-width: 400px; margin: 60px auto; background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-top: 6px solid var(--secondary); }
+        input { width: 100%; padding: 14px; margin: 12px 0; border: 1px solid #d7ccc8; border-radius: 5px; box-sizing: border-box; background: #fafafa; }
+        .btn-full { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1rem; }
+        .btn-full:hover { background: var(--dark); }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="logo" onclick="showPage('home')">
+    <a class="logo" onclick="showPage('home')">
         <i class="fas fa-landmark"></i> BHUMI HISTORIA
     </a>
     <div class="nav-links">
         <a onclick="showPage('home')">BERANDA</a>
         <a onclick="showPage('collection')">KOLEKSI</a>
         <a onclick="showPage('event')">EVENT</a>
-        <a onclick="showPage('aboutadmin')">PROFIL ADMIN</a>
+        <a onclick="showPage('aboutadmin')">PROFIL</a>
+        <a onclick="showPage('aboutus')">ABOUT ADMIN</a>
     </div>
-    <button onclick="showPage('login')" style="background:var(--secondary); color:white; border:none; padding:10px 25px;">MASUK</button>
+    <button onclick="showPage('login')" style="background:var(--secondary); color:white; border:none; padding:10px 25px; border-radius:5px; cursor:pointer; font-weight:bold;">MASUK</button>
 </nav>
 
 <div id="home" class="page active">
-    <div class="hero">
+    <div class="hero" id="hero-bg">
         <div class="hero-content">
-            <h1 style="font-size: 3rem; color: var(--secondary);">Bhumi Historia</h1>
-            <p style="font-size: 1.2rem;">"Menghidupkan Kembali Jejak Langkah Leluhur"</p>
+            <h1 style="font-size: 3rem; margin: 0; color: var(--secondary);">Bhumi Historia</h1>
+            <p style="font-size: 1.2rem; font-style: italic;">"Menghidupkan Kembali Jejak Langkah Leluhur"</p>
+            <div class="search-box">
+                <input type="text" placeholder="Cari naskah, peta, atau biografi tokoh...">
+                <button><i class="fas fa-search"></i> Cari</button>
+            </div>
         </div>
     </div>
+
     <div class="container">
-        <div class="section-title"><h2>Koleksi Unggulan</h2><div class="line"></div></div>
+        <div class="section-title">
+            <h2>Koleksi Unggulan</h2>
+            <div class="line"></div>
+        </div>
+        
         <div class="koleksi-grid">
             <div class="koleksi-item">
-                <div class="item-label">Manuskrip</div>
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
                 <div class="koleksi-img"></div>
-                <div class="koleksi-info"><h4>Syarh 'Aja'ib al-Qalb</h4></div>
+                <div class="koleksi-info">
+                    <h4>Bijvoegsel tot het staatsblad van het koninkrijk der Nederlanden...</h4>
+                    <span class="date">3/8/2017</span>
+                </div>
             </div>
             <div class="koleksi-item">
-                <div class="item-label">Terbitan Berkala</div>
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
                 <div class="koleksi-img"></div>
-                <div class="koleksi-info"><h4>The Asiatic Journal</h4></div>
+                <div class="koleksi-info">
+                    <h4>The Asiatic journal and monthly register for british and foreign...</h4>
+                    <span class="date">3/13/2012</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Syarh 'Aja'ib al-Qalb</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-book"></i> Monograf</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Hubungan faktor-faktor dalam pembentukan reputasi...</h4>
+                    <span class="date">11/21/2011</span>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn-view" onclick="showPage('collection')" style="padding: 12px 30px; cursor: pointer; border: none;">Lihat Semua Koleksi Digital</button>
+        </div>
+    </div>
+
+    <div class="banner-brown">
+        <div class="container">
+            <h2>Punya Artefak atau Naskah Keluarga?</h2>
+            <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">Layanan preservasi digital kami membantu Anda menjaga kondisi fisik dan mendigitalkan konten sejarah agar abadi sepanjang masa.</p>
+            <button onclick="window.location.href='https://wa.me/6282274070591'">Konsultasi Preservasi</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Dokumentasi Visual</h2>
+            <div class="line"></div>
+        </div>
+        <div class="video-container">
+            <div class="video-card">
+                <div class="video-placeholder" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img.youtube.com/vi/KoEDRc2gq6c/maxresdefault.jpg');">
+                    <i class="fas fa-play-circle play-btn" onclick="window.open('https://youtu.be/KoEDRc2gq6c?si=9ch6SHmi9hFQkf4f', '_blank')"></i>
+                </div>
+                <div style="padding: 20px;">
+                    <h5 style="margin: 0; font-size: 1.1rem; color: var(--primary);">Sejarah G30SPKI</h5>
+                    <p style="font-size: 0.85rem; color: #795548; margin-top: 10px;"><i class="fas fa-clock"></i> Dokumenter Sejarah | 2024</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="video-placeholder" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://img.youtube.com/vi/BNvEukTWlfg/maxresdefault.jpg');">
+                    <i class="fas fa-play-circle play-btn" onclick="window.open('https://youtu.be/BNvEukTWlfg?si=bjMjk-yTcRFB7K0u', '_blank')"></i>
+                </div>
+                <div style="padding: 20px;">
+                    <h5 style="margin: 0; font-size: 1.1rem; color: var(--primary);">Teknik Perawatan Naskah Kuno</h5>
+                    <p style="font-size: 0.85rem; color: #795548; margin-top: 10px;"><i class="fas fa-tools"></i> Tutorial Edukasi | 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <div class="line"></div>
+        </div>
+        <div class="layanan-grid">
+            <div class="layanan-item">
+                <i class="fas fa-fingerprint"></i>
+                <h5>Digitalisasi</h5>
+            </div>
+            <div class="layanan-item">
+                <i class="fas fa-scroll"></i>
+                <h5>Restorasi</h5>
+            </div>
+            <div class="layanan-item">
+                <i class="fas fa-search"></i>
+                <h5>Riset Sejarah</h5>
+            </div>
+            <div class="layanan-item">
+                <i class="fas fa-id-card"></i>
+                <h5>Akses Anggota</h5>
             </div>
         </div>
     </div>
 </div>
 
 <div id="collection" class="page">
-    <div class="container" style="padding: 50px 0;">
-        <div class="section-title"><h2>Arsip Digital</h2><div class="line"></div></div>
-        <p align="center">Daftar lengkap naskah dan dokumen sejarah digital.</p>
+    <div class="container" style="padding: 40px 0;">
+        <h2 style="color: var(--primary); text-align: center; text-transform: uppercase;">Arsip Koleksi Digital</h2>
+        <p style="text-align: center; margin-bottom: 40px;">Menampilkan hasil dari database Perpustakaan Nasional</p>
+        
+        <div class="koleksi-grid">
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Bijvoegsel tot het staatsblad van het koninkrijk der Nederlanden...</h4>
+                    <span class="date">3/8/2017</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-file-alt"></i> Terbitan Berkala</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>The Asiatic journal and monthly register for british and foreign...</h4>
+                    <span class="date">3/13/2012</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Syarh 'Aja'ib al-Qalb</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-book"></i> Monograf</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Hubungan faktor-faktor dalam pembentukan reputasi...</h4>
+                    <span class="date">11/21/2011</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-book"></i> Monograf</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Tafel voor snel opslaan van Coördinaten verschillen...</h4>
+                    <span class="date">12/11/2006</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Fath al-Muluk</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-scroll"></i> Manuskrip</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Ilm At-Tasawwuf</h4>
+                    <span class="date">11/21/2007</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-archive"></i> Bahan Campuran</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Industri Lampu Pijar-Peninjauan : Menteri Perindustrian M. Jus...</h4>
+                    <span class="date">7/11/2011</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-archive"></i> Bahan Campuran</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Demonstrasi anggota-anggota gerakan anti komunis...</h4>
+                    <span class="date">7/14/2011</span>
+                </div>
+            </div>
+            <div class="koleksi-item">
+                <div class="item-label"><i class="fas fa-archive"></i> Bahan Campuran</div>
+                <div class="koleksi-img"></div>
+                <div class="koleksi-info">
+                    <h4>Pembukaan, upacara [gambar] : pembukaan PT. Gunung Agun...</h4>
+                    <span class="date">3/28/2011</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px; text-align: center;">
+             <button class="btn-full" style="max-width: 200px;" onclick="showPage('home')">Kembali ke Beranda</button>
+        </div>
     </div>
 </div>
 
 <div id="event" class="page">
-    <div class="container" style="padding: 50px 0;">
-        <div class="section-title"><h2>Event Mendatang</h2><div class="line"></div></div>
-        <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid var(--secondary);">
-            <h3>Workshop Digitalisasi Arsip</h3>
-            <p>02 Juni 2026 - Gedung Arsip Digital</p>
-        </div>
-    </div>
-</div>
-
-<div id="aboutadmin" class="page">
-    <div class="container" style="padding: 50px 0;">
-        <div class="section-title"><h2>Profil Administrator</h2><div class="line"></div></div>
-        
-        <div class="admin-profile-card">
-            <div style="text-align: center;">
-                <img src="https://ui-avatars.com/api/?name=Emia+Perangin&background=5d4037&color=fff&size=200" style="border-radius: 15px; border: 4px solid var(--secondary); width: 100%;">
-                <h3 style="margin: 15px 0 5px;">Emia Br Perangin-Angin</h3>
-                <p style="color: var(--secondary); font-weight: bold;">NIM: 230709035</p>
-                
-                <div class="fav-section">
-                    <h5 style="margin: 0 0 5px; color: var(--primary);"><i class="fas fa-music"></i> Lagu Favorit</h5>
-                    <p style="font-size: 1rem; font-weight: bold; margin: 0;">"Jujur"</p>
-                </div>
-            </div>
-            
-            <div>
-                <h3 style="color: var(--primary); border-bottom: 2px solid var(--secondary); display: inline-block;">Biodata & Fokus</h3>
-                <p style="line-height: 1.8; margin-top: 15px;">Halo! Saya adalah administrator <strong>Bhumi Historia</strong>. Saya memiliki minat besar dalam dunia perpustakaan dan kearsipan, khususnya dalam mendokumentasikan sejarah yang hampir terlupakan.</p>
-                
-                <h4 style="color: var(--primary); margin: 20px 0 10px;"><i class="fas fa-heart"></i> Minat & Hobi</h4>
-                <ul style="line-height: 1.8;">
-                    <li><strong>Preservasi:</strong> Merawat dan mendigitalkan naskah-naskah kuno nusantara.</li>
-                    <li><strong>Dokumentasi:</strong> Tertarik pada pembuatan video dokumenter bertema sejarah.</li>
-                    <li><strong>Cinema Library:</strong> Menggabungkan konsep film edukasi dengan layanan perpustakaan.</li>
-                </ul>
-
-                <h4 style="color: var(--primary); margin: 20px 0 10px;"><i class="fas fa-graduation-cap"></i> Pendidikan</h4>
-                <p>Mahasiswa Program Studi Dokumentasi & Informasi Sejarah.</p>
-            </div>
-        </div>
+    <div class="container" style="padding: 50px 0; text-align: center;">
+        <h2 style="color: var(--primary);">Agenda Mendatang</h2>
+        <p>Pameran Virtual Naskah Melayu - Mei 2026</p>
     </div>
 </div>
 
 <div id="login" class="page">
-    <div class="container" style="max-width: 400px; margin-top: 50px; background: white; padding: 30px; border-radius: 10px;">
-        <h2 align="center">Akses Masuk</h2>
-        <input type="text" placeholder="Username" style="width:100%; padding:10px; margin: 10px 0;">
-        <input type="password" placeholder="Password" style="width:100%; padding:10px; margin: 10px 0;">
-        <button style="width:100%; padding:10px; background:var(--primary); color:white; border:none;">LOGIN</button>
+    <div class="auth-box">
+        <h2 align="center" style="color:var(--primary)">Akses Anggota</h2>
+        <input type="email" placeholder="Alamat Email">
+        <input type="password" placeholder="Kata Sandi">
+        <button class="btn-full">MASUK</button>
+        <p align="center" style="font-size: 0.8rem; margin-top: 15px;">Belum bergabung? <a onclick="showPage('register')" style="color:var(--secondary); cursor:pointer; font-weight:bold;">Daftar Sekarang</a></p>
+    </div>
+</div>
+
+<div id="register" class="page">
+    <div class="auth-box">
+        <h2 align="center" style="color:var(--primary)">Pendaftaran</h2>
+        <input type="text" id="regFirst" placeholder="Nama Lengkap">
+        <input type="email" placeholder="Email">
+        <input type="tel" placeholder="Nomor Telepon">
+        <input type="password" placeholder="Kata Sandi">
+        <button class="btn-full" onclick="registerSukes()">BUAT AKUN</button>
+    </div>
+</div>
+
+<div id="aboutadmin" class="page">
+    <div class="container" style="background: white; padding: 50px; border-radius: 10px; margin-top: 40px; border: 1px solid #d7ccc8;">
+        <h2 style="color: var(--primary); border-left: 5px solid var(--secondary); padding-left: 20px;">Profil Bhumi Historia</h2>
+        <p style="line-height: 1.8; font-size: 1.1rem; color: #4e342e;"><b>Bhumi Historia</b> berdedikasi menjadi jembatan antara masa lalu dan masa depan. Kami percaya bahwa sejarah bukan hanya sekadar catatan, melainkan identitas bangsa yang harus dijaga keberadaannya di era digital.</p>
+        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: #efebe9; padding: 20px; border-radius: 5px;">
+                <h4 style="color: var(--primary);">Visi</h4>
+                <p>Digitalisasi total aset sejarah Nusantara demi kemudahan akses riset global.</p>
+            </div>
+            <div style="background: #efebe9; padding: 20px; border-radius: 5px;">
+                <h4 style="color: var(--primary);">Misi</h4>
+                <p>Melakukan restorasi fisik naskah kuno dan penyebaran edukasi melalui media visual.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="aboutus" class="page">
+    <div class="container" style="background: white; padding: 60px; text-align: center; border-radius: 10px; margin-top: 40px; border: 1px solid #d7ccc8;">
+        <img src="https://ui-avatars.com/api/?name=Emia+Perangin&background=5d4037&color=fff&size=150" style="border-radius: 50%; border: 5px solid var(--secondary);">
+        <h2 style="color: var(--primary); margin-top: 20px;">Emia Br Perangin-Angin</h2>
+        <p style="color: var(--secondary); font-weight: bold; font-size: 1.1rem;">NIM: 230709035</p>
+        <p>Program Studi Perpustakaan dan Sains Informasi</p>
+        
+        <div style="margin-top: 40px; padding: 20px; border-top: 1px dashed #d7ccc8;">
+            <h4 style="color: var(--primary); margin-bottom: 15px;"><i class="fas fa-music"></i> Lagu Favorit</h4>
+            <div style="max-width: 560px; margin: 0 auto; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/ItvyueWMAjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top: 10px; font-style: italic; font-size: 0.9rem; color: #795548;">Sal Priadi - Gala Bunga Matahari</p>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="https://www.instagram.com/emia.prgn" target="_blank" style="font-size: 2.2rem; color: var(--primary); margin: 0 15px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="font-size: 2.2rem; color: var(--primary); margin: 0 15px;"><i class="fas fa-envelope"></i></a>
+        </div>
     </div>
 </div>
 
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Bhumi Historia</h4>
-                <p>Platform khazanah sejarah digital untuk melestarikan naskah, artefak, dan dokumentasi sejarah nusantara agar tetap abadi.</p>
-                <div class="social-links" style="margin-top: 20px;">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
+            <div>
+                <div class="footer-logo"><i class="fas fa-landmark"></i> BHUMI HISTORIA</div>
+                <p style="font-size: 0.9rem; line-height: 1.8;">Pusat arsip sejarah digital independen yang bekerjasama dengan komunitas pecinta sejarah dan instansi perpustakaan untuk pelestarian budaya bangsa.</p>
+            </div>
+            <div>
+                <h4 style="color: var(--secondary);">Menu Cepat</h4>
+                <ul style="list-style: none; padding: 0; font-size: 0.9rem; line-height: 2.5;">
+                    <li><a onclick="showPage('collection')" style="cursor:pointer; color: inherit; text-decoration: none;">Telusuri Koleksi</a></li>
+                    <li><a onclick="showPage('event')" style="cursor:pointer; color: inherit; text-decoration: none;">Event Mendatang</a></li>
+                    <li><a onclick="showPage('aboutadmin')" style="cursor:pointer; color: inherit; text-decoration: none;">Visi & Misi</a></li>
+                    <li><a href="#" style="color: inherit; text-decoration: none;">Donasi Koleksi</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 style="color: var(--secondary);">Kontak Informasi</h4>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><i class="fas fa-map-marker-alt" style="color: var(--secondary);"></i> Jl. Sejarah No. 23, Medan, Sumatera Utara</p>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;"><i class="fas fa-envelope" style="color: var(--secondary);"></i> emia.prgn@email.com</p>
+                <p style="font-size: 0.9rem;"><i class="fab fa-whatsapp" style="color: var(--secondary);"></i> +62 822-7407-0591</p>
+                <div class="social-links" style="margin-top: 25px;">
                     <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/emia.prgn"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>Tautan Cepat</h4>
-                <ul>
-                    <li><a onclick="showPage('home')">Beranda</a></li>
-                    <li><a onclick="showPage('collection')">Koleksi Digital</a></li>
-                    <li><a onclick="showPage('event')">Agenda Event</a></li>
-                    <li><a onclick="showPage('aboutadmin')">Profil Admin</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Hubungi Kami</h4>
-                <ul>
-                    <li><i class="fas fa-envelope"></i> emia.p@bhumihistoria.id</li>
-                    <li><i class="fas fa-phone"></i> +62 822-7407-0591</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li>
-                </ul>
-            </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2026 Bhumi Historia. Dikelola oleh <strong>Emia Br Perangin-Angin (230709035)</strong>.</p>
+            &copy; 2026 Bhumi Historia. Dikelola oleh Emia Br Perangin-Angin. Seluruh Hak Cipta Dilindungi.
         </div>
     </div>
 </footer>
 
+<a id="chatWA" href="https://wa.me/6282274070591" style="position:fixed; bottom:30px; right:30px; background:#25d366; color:white; padding:18px; border-radius:50%; box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 9999;"><i class="fab fa-whatsapp fa-2x"></i></a>
+
 <script>
+    // Fungsi Navigasi Menu
     function showPage(id) {
         document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
         document.getElementById(id).classList.add("active");
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
+
+    function registerSukes() {
+        const first = document.getElementById('regFirst').value;
+        if(first) {
+            alert("Halo " + first + ", pendaftaran anggota berhasil!");
+            showPage('login');
+        } else {
+            alert("Harap isi nama lengkap Anda!");
+        }
+    }
+
+    // Slideshow Background Hero
+    const images = [
+        'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=2070',
+        'https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2000',
+        'https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=1974'
+    ];
+    let idx = 0;
+    function rotateBg() {
+        const hero = document.getElementById('hero-bg');
+        if(hero) {
+            hero.style.backgroundImage = `url('${images[idx]}')`;
+            idx = (idx + 1) % images.length;
+        }
+    }
+    setInterval(rotateBg, 5000);
+    window.onload = rotateBg;
 </script>
 
 </body>
