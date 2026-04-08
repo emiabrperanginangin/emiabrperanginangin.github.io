@@ -9,37 +9,33 @@
 body{
 font-family:"Georgia",serif;
 margin:0;
-color:#3e2f1c;
 background:#f5f0e6;
+color:#3e2f1c;
+scroll-behavior:smooth;
 }
 
-/* NAVBAR MODERN */
+/* NAVBAR */
 nav{
+position:sticky;
+top:0;
 background:#3e2f1c;
 padding:12px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.2);
-}
-
-.nav-left, .nav-right{
-display:flex;
-align-items:center;
+z-index:999;
+box-shadow:0 2px 10px rgba(0,0,0,0.3);
 }
 
 nav a{
 color:#f5e6c8;
-margin:0 15px;
+margin:0 10px;
 text-decoration:none;
 font-weight:bold;
 }
 
-nav a:hover{
-color:#c2a66b;
-}
+nav a:hover{color:#c2a66b;}
 
-/* LOGO */
 .logo{
 display:flex;
 align-items:center;
@@ -47,70 +43,65 @@ gap:10px;
 }
 
 .logo img{
-width:45px;
-height:45px;
-border-radius:50%;
-}
-
-.logo span{
-color:#f5e6c8;
-font-size:18px;
-font-weight:bold;
+width:40px;
 }
 
 /* PAGE */
-.page{
-display:none;
-min-height:100vh;
-padding:30px;
+.page{display:none;padding:30px;}
+.active{display:block;animation:fade 0.5s;}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
 
-.active{
-display:block;
+/* SLIDER */
+.slider{
+position:relative;
+height:300px;
+overflow:hidden;
+border-radius:10px;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:1s;
+}
+
+.slide.active{
+opacity:1;
 }
 
 /* HERO */
 .hero{
 text-align:center;
-padding:100px 20px;
+margin-top:20px;
 }
 
 .hero img{
-width:120px;
-margin-bottom:20px;
-}
-
-.hero span{
-display:inline-block;
-padding:20px 40px;
-background:#3e2f1c;
-color:#f5e6c8;
-font-size:32px;
-border-radius:10px;
-}
-
-/* JAM */
-.clock{
-text-align:center;
-margin-top:20px;
-font-size:18px;
+width:100px;
 }
 
 /* SECTION */
 .section{
+background:white;
+padding:20px;
+border-radius:10px;
 max-width:900px;
 margin:40px auto;
-padding:25px;
-background:white;
-border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* EVENT & KOLEKSI */
+/* CARD */
 .card-container{
 display:flex;
-gap:20px;
 flex-wrap:wrap;
+gap:20px;
 justify-content:center;
 }
 
@@ -134,32 +125,30 @@ height:150px;
 object-fit:cover;
 }
 
-/* FORM */
-.container{
-max-width:400px;
-margin:auto;
+/* POPUP */
+#popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.popup-content{
 background:white;
 padding:20px;
 border-radius:10px;
+text-align:center;
 }
 
-input, textarea{
-width:100%;
-padding:8px;
-margin-top:5px;
-}
-
-/* BUTTON */
-button{
-padding:8px 15px;
-background:#3e2f1c;
-color:white;
-border:none;
-cursor:pointer;
-}
-
-button:hover{
-background:#c2a66b;
+/* JAM */
+.clock{
+text-align:center;
+margin-top:10px;
 }
 
 /* FORUM */
@@ -170,23 +159,8 @@ border-radius:8px;
 margin-top:20px;
 }
 
-.post{
-border-bottom:1px solid #ddd;
-padding:10px;
-}
-
-.nama{
-font-weight:bold;
-color:#3e2f1c;
-}
-
-.reply{
-margin-left:30px;
-background:#f4f4f4;
-padding:10px;
-border-radius:5px;
-margin-top:5px;
-}
+.post{padding:10px;border-bottom:1px solid #ddd;}
+.reply{margin-left:20px;background:#eee;padding:5px;border-radius:5px;}
 
 /* CHAT */
 #chatBotMini{
@@ -198,39 +172,40 @@ padding:15px;
 border-radius:50px;
 }
 
-#chatBotMini a{
-color:white;
-text-decoration:none;
-}
-
-/* BACKGROUND SEJARAH */
-#home{
-background:linear-gradient(rgba(60,40,20,0.7),rgba(60,40,20,0.7)),
-url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');
-background-size:cover;
-color:white;
-}
-
 </style>
 
 <script>
 
-function showPage(pageId){
+/* PAGE */
+function showPage(id){
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-document.getElementById(pageId).classList.add("active");
+document.getElementById(id).classList.add("active");
 }
 
-window.onload=function(){
-showPage('home');
-updateClock();
-setInterval(updateClock,1000);
-}
-
-/* JAM */
+/* CLOCK */
 function updateClock(){
 let now=new Date();
 document.getElementById("clock").innerHTML=
 now.toLocaleDateString()+" | "+now.toLocaleTimeString();
+}
+
+/* SLIDER */
+let index=0;
+function autoSlide(){
+let slides=document.querySelectorAll(".slide");
+slides.forEach(s=>s.classList.remove("active"));
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+}
+
+/* POPUP */
+function showDetail(title,img){
+document.getElementById("popup").style.display="flex";
+document.getElementById("popupTitle").innerText=title;
+document.getElementById("popupImg").src=img;
+}
+function closePopup(){
+document.getElementById("popup").style.display="none";
 }
 
 /* FORUM */
@@ -250,11 +225,10 @@ let post=document.createElement("div");
 post.className="post";
 
 post.innerHTML=`
-<div class="nama">${nama}</div>
-<div>${pesan}</div>
-<button onclick="tampilBalas(${idPost})">Balas</button>
+<b>${nama}</b><br>${pesan}
+<br><button onclick="tampilBalas(${idPost})">Balas</button>
 <div id="balasForm${idPost}" style="display:none;">
-<input type="text" id="namaBalas${idPost}" placeholder="Nama">
+<input id="namaBalas${idPost}">
 <textarea id="pesanBalas${idPost}"></textarea>
 <button onclick="kirimBalasan(${idPost})">Kirim</button>
 </div>
@@ -265,8 +239,8 @@ forum.prepend(post);
 }
 
 function tampilBalas(id){
-let form=document.getElementById("balasForm"+id);
-form.style.display=(form.style.display=="none")?"block":"none";
+let f=document.getElementById("balasForm"+id);
+f.style.display=(f.style.display=="none")?"block":"none";
 }
 
 function kirimBalasan(id){
@@ -275,8 +249,16 @@ let pesan=document.getElementById("pesanBalas"+id).value;
 
 let balasan=document.createElement("div");
 balasan.className="reply";
-balasan.innerHTML=`<div class="nama">${nama}</div><div>${pesan}</div>`;
+balasan.innerHTML=`<b>${nama}</b>: ${pesan}`;
 document.getElementById("daftarBalasan"+id).appendChild(balasan);
+}
+
+/* INIT */
+window.onload=function(){
+showPage('home');
+updateClock();
+setInterval(updateClock,1000);
+setInterval(autoSlide,3000);
 }
 
 </script>
@@ -286,59 +268,73 @@ document.getElementById("daftarBalasan"+id).appendChild(balasan);
 <body>
 
 <nav>
-
-<div class="nav-left">
-
 <div class="logo">
 <img src="logo.png">
-<span>Bhumi Historia</span>
+<b style="color:#f5e6c8;">Bhumi Historia</b>
 </div>
 
+<div>
 <a onclick="showPage('home')">Beranda</a>
 <a onclick="showPage('collection')">Koleksi</a>
 <a onclick="showPage('service')">Layanan</a>
 <a onclick="showPage('forum')">Forum</a>
 <a onclick="showPage('aboutadmin')">Profil</a>
 <a onclick="showPage('aboutus')">About Admin</a>
-<a onclick="showPage('contact')">Contact</a>
-
 </div>
-
-<div class="nav-right">
-<a onclick="showPage('login')">Login</a>
-<a onclick="showPage('register')">Register</a>
-</div>
-
 </nav>
 
 <!-- HOME -->
 <div id="home" class="page">
+
+<div class="slider">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1507842217343-583bb7270b66')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1495446815901-a7297e633e8d')"></div>
+</div>
+
 <div class="hero">
-
 <img src="logo.png">
-<span>PERPUSTAKAAN BHUMI HISTORIA</span>
-
+<h2>SELAMAT DATANG DI PERPUSTAKAAN BHUMI HISTORIA</h2>
 <div class="clock" id="clock"></div>
+</div>
 
+<div class="section">
+<h2>Pameran</h2>
+
+<div class="card-container">
+<div class="card" onclick="showDetail('Infografis','https://images.unsplash.com/photo-1512820790803-83ca734da794')">
+<img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+<p align="center">Infografis</p>
+</div>
+
+<div class="card" onclick="showDetail('Naskah','https://images.unsplash.com/photo-1507842217343-583bb7270b66')">
+<img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66">
+<p align="center">Naskah</p>
+</div>
+
+<div class="card" onclick="showDetail('Lukisan','https://images.unsplash.com/photo-1495446815901-a7297e633e8d')">
+<img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d">
+<p align="center">Lukisan</p>
 </div>
 </div>
 
-<!-- KOLEKSI (ISI TETAP) -->
+</div>
+
+</div>
+
+<!-- KOLEKSI (ISI ASLI TETAP) -->
 <div id="collection" class="page">
 <div class="section">
-
 <h2>Koleksi</h2>
-
 <ul>
 <li>Infografis Naskah</li>
 <li>Biografi Pahlawan</li>
 <li>Foto, Gambar, Lukisan</li>
 </ul>
-
 </div>
 </div>
 
-<!-- LAYANAN -->
+<!-- SERVICE -->
 <div id="service" class="page">
 <div class="section">
 <h2>Jam Layanan</h2>
@@ -350,50 +346,18 @@ document.getElementById("daftarBalasan"+id).appendChild(balasan);
 <!-- FORUM -->
 <div id="forum" class="page">
 <div class="section">
-
-<h2>Forum Diskusi</h2>
-
-<input type="text" id="namaForum" placeholder="Nama">
-<textarea id="pesanForum"></textarea>
-<br><br>
+<input id="namaForum" placeholder="Nama">
+<textarea id="pesanForum"></textarea><br>
 <button onclick="kirimKomentar()">Kirim</button>
-
 <div class="forumBox" id="forumList"></div>
-
 </div>
 </div>
 
-<!-- PROFIL & ABOUT ADMIN (TIDAK DIUBAH SAMA SEKALI) -->
-<!-- (aku sengaja tidak ubah isi kamu) -->
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-<div class="section">
-<h2>Contact</h2>
-<a href="https://wa.me/6282274070591">
-<button>WhatsApp</button>
-</a>
-</div>
-</div>
-
-<!-- LOGIN -->
-<div id="login" class="page">
-<div class="container">
-<h2>Login</h2>
-<input type="email"><br><br>
-<input type="password"><br><br>
-<button>Login</button>
-</div>
-</div>
-
-<!-- REGISTER -->
-<div id="register" class="page">
-<div class="container">
-<h2>Register</h2>
-<input type="text"><br><br>
-<input type="email"><br><br>
-<input type="password"><br><br>
-<button>Daftar</button>
+<!-- POPUP -->
+<div id="popup" onclick="closePopup()">
+<div class="popup-content">
+<h3 id="popupTitle"></h3>
+<img id="popupImg" width="300">
 </div>
 </div>
 
